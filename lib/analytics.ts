@@ -1,3 +1,5 @@
+// lib/analytics.ts
+
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
 const analyticsClient = new BetaAnalyticsDataClient({
