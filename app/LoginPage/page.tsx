@@ -18,7 +18,14 @@ export default function LoginPage() {
     </span>
 
       {/* Header */}
-
+    <div className="text-center md:text-left md:pr-12 mb-8 md:mb-0">
+        <h1 className="text-2xl md:text-4xl font-bold text-[#0059FF] mb-2">
+            Welcome to Admin Portal UVICS
+        </h1>
+        <p className="text-base md:text-lg text-black">
+            Please login to access the admin features
+        </p>
+    </div>
       {/* Login Box */}
 
       {/* Background Logo */}
