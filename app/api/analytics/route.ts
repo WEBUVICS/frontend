@@ -1,5 +1,4 @@
 // app/api/analytics/route.ts
-
 import { NextResponse } from "next/server";
 import { getGA4Data } from "@/lib/analytics";
 
