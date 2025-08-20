@@ -1,11 +1,18 @@
 // ========= UNTUK HALAMAN HOME UBAH DISINI ===========
 
 
-export default function Home() {
+import Link from 'next/link';
 
+export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-        <h2 className="text-2xl font-bold text-foreground">Hello, World</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold mb-4">Selamat Datang!</h1>
+      <Link 
+        href="/login" 
+        className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+      >
+        Pergi ke Halaman Login
+      </Link>
     </div>
   );
 }
