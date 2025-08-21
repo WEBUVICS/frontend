@@ -2,41 +2,70 @@
 
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Users } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 type AnalyticsData = {
   date: string;
-  activeUsers: string;
+  value: string;
 };
 
-export default function AnalyticsCard() {
-  const [today, setToday] = useState<AnalyticsData | null>(null);
+type AnalyticsCardProps = {
+  metric: string; // e.g. "activeUsers"
+  label: string; // e.g. "Orang"
+  title: string; // e.g. "Pengunjung Setiap Hari (hari ini)"
+  timeRange?: "today" | "7days" | "30days" | "all-time";
+  icon?: React.ReactNode; // pass Lucide icon
+};
+
+export default function AnalyticsCard({
+  metric,
+  label,
+  title,
+  timeRange = "today",
+  icon,
+}: AnalyticsCardProps) {
+  const [data, setData] = useState<AnalyticsData[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/analytics")
+    fetch(`/api/analytics?metric=${metric}&range=${timeRange}`)
       .then((res) => res.json())
-      .then((json: AnalyticsData[]) => {
-        const latest = json[json.length - 1] || null;
-        setToday(latest);
-      })
-      .catch((err) => console.error("Error fetching analytics:", err));
-  }, []);
+      .then((json: AnalyticsData[]) => setData(json))
+      .catch((err) => console.error("Error fetching analytics:", err))
+      .finally(() => setLoading(false));
+  }, [metric, timeRange]);
+
+  // Calculate the sum of all values
+  const total = data.reduce((sum, item) => sum + Number(item.value || 0), 0);
 
   return (
-    <Card className="w-full max-w-sm p-5 rounded-xl shadow-xl bg-white flex flex-col justify-between">
-      <div className="flex items-center justify-between">
+    <Card className="w-full max-w-sm p-4 rounded-2xl shadow-md bg-white flex flex-col justify-between">
+      <div className="flex items-start justify-between">
         <div>
-          <div className="text-5xl font-bold text-[#ff9f3c]">
-            {today?.activeUsers ?? "-"}
+          <div className="text-3xl font-bold" style={{ color: "#ff9e3d" }}>
+            {loading ? (
+              <Loader2 className="h-6 w-6 animate-spin" />
+            ) : (
+              total || "-"
+            )}
           </div>
-          <div className="text-xl text-[#ff9f3c]">Orang</div>
+          <div className="text-sm" style={{ color: "#ff9e3d" }}>
+            {label}
+          </div>
         </div>
-        <Users className="h-15 w-15 text-[#ff9f3c]" />
+
+        {icon && (
+          <span
+            className="h-16 w-16 flex items-center justify-center [&>svg]:h-full [&>svg]:w-full"
+            style={{ color: "#ff9e3d" }}
+          >
+            {icon}
+          </span>
+        )}
       </div>
 
-      <div className="mt-4 text-md font-bold text-[#ff9f3c]">
-        Pengunjung Setiap Hari <br />
-        <span className="font-bold">(hari ini)</span>
+      <div className="mt-4 text-sm font-semibold" style={{ color: "#ff9e3d" }}>
+        {title}
       </div>
     </Card>
   );
