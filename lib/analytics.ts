@@ -1,5 +1,3 @@
-// lib/analytics.ts
-
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
 const analyticsClient = new BetaAnalyticsDataClient({
@@ -9,18 +7,21 @@ const analyticsClient = new BetaAnalyticsDataClient({
   },
 });
 
-export async function getGA4Data() {
+export async function getGA4Data(
+  metric: string,
+  dateRange: { startDate: string; endDate: string }
+) {
   const [response] = await analyticsClient.runReport({
     property: `properties/${process.env.GA4_PROPERTY_ID}`,
-    dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
-    metrics: [{ name: "activeUsers" }],
+    dateRanges: [dateRange],
+    metrics: [{ name: metric }],
     dimensions: [{ name: "date" }],
   });
 
   return (
     response.rows?.map((row) => ({
       date: row.dimensionValues?.[0]?.value ?? "",
-      activeUsers: row.metricValues?.[0]?.value ?? "",
+      value: row.metricValues?.[0]?.value ?? "0",
     })) || []
   );
 }
