@@ -38,12 +38,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <>{children}</>
   );
 }

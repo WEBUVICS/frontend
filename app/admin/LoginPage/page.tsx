@@ -8,14 +8,14 @@ export default function LoginPage() {
 
       {/* Logo pojok kiri */}
         <span className="absolute top-4 left-4">
-        <Image 
-        src="/favicon.png" 
-        alt="UVICS Logo" 
-        width={96}   // sama dengan w-24
-        height={96} 
-        className="w-20 md:w-24" 
-        />
-    </span>
+          <Image 
+          src="/favicon.png" 
+          alt="UVICS Logo" 
+          width={96}   // sama dengan w-24
+          height={96} 
+          className="w-20 md:w-24" 
+          />
+        </span>
 
       {/* Header */}
     <div className="text-center md:text-left md:pr-12 mb-8 md:mb-0">
