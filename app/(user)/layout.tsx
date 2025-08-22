@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-import {Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
-import "./globals.css";
+import { Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
+import "../globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -10,13 +9,13 @@ const openSans = Open_Sans({
 const quicksandFont = Quicksand({
   variable: "--font-quick",
   subsets: ["latin"],
-  weight: ['300', '400', '500','600']
+  weight: ["300", "400", "500", "600"],
 });
 
 const poppinsFont = Poppins({
   variable: "--font-pop",
   subsets: ["latin"],
-  weight: ['400', '500', '600','700', '800'], // pilih berat font yang dibutuhkan
+  weight: ["400", "500", "600", "700", "800"], // pilih berat font yang dibutuhkan
 });
 
 const robotoMono = Roboto_Mono({
@@ -24,26 +23,10 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "UVICS WEBSITE",
-  description: "Silahkan kunjungi website uvics.",
-  icons: {
-    icon: {url: '/favicon.jpg', type: 'image/jpg'}
-  }
-};
-
-export default function RootLayout({
+export default function UserLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+  return <section>{children}</section>;
 }
