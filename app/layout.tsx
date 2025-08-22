@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "UVICS WEBSITE",
   description: "Silahkan kunjungi website uvics.",
   icons: {
-    icon: {url: '/favicon.jpg', type: 'image/jpg'}
+    icon: {url: '/favicon.jpg', type: 'image/jpg', }
   }
 };
 
