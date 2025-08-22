@@ -101,14 +101,16 @@ export default function CardDemo() {
                                 />
                                 {errors.password && (<p className="text-red-500 text-sm mt-1">{errors.password}</p>)}
                         </div>
+                        <div className="flex justify-center mt-4">
+                            <Button type="submit" className=" bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-2 rounded-md hover:from-blue-700 hover:to-blue-500 transition">Login</Button>
+                        </div>
                     </div>
+
                 </form>
             </CardContent>
 
             <CardFooter className="flex-col gap-2 w-full">
-                <Button type="submit" className=" bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-2 rounded-md hover:from-blue-700 hover:to-blue-500 transition">
-                Login
-                </Button>
+                
             </CardFooter>
         </Card>
     )
