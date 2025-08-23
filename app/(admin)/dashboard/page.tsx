@@ -1,32 +1,47 @@
 "use client";
 
 import AnalyticsCard from "@/components/analytics/analytics-card";
-import { Users, UserPlus, MousePointerClick } from "lucide-react";
+import { Users, User, MousePointerClick } from "lucide-react";
+import AnalyticsChart from "@/components/analytics/analytics-chart";
 
 export default function Dashboard() {
   return (
-    <div className="p-6 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      <AnalyticsCard
-        metric="activeUsers"
-        label="Orang"
-        title="Pengunjung Setiap Hari (hari ini)"
-        timeRange="today"
-        icon={<Users />}
-      />
-      <AnalyticsCard
-        metric="screenPageViews"
-        label="Views"
-        title="Page Views"
-        timeRange="all-time"
-        icon={<UserPlus />}
-      />
-      <AnalyticsCard
-        metric="totalUsers"
-        label="Pengunjung (all-time)"
-        title="Total Pengunjung"
-        timeRange="all-time"
-        icon={<MousePointerClick />}
-      />
+    <div className="p-6 flex flex-wrap gap-6">
+      {/* Cards */}
+      <div className="flex flex-wrap gap-6 w-full">
+        <div className="flex-1 min-w-[250px]">
+          <AnalyticsCard
+            metric="activeUsers"
+            label="Orang"
+            title="Pengunjung Setiap Hari (hari ini)"
+            timeRange="today"
+            icon={<User />}
+          />
+        </div>
+        <div className="flex-1 min-w-[250px]">
+          <AnalyticsCard
+            metric="totalUsers"
+            label="Orang"
+            title="Total Pengunjung"
+            timeRange="all-time"
+            icon={<Users />}
+          />
+        </div>
+        <div className="flex-1 min-w-[250px]">
+          <AnalyticsCard
+            metric="screenPageViews"
+            label="Views"
+            title="Page Views"
+            timeRange="all-time"
+            icon={<MousePointerClick />}
+          />
+        </div>
+      </div>
+
+      {/* Chart Section */}
+      <div className="w-full">
+        <AnalyticsChart metric="activeUsers" title="Jumlah Pengunjung" />
+      </div>
     </div>
   );
 }
