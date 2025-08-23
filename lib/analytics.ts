@@ -1,3 +1,5 @@
+"use server";
+
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
 const analyticsClient = new BetaAnalyticsDataClient({
@@ -7,6 +9,7 @@ const analyticsClient = new BetaAnalyticsDataClient({
   },
 });
 
+// Fetch historical GA4 data
 export async function getGA4Data(
   metric: string,
   dateRange: { startDate: string; endDate: string }
@@ -24,4 +27,19 @@ export async function getGA4Data(
       value: row.metricValues?.[0]?.value ?? "0",
     })) || []
   );
+}
+
+// Fetch real-time active users
+export async function getRealtimeUsers() {
+  try {
+    const [response] = await analyticsClient.runRealtimeReport({
+      property: `properties/${process.env.GA4_PROPERTY_ID}`,
+      metrics: [{ name: "activeUsers" }],
+    });
+
+    return response?.rows?.[0]?.metricValues?.[0]?.value || "0";
+  } catch (error) {
+    console.error("Error fetching realtime users:", error);
+    return "0";
+  }
 }

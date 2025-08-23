@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import { getRealtimeUsers } from "@/lib/analytics";
 
 type AnalyticsData = {
   date: string;
@@ -10,11 +11,11 @@ type AnalyticsData = {
 };
 
 type AnalyticsCardProps = {
-  metric: string; // e.g. "activeUsers"
+  metric: string; // e.g. "activeUsers" or "realtimeUsers"
   label: string; // e.g. "Orang"
   title: string; // e.g. "Pengunjung Setiap Hari (hari ini)"
-  timeRange?: "today" | "7days" | "30days" | "all-time";
-  icon?: React.ReactNode; // pass Lucide icon
+  timeRange?: "today" | "7days" | "30days" | "all-time" | "real-time";
+  icon?: React.ReactNode;
 };
 
 export default function AnalyticsCard({
@@ -26,8 +27,31 @@ export default function AnalyticsCard({
 }: AnalyticsCardProps) {
   const [data, setData] = useState<AnalyticsData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [liveCount, setLiveCount] = useState<string>("0");
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    // For real-time metric
+    if (metric === "realtimeUsers" || timeRange === "real-time") {
+      const fetchLive = async () => {
+        try {
+          const users = await getRealtimeUsers();
+          setLiveCount(users);
+        } catch (err) {
+          console.error("Error fetching live users:", err);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchLive();
+      interval = setInterval(fetchLive, 5000); // refresh every 5s
+
+      return () => clearInterval(interval);
+    }
+
+    // For historical data
     fetch(`/api/analytics?metric=${metric}&range=${timeRange}`)
       .then((res) => res.json())
       .then((json: AnalyticsData[]) => setData(json))
@@ -35,11 +59,13 @@ export default function AnalyticsCard({
       .finally(() => setLoading(false));
   }, [metric, timeRange]);
 
-  // Calculate the sum of all values
-  const total = data.reduce((sum, item) => sum + Number(item.value || 0), 0);
+  const total =
+    metric === "realtimeUsers" || timeRange === "real-time"
+      ? liveCount
+      : data.reduce((sum, item) => sum + Number(item.value || 0), 0);
 
   return (
-    <Card className="w-full max-w-sm p-4 rounded-2xl shadow-xl bg-white flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-lg">
+    <Card className="w-full max-w-sm p-4 rounded-2xl shadow-xl bg-white flex flex-col justify-between transform transition duration-300 hover:scale-110 hover:shadow-lg">
       <div className="flex items-start justify-between">
         <div>
           <div className="text-3xl font-bold text-[#ff9e3d]">
