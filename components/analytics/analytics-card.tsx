@@ -39,7 +39,7 @@ export default function AnalyticsCard({
   const total = data.reduce((sum, item) => sum + Number(item.value || 0), 0);
 
   return (
-    <Card className="w-full max-w-sm p-4 rounded-2xl shadow-md bg-white flex flex-col justify-between">
+    <Card className="w-full max-w-sm p-4 rounded-2xl shadow-xl bg-white flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-lg">
       <div className="flex items-start justify-between">
         <div>
           <div className="text-3xl font-bold" style={{ color: "#ff9e3d" }}>
