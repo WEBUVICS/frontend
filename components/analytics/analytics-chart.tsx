@@ -61,7 +61,7 @@ export default function AnalyticsChart({
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold text-[#ff9e3d]">{title}</h2>
         <Select onValueChange={setTimeRange} defaultValue={timeRange}>
-          <SelectTrigger className="w-32 cursor-pointer">
+          <SelectTrigger className="w-34 cursor-pointer">
             <SelectValue placeholder="Select range" />
           </SelectTrigger>
           <SelectContent>
@@ -73,7 +73,7 @@ export default function AnalyticsChart({
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center h-48">
+        <div className="flex justify-center items-center h-48 text-[#ff9e3d]">
           <Loader2 className="h-8 w-8 animate-spin" />
         </div>
       ) : (

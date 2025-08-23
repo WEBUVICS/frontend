@@ -42,31 +42,24 @@ export default function AnalyticsCard({
     <Card className="w-full max-w-sm p-4 rounded-2xl shadow-xl bg-white flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-lg">
       <div className="flex items-start justify-between">
         <div>
-          <div className="text-3xl font-bold" style={{ color: "#ff9e3d" }}>
+          <div className="text-3xl font-bold text-[#ff9e3d]">
             {loading ? (
               <Loader2 className="h-6 w-6 animate-spin" />
             ) : (
               total || "-"
             )}
           </div>
-          <div className="text-sm" style={{ color: "#ff9e3d" }}>
-            {label}
-          </div>
+          <div className="text-sm text-[#ff9e3d]">{label}</div>
         </div>
 
         {icon && (
-          <span
-            className="h-16 w-16 flex items-center justify-center [&>svg]:h-full [&>svg]:w-full"
-            style={{ color: "#ff9e3d" }}
-          >
+          <span className="h-16 w-16 flex items-center justify-center [&>svg]:h-full [&>svg]:w-full text-[#ff9e3d]">
             {icon}
           </span>
         )}
       </div>
 
-      <div className="mt-4 text-sm font-semibold" style={{ color: "#ff9e3d" }}>
-        {title}
-      </div>
+      <div className="mt-4 text-sm font-semibold text-[#ff9e3d]">{title}</div>
     </Card>
   );
 }
