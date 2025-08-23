@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/select";
 
 type AnalyticsData = {
-  date: string; // YYYYMMDD format for consistency
+  date: string;
   value: number;
 };
 
@@ -50,7 +50,7 @@ export default function AnalyticsChart({
       .then((json) => {
         const sortedData = json
           .map((item: { date: string; value: string }) => ({
-            date: item.date, // Keep raw YYYYMMDD format
+            date: item.date,
             value: Number(item.value),
           }))
           .sort(
@@ -66,7 +66,7 @@ export default function AnalyticsChart({
   }, [metric, timeRange]);
 
   return (
-    <Card className="w-full max-w-3xl p-4 rounded-2xl shadow-xl bg-white transform transition duration-300 hover:scale-102 hover:shadow-lg">
+    <Card className="w-full max-w-3xl p-4 rounded-2xl shadow-xl bg-white transform transition duration-200 hover:scale-102 hover:shadow-lg active:scale-102 active:shadow-lg">
       {/* Header with title and time-range selector */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold text-[#ff9e3d]">{title}</h2>

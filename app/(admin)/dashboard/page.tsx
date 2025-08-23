@@ -18,12 +18,16 @@ export default function Dashboard() {
             icon={<User />}
           />
         </div>
-        <AnalyticsCard
-          metric="realtimeUsers"
-          label="Orang"
-          title="Live Pengunjung"
-          timeRange="real-time"
-        />
+
+        <div className="flex-1 min-w-[250px]">
+          <AnalyticsCard
+            metric="realtimeUsers"
+            label="Orang"
+            title="Live Pengunjung"
+            timeRange="real-time"
+            icon={<Users />}
+          />
+        </div>
 
         <div className="flex-1 min-w-[250px]">
           <AnalyticsCard
@@ -34,6 +38,7 @@ export default function Dashboard() {
             icon={<Users />}
           />
         </div>
+
         <div className="flex-1 min-w-[250px]">
           <AnalyticsCard
             metric="screenPageViews"
