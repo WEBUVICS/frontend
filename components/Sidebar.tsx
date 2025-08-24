@@ -55,10 +55,10 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed md:relative top-0 left-0 h-full bg-blue-800 text-white z-40
+          fixed md:relative top-0 left-0 min-h-screen bg-blue-800 text-white z-40
           transition-transform duration-300 ease-in-out
           ${isMobile ? (mobileOpen ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
-          w-64
+          w-64 rounded-r-2xl shadow-lg
         `}
       >
         <nav className="p-2">
