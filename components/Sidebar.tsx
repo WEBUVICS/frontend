@@ -3,16 +3,16 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const menuItems = [
-  { href: '/dashboard', label: 'Dashboard' },
-  { href: '/profile', label: 'Profile UVICS' },
-  { href: '/media-blog', label: 'Media Blog' },
-  { href: '/announcement', label: 'Announcement' },
+  { href: '/dashboard', label: 'Dashboard', icon: '/dashboard.png' },
+  { href: '/profile', label: 'Profile UVICS', icon: '/profile.png' },
+  { href: '/media-blog', label: 'Media Blog', icon: '/media.png' },
+  { href: '/announcement', label: 'Announcement', icon: '/announcement.png' },
 ]
 
 export default function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
@@ -25,22 +25,12 @@ export default function Sidebar() {
 
     checkIsMobile()
     window.addEventListener('resize', checkIsMobile)
-
-    const savedState = localStorage.getItem('sidebarExpanded')
-    if (savedState !== null) setIsExpanded(JSON.parse(savedState))
-
     return () => window.removeEventListener('resize', checkIsMobile)
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem('sidebarExpanded', JSON.stringify(isExpanded))
-  }, [isExpanded])
 
   const toggleSidebar = () => {
     if (isMobile) {
       setMobileOpen(!mobileOpen)
-    } else {
-      setIsExpanded(!isExpanded)
     }
   }
 
@@ -66,21 +56,11 @@ export default function Sidebar() {
       <aside
         className={`
           fixed md:relative top-0 left-0 h-full bg-blue-800 text-white z-40
-          transition-all duration-300 ease-in-out
-          ${isMobile ? (mobileOpen ? 'translate-x-0' : '-translate-x-full') : ''}
-          ${isExpanded ? 'w-64' : 'w-20'}
+          transition-transform duration-300 ease-in-out
+          ${isMobile ? (mobileOpen ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
+          w-64
         `}
       >
-        <div className="p-4 flex items-center justify-between border-b border-blue-700">
-          {isExpanded && <h2 className="text-xl font-bold">UVICS Dashboard</h2>}
-          <button
-            onClick={toggleSidebar}
-            className="p-1 rounded hover:bg-blue-700"
-          >
-            {isExpanded ? '◀' : '▶'}
-          </button>
-        </div>
-
         <nav className="p-2">
           <ul>
             {menuItems.map((item) => {
@@ -95,26 +75,21 @@ export default function Sidebar() {
                     `}
                     onClick={() => isMobile && setMobileOpen(false)}
                   >
-                    <span className="mr-3">●</span>
-                    {(isExpanded || isMobile) && <span>{item.label}</span>}
+                    {/* Icon */}
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      width={20}
+                      height={20}
+                      className="mr-3"
+                    />
+                    <span>{item.label}</span>
                   </Link>
                 </li>
               )
             })}
           </ul>
         </nav>
-
-        {/* Expand/collapse button for desktop */}
-        {!isMobile && (
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="p-2 rounded-full bg-blue-700 hover:bg-blue-600"
-            >
-              {isExpanded ? '◀' : '▶'}
-            </button>
-          </div>
-        )}
       </aside>
     </>
   )
