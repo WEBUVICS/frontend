@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import CardDemo from "@/app/components/CardDemo";
+import CardDemo from "@/components/CardDemo";
 import { Quicksand } from "next/font/google";
 
 // Load font Quicksand
