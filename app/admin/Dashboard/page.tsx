@@ -1,14 +1,16 @@
 
 // app/dashboard/page.jsx
 "use client";
-import { useEffect, useState } from "react";
+
+// import { Sidebar } from "@/app/components/Sidebar";
+
 
 export default function Dashboard() {
     // Misal username disimpan di localStorage saat login
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
+        <div className="flex">
+            <div className="flex-1 p-4">
                 <h2 className="text-xl font-semibold mb-2">
                     Halo <span>Saudara</span>...
                 </h2>

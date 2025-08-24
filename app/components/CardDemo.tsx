@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/app/components/ui/card"
+import { Input } from "@/app/components/ui/input"
+import { Label } from "@/app/components/ui/label"
 
 export default function CardDemo() {
     const password = "11111111";
@@ -68,7 +67,7 @@ export default function CardDemo() {
 
         // Jika tidak ada error, lanjutkan proses login
         if (!newErrors.username && !newErrors.password) {
-        router.push("/nextpage");
+        router.push("/admin/Dashboard");
         // bisa arahkan ke dashboard pakai router.push("/dashboard")
         }
     };
