@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
