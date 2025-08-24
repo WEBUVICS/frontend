@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export default function CardDemo() {
+    const password = "11111111";
+    const username = "Hai";
     const router = useRouter();
     const [formData, setFormData] = useState({
     username: "",
@@ -56,6 +58,10 @@ export default function CardDemo() {
         newErrors.password = "Password wajib diisi!";
         } else if (formData.password.length < 6) {
         newErrors.password = "Password minimal 6 karakter!";
+        } else if (formData.password !== password) {
+        newErrors.password = "Password salah!";
+        } else if (formData.username !== username) {
+        newErrors.username = "Username salah!";
         }
 
         setErrors(newErrors);
