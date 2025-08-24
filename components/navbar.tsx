@@ -2,15 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Quicksand } from "next/font/google";
 
 const quicksand = Quicksand({
@@ -18,18 +12,41 @@ const quicksand = Quicksand({
   weight: ["400", "600", "700"],
 });
 
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Media", href: "/media" },
-  { name: "Department", href: "/department" },
-  { name: "Showcase", href: "/showcase" },
-  { name: "FAQs", href: "/faq" },
-  { name: "About", href: "/about" },
-];
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [deptOpen, setDeptOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const deptRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Only for desktop (md and up)
+    const handleClickOutside = (event: MouseEvent) => {
+      if (deptRef.current && !deptRef.current.contains(event.target as Node)) {
+        setDeptOpen(false);
+      }
+    };
+
+    if (window.innerWidth >= 768) {
+      // md breakpoint
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const navigateMobile = (href: string) => {
+    router.push(href);
+    setIsOpen(false);
+    setDeptOpen(false);
+  };
+
+  const handleDepartmentToggle = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent event bubbling
+    setDeptOpen((prev) => !prev);
+  };
 
   return (
     <nav className="bg-[#4d8bff] text-white shadow-md fixed w-full z-50">
@@ -52,30 +69,81 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:block">
-          <NavigationMenu>
-            <NavigationMenuList>
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <NavigationMenuItem key={link.name}>
-                    <NavigationMenuLink
-                      href={link.href}
-                      className={`${
-                        quicksand.className
-                      } px-5 py-2 rounded-md font-bold transition-colors duration-300 ${
-                        isActive
-                          ? "bg-[#ff9e3d]"
-                          : "hover:bg-[#ff9e3d] hover:text-black"
-                      }`}
-                    >
-                      {link.name}
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                );
-              })}
-            </NavigationMenuList>
-          </NavigationMenu>
+        <div className="hidden md:flex items-center gap-2 relative">
+          <Link
+            href="/"
+            className={`${
+              quicksand.className
+            } px-5 py-2 rounded-md font-bold transition-colors duration-300 ${
+              pathname === "/"
+                ? "bg-[#ff9e3d]"
+                : "hover:bg-[#ff9e3d] hover:text-black text-white"
+            }`}
+          >
+            Home
+          </Link>
+
+          {/* Department Dropdown */}
+          <div ref={deptRef} className="relative">
+            <button
+              onClick={() => setDeptOpen((prev) => !prev)}
+              className={`${
+                quicksand.className
+              } px-5 py-2 rounded-md font-bold transition-colors duration-300 flex items-center gap-1 cursor-pointer ${
+                pathname.startsWith("/department")
+                  ? "bg-[#ff9e3d]"
+                  : "hover:bg-[#ff9e3d] hover:text-black text-white"
+              }`}
+            >
+              Department
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-300 ${
+                  deptOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
+            {deptOpen && (
+              <div className="font-semibold absolute left-0 top-full mt-1 bg-[#4d8bff] text-white rounded-md shadow-lg w-40 z-50">
+                <Link
+                  href="/department/batch-1"
+                  className={`block px-4 py-2 rounded-md transition-colors duration-300 ${
+                    pathname === "/department/batch-1"
+                      ? "bg-[#ff9e3d]"
+                      : "hover:bg-[#ff9e3d] hover:text-black"
+                  }`}
+                >
+                  Batch-1
+                </Link>
+                <Link
+                  href="/department/batch-2"
+                  className={`block px-4 py-2 rounded-md transition-colors duration-300 ${
+                    pathname === "/department/batch-2"
+                      ? "bg-[#ff9e3d]"
+                      : "hover:bg-[#ff9e3d] hover:text-black"
+                  }`}
+                >
+                  Batch-2
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {["showcase", "faqs", "about"].map((page) => (
+            <Link
+              key={page}
+              href={`/${page}`}
+              className={`${
+                quicksand.className
+              } px-5 py-2 rounded-md font-bold transition-colors duration-300 ${
+                pathname === `/${page}`
+                  ? "bg-[#ff9e3d]"
+                  : "hover:bg-[#ff9e3d] hover:text-black text-white"
+              }`}
+            >
+              {page.charAt(0).toUpperCase() + page.slice(1)}
+            </Link>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
@@ -87,31 +155,91 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Menu */}
       <div
         className={`md:hidden bg-[#4d8bff] transition-all duration-500 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-96 opacity-100 py-2" : "max-h-0 opacity-0 py-0"
+          isOpen ? "max-h-[500px] opacity-100 py-2" : "max-h-0 opacity-0 py-0"
         }`}
       >
-        {navLinks.map((link) => {
-          const isActive = pathname === link.href;
-          return (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={`${
-                quicksand.className
-              } block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300 active:bg-[#e68930] ${
-                isActive
-                  ? "bg-[#ff9e3d] text-black"
-                  : "hover:bg-[#ff9e3d] hover:text-black"
+        <Link
+          href="/"
+          className={`block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300 ${
+            pathname === "/"
+              ? "bg-[#ff9e3d]"
+              : "hover:bg-[#ff9e3d] hover:text-black text-white"
+          }`}
+          onClick={() => setIsOpen(false)}
+        >
+          Home
+        </Link>
+
+        {/* Department Mobile Dropdown */}
+        <div className="border-b border-white/20">
+          <button
+            onClick={handleDepartmentToggle}
+            className={`w-full flex justify-between items-center px-4 py-3 font-semibold transition-colors duration-300 ${
+              pathname.startsWith("/department")
+                ? "bg-[#ff9e3d]"
+                : "text-white hover:bg-[#ff9e3d] hover:text-black"
+            }`}
+          >
+            Department
+            <ChevronDown
+              size={16}
+              className={`transition-transform duration-300 ${
+                deptOpen ? "rotate-180" : "rotate-0"
               }`}
-            >
-              {link.name}
-            </Link>
-          );
-        })}
+            />
+          </button>
+
+          {deptOpen && (
+            <div className="flex flex-col">
+              <Link
+                href="/department/batch-1"
+                className={`px-6 py-2 text-left font-medium rounded-md transition-colors duration-300 ${
+                  pathname === "/department/batch-1"
+                    ? "bg-[#ff9e3d] text-black"
+                    : "text-white hover:bg-[#ff9e3d] hover:text-black"
+                }`}
+                onClick={() => {
+                  setIsOpen(false);
+                  setDeptOpen(false);
+                }}
+              >
+                Batch-1
+              </Link>
+              <Link
+                href="/department/batch-2"
+                className={`px-6 py-2 text-left font-medium rounded-md transition-colors duration-300 ${
+                  pathname === "/department/batch-2"
+                    ? "bg-[#ff9e3d] text-black"
+                    : "text-white hover:bg-[#ff9e3d] hover:text-black"
+                }`}
+                onClick={() => {
+                  setIsOpen(false);
+                  setDeptOpen(false);
+                }}
+              >
+                Batch-2
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {["showcase", "faqs", "about"].map((page) => (
+          <Link
+            key={page}
+            href={`/${page}`}
+            className={`block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300 ${
+              pathname === `/${page}`
+                ? "bg-[#ff9e3d]"
+                : "hover:bg-[#ff9e3d] hover:text-black text-white"
+            }`}
+            onClick={() => setIsOpen(false)}
+          >
+            {page.charAt(0).toUpperCase() + page.slice(1)}
+          </Link>
+        ))}
       </div>
     </nav>
   );
