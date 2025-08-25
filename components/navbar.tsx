@@ -2,10 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Quicksand } from "next/font/google";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -15,12 +22,11 @@ const quicksand = Quicksand({
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [deptOpen, setDeptOpen] = useState(false);
+  const [mobileDeptOpen, setMobileDeptOpen] = useState(false); // <-- added state
   const pathname = usePathname();
-  const router = useRouter();
   const deptRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Only for desktop (md and up)
     const handleClickOutside = (event: MouseEvent) => {
       if (deptRef.current && !deptRef.current.contains(event.target as Node)) {
         setDeptOpen(false);
@@ -28,7 +34,6 @@ export default function Navbar() {
     };
 
     if (window.innerWidth >= 768) {
-      // md breakpoint
       document.addEventListener("mousedown", handleClickOutside);
     }
 
@@ -37,16 +42,22 @@ export default function Navbar() {
     };
   }, []);
 
-  const navigateMobile = (href: string) => {
-    router.push(href);
-    setIsOpen(false);
-    setDeptOpen(false);
+  const isActiveRoute = (route: string) => {
+    if (route === "/") return pathname === "/";
+    return pathname.startsWith(route);
   };
 
-  const handleDepartmentToggle = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent event bubbling
-    setDeptOpen((prev) => !prev);
-  };
+  const navigationItems = [
+    { href: "/", label: "Home" },
+    { href: "/showcase", label: "Showcase" },
+    { href: "/faqs", label: "FAQs" },
+    { href: "/about", label: "About" },
+  ];
+
+  const departmentItems = [
+    { href: "/department/batch-1", label: "Batch-1" },
+    { href: "/department/batch-2", label: "Batch-2" },
+  ];
 
   return (
     <nav className="bg-[#4d8bff] text-white shadow-md fixed w-full z-50">
@@ -68,88 +79,101 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-2 relative">
-          <Link
-            href="/"
-            className={`${
-              quicksand.className
-            } px-5 py-2 rounded-md font-bold transition-colors duration-300 ${
-              pathname === "/"
-                ? "bg-[#ff9e3d]"
-                : "hover:bg-[#ff9e3d] hover:text-black text-white"
-            }`}
-          >
-            Home
-          </Link>
+        {/* Desktop Navigation */}
+        <div className="hidden md:block">
+          <NavigationMenu className="relative">
+            <NavigationMenuList className="flex items-center gap-2">
+              {/* Home */}
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/"
+                    className={cn(
+                      quicksand.className,
+                      "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
+                      isActiveRoute("/")
+                        ? "!bg-[#ff9e3d] !text-white"
+                        : "hover:bg-[#ff9e3d] hover:text-black"
+                    )}
+                  >
+                    Home
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
 
-          {/* Department Dropdown */}
-          <div ref={deptRef} className="relative">
-            <button
-              onClick={() => setDeptOpen((prev) => !prev)}
-              className={`${
-                quicksand.className
-              } px-5 py-2 rounded-md font-bold transition-colors duration-300 flex items-center gap-1 cursor-pointer ${
-                pathname.startsWith("/department")
-                  ? "bg-[#ff9e3d]"
-                  : "hover:bg-[#ff9e3d] hover:text-black text-white"
-              }`}
-            >
-              Department
-              <ChevronDown
-                size={16}
-                className={`transition-transform duration-300 ${
-                  deptOpen ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-            {deptOpen && (
-              <div className="font-semibold absolute left-0 top-full mt-1 bg-[#4d8bff] text-white rounded-md shadow-lg w-40 z-50">
-                <Link
-                  href="/department/batch-1"
-                  className={`block px-4 py-2 rounded-md transition-colors duration-300 ${
-                    pathname === "/department/batch-1"
-                      ? "bg-[#ff9e3d]"
+              {/* Department Dropdown (Desktop) */}
+              <div ref={deptRef} className="relative">
+                <button
+                  onClick={() => setDeptOpen((prev) => !prev)}
+                  className={cn(
+                    quicksand.className,
+                    "px-5 py-2 rounded-md font-bold transition-colors duration-300 flex items-center gap-1 cursor-pointer text-sm",
+                    isActiveRoute("/department")
+                      ? "!bg-[#ff9e3d] !text-white"
                       : "hover:bg-[#ff9e3d] hover:text-black"
+                  )}
+                >
+                  Department
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-300 ${
+                      deptOpen ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </button>
+                <div
+                  className={`absolute left-0 top-full mt-1 bg-[#4d8bff] text-white rounded-md shadow-lg w-40 z-50 border border-white/10 transform transition-all duration-200 ease-out ${
+                    deptOpen
+                      ? "opacity-100 scale-100 translate-y-0"
+                      : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  Batch-1
-                </Link>
-                <Link
-                  href="/department/batch-2"
-                  className={`block px-4 py-2 rounded-md transition-colors duration-300 ${
-                    pathname === "/department/batch-2"
-                      ? "bg-[#ff9e3d]"
-                      : "hover:bg-[#ff9e3d] hover:text-black"
-                  }`}
-                >
-                  Batch-2
-                </Link>
+                  {departmentItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={cn(
+                        "block px-4 py-2 rounded-md transition-colors duration-300 font-semibold text-sm first:rounded-t-md last:rounded-b-md",
+                        isActiveRoute(item.href)
+                          ? "!bg-[#ff9e3d] !text-white"
+                          : "hover:bg-[#ff9e3d] hover:text-black"
+                      )}
+                      onClick={() => setDeptOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            )}
-          </div>
 
-          {["showcase", "faqs", "about"].map((page) => (
-            <Link
-              key={page}
-              href={`/${page}`}
-              className={`${
-                quicksand.className
-              } px-5 py-2 rounded-md font-bold transition-colors duration-300 ${
-                pathname === `/${page}`
-                  ? "bg-[#ff9e3d]"
-                  : "hover:bg-[#ff9e3d] hover:text-black text-white"
-              }`}
-            >
-              {page.charAt(0).toUpperCase() + page.slice(1)}
-            </Link>
-          ))}
+              {/* Other Items */}
+              {navigationItems.slice(1).map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        quicksand.className,
+                        "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
+                        isActiveRoute(item.href)
+                          ? "!bg-[#ff9e3d] !text-white"
+                          : "hover:bg-[#ff9e3d] hover:text-black"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 hover:scale-110 transition-transform duration-300"
+          aria-label="Toggle mobile menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -157,87 +181,79 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-[#4d8bff] transition-all duration-500 ease-in-out overflow-hidden ${
+        className={cn(
+          "md:hidden bg-[#4d8bff] transition-all duration-500 ease-in-out overflow-hidden",
           isOpen ? "max-h-[500px] opacity-100 py-2" : "max-h-0 opacity-0 py-0"
-        }`}
+        )}
       >
+        {/* Home */}
         <Link
           href="/"
-          className={`block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300 ${
-            pathname === "/"
-              ? "bg-[#ff9e3d]"
-              : "hover:bg-[#ff9e3d] hover:text-black text-white"
-          }`}
+          className={cn(
+            "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
+            isActiveRoute("/")
+              ? "!bg-[#ff9e3d] !text-white"
+              : "hover:bg-[#ff9e3d] hover:text-black"
+          )}
           onClick={() => setIsOpen(false)}
         >
           Home
         </Link>
 
-        {/* Department Mobile Dropdown */}
+        {/* Department Dropdown (Mobile) */}
         <div className="border-b border-white/20">
           <button
-            onClick={handleDepartmentToggle}
-            className={`w-full flex justify-between items-center px-4 py-3 font-semibold transition-colors duration-300 ${
-              pathname.startsWith("/department")
-                ? "bg-[#ff9e3d]"
-                : "text-white hover:bg-[#ff9e3d] hover:text-black"
-            }`}
+            className="flex items-center justify-between w-full px-4 py-3 font-semibold transition-colors duration-300 cursor-pointer"
+            onClick={() => setMobileDeptOpen((prev) => !prev)}
           >
-            Department
+            <span>Department</span>
             <ChevronDown
-              size={16}
+              size={18}
               className={`transition-transform duration-300 ${
-                deptOpen ? "rotate-180" : "rotate-0"
+                mobileDeptOpen ? "rotate-180" : "rotate-0"
               }`}
             />
           </button>
-
-          {deptOpen && (
-            <div className="flex flex-col">
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              mobileDeptOpen ? "max-h-40" : "max-h-0"
+            }`}
+          >
+            {departmentItems.map((item) => (
               <Link
-                href="/department/batch-1"
-                className={`px-6 py-2 text-left font-medium rounded-md transition-colors duration-300 ${
-                  pathname === "/department/batch-1"
-                    ? "bg-[#ff9e3d] text-black"
-                    : "text-white hover:bg-[#ff9e3d] hover:text-black"
-                }`}
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "block px-6 py-2 text-left font-medium transition-colors duration-300",
+                  isActiveRoute(item.href)
+                    ? "!bg-[#ff9e3d] !text-white"
+                    : "hover:bg-[#ff9e3d] hover:text-black"
+                )}
                 onClick={() => {
                   setIsOpen(false);
-                  setDeptOpen(false);
+                  setMobileDeptOpen(false);
                 }}
               >
-                Batch-1
+                {item.label}
               </Link>
-              <Link
-                href="/department/batch-2"
-                className={`px-6 py-2 text-left font-medium rounded-md transition-colors duration-300 ${
-                  pathname === "/department/batch-2"
-                    ? "bg-[#ff9e3d] text-black"
-                    : "text-white hover:bg-[#ff9e3d] hover:text-black"
-                }`}
-                onClick={() => {
-                  setIsOpen(false);
-                  setDeptOpen(false);
-                }}
-              >
-                Batch-2
-              </Link>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
 
-        {["showcase", "faqs", "about"].map((page) => (
+        {/* Other Items */}
+        {navigationItems.slice(1).map((item) => (
           <Link
-            key={page}
-            href={`/${page}`}
-            className={`block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300 ${
-              pathname === `/${page}`
-                ? "bg-[#ff9e3d]"
-                : "hover:bg-[#ff9e3d] hover:text-black text-white"
-            }`}
+            key={item.href}
+            href={item.href}
+            className={cn(
+              "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
+              isActiveRoute(item.href)
+                ? "!bg-[#ff9e3d] !text-white"
+                : "hover:bg-[#ff9e3d] hover:text-black"
+            )}
             onClick={() => setIsOpen(false)}
           >
-            {page.charAt(0).toUpperCase() + page.slice(1)}
+            {item.label}
           </Link>
         ))}
       </div>

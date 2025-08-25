@@ -1,7 +1,7 @@
 "use client";
 
 import AnalyticsCard from "@/components/analytics/analytics-card";
-import { Users, User, MousePointerClick } from "lucide-react";
+import { Users, User, MousePointerClick, UserPlus } from "lucide-react";
 import AnalyticsChart from "@/components/analytics/analytics-chart";
 
 export default function Dashboard() {
@@ -25,7 +25,7 @@ export default function Dashboard() {
             label="Orang"
             title="Live Pengunjung"
             timeRange="real-time"
-            icon={<Users />}
+            icon={<UserPlus />}
           />
         </div>
 
