@@ -11,7 +11,13 @@ export default function Home() {
         href="/admin/LoginPage" 
         className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
       >
-        Pergi ke Halaman Login
+        Pergi ke Halaman Admin
+      </Link>
+      <Link 
+        href="/user/HomePage" 
+        className="bg-blue-600 text-white px-6 py-2 m-2 rounded hover:bg-blue-700"
+      >
+        Pergi ke Halaman User
       </Link>
     </div>
   );

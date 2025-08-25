@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -38,12 +38,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <>{children}</>
   );
 }
