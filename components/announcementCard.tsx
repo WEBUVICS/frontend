@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import {
+  Lightbulb,
+  Megaphone,
+  CalendarDays,
+  Clock,
+  MapPin,
+} from "lucide-react";
 
 const AnnouncementCard = ({
   mainTitle,
@@ -29,9 +36,7 @@ const AnnouncementCard = ({
 
           {/* Title */}
           <div className="flex items-start gap-3 mb-4">
-            <span className="text-yellow-500 text-lg sm:text-xl mt-1 flex-shrink-0">
-              💡
-            </span>
+            <Lightbulb className="text-yellow-500 w-5 h-5 sm:w-6 sm:h-6 mt-1 flex-shrink-0" />
             <span className="font-semibold text-gray-700 font-pop text-sm sm:text-base lg:text-lg">
               {title}
             </span>
@@ -39,9 +44,7 @@ const AnnouncementCard = ({
 
           {/* Description */}
           <div className="flex items-start gap-3 mb-6">
-            <span className="text-blue-500 text-lg sm:text-xl mt-1 flex-shrink-0">
-              📢
-            </span>
+            <Megaphone className="text-blue-500 w-5 h-5 sm:w-6 sm:h-6 mt-1 flex-shrink-0" />
             <p className="text-gray-700 leading-relaxed text-xs sm:text-sm lg:text-base font-sans">
               {description}
             </p>
@@ -50,9 +53,7 @@ const AnnouncementCard = ({
           <div className="space-y-3">
             {/* Date */}
             <div className="flex items-start gap-3">
-              <span className="text-red-500 text-lg sm:text-xl flex-shrink-0">
-                📅
-              </span>
+              <CalendarDays className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <span className="font-medium text-gray-700 font-mono text-xs sm:text-sm lg:text-base block break-words">
                   <span className="font-semibold">Tanggal:</span> {date}
@@ -62,9 +63,7 @@ const AnnouncementCard = ({
 
             {/* Time */}
             <div className="flex items-start gap-3">
-              <span className="text-blue-500 text-lg sm:text-xl flex-shrink-0">
-                🕙
-              </span>
+              <Clock className="text-blue-500 w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <span className="font-medium text-gray-700 font-mono text-xs sm:text-sm lg:text-base block break-words">
                   <span className="font-semibold">Waktu:</span> {time}
@@ -74,9 +73,7 @@ const AnnouncementCard = ({
 
             {/* Location */}
             <div className="flex items-start gap-3">
-              <span className="text-green-500 text-lg sm:text-xl flex-shrink-0">
-                📍
-              </span>
+              <MapPin className="text-green-500 w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <span className="font-medium text-gray-700 font-mono text-xs sm:text-sm lg:text-base block break-words">
                   <span className="font-semibold">Lokasi:</span> {location}
