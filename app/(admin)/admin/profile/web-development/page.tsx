@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Pencil, Trash2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -46,13 +47,19 @@ export default function WebDevelopmentPage() {
             key={member.id}
             className="rounded-xl shadow-md border hover:shadow-lg transition duration-300"
           >
-            <div className="w-full h-44 sm:h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
-              {member.image ? (
-                <img src={member.image} alt={member.name} className="object-cover w-full h-full" />
-              ) : (
-                <span className="text-gray-400">No Image</span>
-              )}
+            {/* Bagian Gambar */}
+            <div className="relative w-full h-44 sm:h-48 bg-gray-200 flex items-center justify-center overflow-hidden rounded-t-xl">
+              <Image
+                src={member?.image && member.image.trim() !== "" ? member.image : "/dummy-profile.svg"}
+                alt={member.name}
+                fill
+                className={`transition-all duration-300 ${
+                  member?.image ? "object-cover" : "object-contain p-3"
+                }`}
+              />
             </div>
+
+            {/* Bagian Konten */}
             <CardContent className="p-4">
               <div className="flex justify-between items-center">
                 <div>

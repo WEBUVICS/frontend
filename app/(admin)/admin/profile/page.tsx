@@ -16,6 +16,7 @@ import {
 import { ChevronDown, Pencil, Trash2, Plus } from "lucide-react";
 import Link from "next/link";
 import type { CarouselApi } from "@/components/ui/carousel";
+import Image from "next/image";
 
 
 interface Member {
@@ -99,15 +100,15 @@ export default function AdvisorCarousel() {
                 className="basis-[80%] sm:basis-[48%] md:basis-[32%] lg:basis-[22%]"
               >
                 <Card className="rounded-lg shadow-sm border overflow-hidden p-0">
-                  <div className="w-full h-36 sm:h-40 md:h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
-                    {member.image ? (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="object-cover w-full h-full"
-                      />
-                    ) : null}
-                  </div>
+                 <div className="relative w-full h-48 sm:h-52 md:h-56 bg-gray-200 overflow-hidden rounded-t-lg flex items-center justify-center">
+                  <Image
+                    src={member?.image && member.image.trim() !== "" ? member.image : "/dummy-profile.svg"}
+                    alt={member.name}
+                    fill
+                    className="object-contain p-2" // ✅ Ubah object-cover jadi object-contain
+                  />
+                </div>
+
                   <CardContent className="p-3">
                     <div className="flex justify-between items-center">
                       <div>
