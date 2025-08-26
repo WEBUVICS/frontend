@@ -46,7 +46,7 @@ export default function AnalyticsCard({
       };
 
       fetchLive();
-      interval = setInterval(fetchLive, 5000); // refresh every 5s
+      interval = setInterval(fetchLive, 10000);
 
       return () => clearInterval(interval);
     }

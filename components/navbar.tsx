@@ -93,7 +93,7 @@ export default function Navbar() {
                       "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
                       isActiveRoute("/")
                         ? "!bg-[#ff9e3d] !text-white"
-                        : "hover:bg-[#ff9e3d] hover:text-black"
+                        : "hover:!bg-[#ff9e3d] hover:text-black"
                     )}
                   >
                     Home
@@ -110,7 +110,7 @@ export default function Navbar() {
                     "px-5 py-2 rounded-md font-bold transition-colors duration-300 flex items-center gap-1 cursor-pointer text-sm",
                     isActiveRoute("/department")
                       ? "!bg-[#ff9e3d] !text-white"
-                      : "hover:bg-[#ff9e3d] hover:text-black"
+                      : "hover:!bg-[#ff9e3d] hover:text-black"
                   )}
                 >
                   Department
@@ -136,7 +136,7 @@ export default function Navbar() {
                         "block px-4 py-2 rounded-md transition-colors duration-300 font-semibold text-sm first:rounded-t-md last:rounded-b-md",
                         isActiveRoute(item.href)
                           ? "!bg-[#ff9e3d] !text-white"
-                          : "hover:bg-[#ff9e3d] hover:text-black"
+                          : "hover:!bg-[#ff9e3d] hover:text-black"
                       )}
                       onClick={() => setDeptOpen(false)}
                     >
@@ -157,7 +157,7 @@ export default function Navbar() {
                         "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
                         isActiveRoute(item.href)
                           ? "!bg-[#ff9e3d] !text-white"
-                          : "hover:bg-[#ff9e3d] hover:text-black"
+                          : "hover:!bg-[#ff9e3d] hover:text-black"
                       )}
                     >
                       {item.label}
@@ -193,7 +193,7 @@ export default function Navbar() {
             "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
             isActiveRoute("/")
               ? "!bg-[#ff9e3d] !text-white"
-              : "hover:bg-[#ff9e3d] hover:text-black"
+              : "hover:!bg-[#ff9e3d] hover:text-black"
           )}
           onClick={() => setIsOpen(false)}
         >
@@ -226,8 +226,8 @@ export default function Navbar() {
                 className={cn(
                   "block px-6 py-2 text-left font-medium transition-colors duration-300",
                   isActiveRoute(item.href)
-                    ? "!bg-[#ff9e3d] !text-white"
-                    : "hover:bg-[#ff9e3d] hover:text-black"
+                    ? "!bg-[rgb(255,158,61)] !text-white"
+                    : "hover:!bg-[#ff9e3d] hover:text-black"
                 )}
                 onClick={() => {
                   setIsOpen(false);
@@ -249,7 +249,7 @@ export default function Navbar() {
               "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
               isActiveRoute(item.href)
                 ? "!bg-[#ff9e3d] !text-white"
-                : "hover:bg-[#ff9e3d] hover:text-black"
+                : "hover:!bg-[#ff9e3d] hover:text-black"
             )}
             onClick={() => setIsOpen(false)}
           >
