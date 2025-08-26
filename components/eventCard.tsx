@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const EventCard = ({ title, image, description, hashtag }) => {
   return (
     <motion.div
-      className="bg-[#e6f0ff] rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 p-6"
+      className="bg-[#e6f0ff] rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 p-6 font-sans"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -14,14 +14,14 @@ const EventCard = ({ title, image, description, hashtag }) => {
     >
       {/* Title */}
       <div className="text-center mb-6">
-        <h3 className="font-bold text-[var(--color-second)] text-xl">
+        <h3 className="font-bold text-[var(--color-second)] text-xl font-head">
           {title}
         </h3>
       </div>
 
       {/* Image */}
       <div className="flex gap-6">
-        <div className="relative w-90 h-64 flex-shrink-0">
+        <div className="relative w-100 h-64 flex-shrink-0">
           <Image
             src={image}
             alt={title}
@@ -31,11 +31,11 @@ const EventCard = ({ title, image, description, hashtag }) => {
         </div>
 
         <div className="flex-1 flex flex-col justify-center">
-          <p className="text-gray-600 leading-relaxed mb-4 text-sm">
+          <p className="text-gray-600 leading-relaxed mb-4 text-sm font-sans">
             {description}
           </p>
 
-          <div className="text-[var(--color-primary)] text-sm font-medium">
+          <div className="text-[var(--color-primary)] text-sm font-medium font-mono">
             {hashtag}
           </div>
         </div>
