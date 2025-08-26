@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import EventCard from "@/components/eventCard";
+import AnnouncementCard from "@/components/announcementCard";
 
 const images = [
   "https://picsum.photos/id/1015/600/400",
@@ -125,6 +127,71 @@ export default function UserMedia() {
               title="UVICS GELAR PERTEMUAN PERDANA 2024"
               description="UVICS SUKSES MENGGELAR PERTEMUAN PERDANA PADA JUMAT, 11 OKTOBER 2024 DI SETU BABAKAN JAKARTA SELATAN. KEGIATAN ACARA INI DIHADIRI OLEH LEBIH DARI 30 ANGGOTA YANG ANTUSIAS UNTUK MENYAMBUT AGENDA DAN KOMPETISI TAHUN DEPAN. ACARA INI BERLANGSUNG DENGAN SANGAT MERIAH DENGAN POIN PENTING YANG DIBAHAS MELIPUTI PERKENALAN ORGANISASI, KEGIATAN KOMPETITIF, DAN UPACARA TAHUN DEPAN. UVICS SANGAT SENANG DAPAT BERTEMU DENGAN PARA ANGGOTA BARU YANG SIAP MELANGKAH MENUJU PRESTASI LEBIH BESAR TAHUN INI."
               hashtag="#UVICS2024 #BERSAMAMERAIHPRESTASI"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Announcement Section */}
+      <section className="min-h-screen bg-white py-16 w-full font-sans">
+        <div className="max-w-7xl mx-auto px-8">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
+              ANNOUNCEMENT
+            </span>
+          </div>
+
+          {/* Announcement Cards */}
+          <div className="space-y-12">
+            <AnnouncementCard
+              mainTitle="UVICS Guest Speaker Session"
+              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
+              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
+              date="Sabtu, 14 Desember 2024"
+              time="10:00 - 12:00 WITA"
+              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
+              image="https://picsum.photos/id/1043/400/400"
+            />
+
+            <AnnouncementCard
+              mainTitle="UVICS Guest Speaker Session"
+              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
+              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
+              date="Sabtu, 14 Desember 2024"
+              time="10:00 - 12:00 WITA"
+              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
+              image="https://picsum.photos/id/1043/400/400"
+            />
+
+            <AnnouncementCard
+              mainTitle="UVICS Guest Speaker Session"
+              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
+              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
+              date="Sabtu, 14 Desember 2024"
+              time="10:00 - 12:00 WITA"
+              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
+              image="https://picsum.photos/id/1043/400/400"
+            />
+
+            <AnnouncementCard
+              mainTitle="UVICS Guest Speaker Session"
+              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
+              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
+              date="Sabtu, 14 Desember 2024"
+              time="10:00 - 12:00 WITA"
+              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
+              image="https://picsum.photos/id/1043/400/400"
+            />
+
+            <AnnouncementCard
+              mainTitle="UVICS Guest Speaker Session"
+              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
+              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
+              date="Sabtu, 14 Desember 2024"
+              time="10:00 - 12:00 WITA"
+              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
+              image="https://picsum.photos/id/1043/400/400"
             />
           </div>
         </div>
