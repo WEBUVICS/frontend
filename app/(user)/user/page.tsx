@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import EventCard from "@/components/eventCard";
-import AnnouncementCard from "@/components/announcementCard";
+import EventCard from "@/components/userComponents/eventCard";
+import AnnouncementCard from "@/components/userComponents/announcementCard";
 
 const images = [
   "https://picsum.photos/id/1015/600/400",
