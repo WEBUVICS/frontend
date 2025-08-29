@@ -64,7 +64,7 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
               </div>
 
               {/* Tombol Edit & Delete */}
-              <div className="flex justify-center space-x-4 p-3 bg-white">
+              <div className="flex justify-end space-x-4 p-3 bg-white">
                 <button
                   className="p-2 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform"
                   onClick={() => onEdit?.(item)}
