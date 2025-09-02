@@ -27,16 +27,16 @@ export default function LoginPage() {
 
       {/* Header */}
       <div className="text-center md:text-left md:pr-6 lg:pr-12 xl:pr-16 mb-8 md:mb-0 w-full md:w-1/2 max-w-lg">
-        <h1 className="text-3xl sm:text-4xl md:text-4xl font-extrabold text-blue-600 leading-snug mb-4">
+        <h1 className="text-4xl sm:text-4xl md:text-4xl font-extrabold text-blue-600 leading-snug mb-4">
           Welcome to Admin <br /> Portal UVICS
         </h1>
-        <p className={`text-base sm:text-lg md:text-lg text-black ${quicksand.className}`}>
+        <p className={`text-lg sm:text-lg md:text-lg text-black ${quicksand.className}`}>
           Please login to access the admin features
         </p>
       </div>
       
       {/* Login Box */}
-      <main className="flex items-center justify-center w-full md:w-1/2 max-w-md">
+      <main className="flex items-center justify-center w-full md:w-1/2 max-w-md xl:p-1/2">
         <CardDemo />
       </main>
 

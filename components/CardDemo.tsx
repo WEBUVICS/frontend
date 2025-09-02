@@ -74,14 +74,14 @@ export default function CardDemo() {
 
 
     return (
-        <Card className="flex bg-white rounded-xl  max-w-md px-50 font-pop">
+        <Card className="flex bg-white rounded-xl  max-w-md px-40 font-pop">
             <CardHeader className="flex justify-center">
                 <CardTitle className="text-xl font-bold">LOGIN</CardTitle>
             </CardHeader>
 
             <CardContent>
                 <form onSubmit={handleSubmit} className="w-full">
-                    <div className="flex flex-col gap-6 -mx-50 font-semibold">
+                    <div className="flex flex-col gap-6 -mx-40 font-semibold">
                         <div className="grid gap-2 ">
                             <Label htmlFor="username">Username</Label>
                             <Input
