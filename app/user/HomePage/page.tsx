@@ -27,8 +27,8 @@ export default function HomePage() {
         </div>
 
       {/* About Section */}
-        <div className="my-12 mx-auto max-w-6xl px-4">
-          <div className="bg-[#4D8BFF21] rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+        <div className="my-15 mx-auto max-w-6xl px-4">
+          <div className="bg-[#4D8BFF21] pb-5 rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
             <div className="p-8 relative min-h-[250px]">
               <h2 className="text-3xl font-semibold text-amber-500 mb-4 font-['Quicksand']">About</h2>
               <p className="text-lg text-gray-600 leading-relaxed font-['Open_Sans']">
@@ -37,8 +37,8 @@ export default function HomePage() {
                 Melalui partisipasi dalam berbagai kompetisi teknologi dan bisnis, UVICS
                 membantu anggotanya mengembangkan keterampilan, kolaborasi, dan inovasi.
               </p>
-              <div className="absolute bottom-4 right-4">
-                <a href="#" className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg transition-colors duration-300 inline-flex items-center">
+              <div className="absolute bottom-2 -mb-5 right-4 p-1 ">
+                <a href="#" className="bg-blue-500 opacity-60 hover:opacity-100 text-white text-sm px-1 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors duration-300 inline-flex items-center">
                   Selengkapnya
                 </a>
               </div>
