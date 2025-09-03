@@ -19,7 +19,7 @@ export default function ShowCaseCards({
 }: ShowCaseCardProps) {
   return (
     <Link href={`/showcase/${id}`} className="block">
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs mx-auto">
         <Card
           className={
             "w-full p-4 rounded-2xl shadow-md bg-white flex flex-col gap-3 cursor-pointer " +

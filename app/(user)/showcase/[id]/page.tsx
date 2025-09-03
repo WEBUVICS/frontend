@@ -5,7 +5,7 @@ async function getCardById(id: string) {
   const mockData = [
     {
       id: "1",
-      image: "/sample.jpg",
+      image: "/Logo UVICS.jpeg",
       title: "AI Hackathon",
       lomba: "Hackathon 2025",
       members: ["Alice", "Bob", "Charlie"],
@@ -23,6 +23,16 @@ async function getCardById(id: string) {
         "We designed a modern responsive UI/UX for a travel platform using Next.js and TailwindCSS.",
       tags: ["Design", "Next.js", "TailwindCSS"],
     },
+    {
+      id: "3",
+      image: "/sample3.jpg",
+      title: "Mobile App Challenge",
+      lomba: "App Development 2025",
+      members: ["Frank", "Grace"],
+      description:
+        "We designed a modern responsive UI/UX for a travel platform using Next.js and TailwindCSS.",
+      tags: ["Design", "Next.js", "TailwindCSS"],
+    },
   ];
 
   return mockData.find((card) => card.id === id) || null;
@@ -31,9 +41,10 @@ async function getCardById(id: string) {
 export default async function CardDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const card = await getCardById(params.id);
+  const { id } = await params;
+  const card = await getCardById(id);
 
   if (!card) return notFound();
 
@@ -42,7 +53,7 @@ export default async function CardDetailPage({
       {/* Header Section */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Image */}
-        <div className="w-full md:w-1/2 h-64 relative rounded-3xl overflow-hidden shadow-md">
+        <div className="w-full  md:w-1/2 h-72 relative rounded-3xl overflow-hidden shadow-md">
           <Image
             src={card.image}
             alt={card.title}

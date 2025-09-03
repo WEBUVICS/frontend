@@ -45,11 +45,11 @@ export default function Showcase() {
       </div>
 
       {/* Flex Cards */}
-      <div className="flex flex-wrap gap-6 justify-center">
+      <div className="flex flex-wrap gap-6 justify-center items-center">
         {showcaseItems.map((item) => (
           <div
             key={item.id}
-            className="flex-shrink-0 w-4/5 sm:w-[45%] md:w-[30%] lg:w-[22%]"
+            className="flex-shrink-0 w-full max-w-sm sm:w-[45%] md:w-[30%] lg:w-[22%] mx-auto sm:mx-0"
           >
             <ShowCaseCards
               id={item.id}
