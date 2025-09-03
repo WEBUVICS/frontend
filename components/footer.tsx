@@ -10,16 +10,16 @@ export default function Footer() {
       {/* Top horizontal line with side margins */}
       <div className="border-t border-white mx-8"></div>
 
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 md:px-6">
         {/* Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 py-6 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 py-6 items-start">
           {/* Logos */}
-          <div className="flex justify-center md:justify-start items-center gap-4">
+          <div className="flex justify-center md:justify-start items-center gap-4 ">
             <Image
               src="/Logo_UVICS-removebg-preview.png"
               alt="UVICS Logo"
-              width={60}
-              height={60}
+              width={80}
+              height={80}
               className="rounded-full"
             />
             <Image
@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col space-y-2 text-center md:text-left">
+          <div className="flex flex-col space-y-2 text-center md:text-left md:ml-4">
             <h3 className="font-bold text-lg">Quick Links</h3>
             <Link href="/faqs" className="hover:underline">
               FAQs
@@ -45,47 +45,49 @@ export default function Footer() {
           </div>
 
           {/* Socials */}
-          <div className="flex flex-col space-y-3 items-center md:items-start">
+          <div className="flex flex-col space-y-3 text-center md:mr-10">
             <h3 className="font-bold text-lg">Socials</h3>
-            <a
-              href="https://www.instagram.com/uvics_id/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/svg/instagram.svg"
-                alt="Instagram"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/uvics-unklab-virtue-in-computer-science/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/svg/linkedin.svg"
-                alt="LinkedIn"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition"
-              />
-            </a>
-            <a
-              href="https://github.com/WEBUVICS"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/svg/github-mark.svg"
-                alt="GitHub"
-                width={24}
-                height={24}
-                className="hover:opacity-80 transition"
-              />
-            </a>
+            <div className="flex flex-col space-y-3 items-center">
+              <a
+                href="https://www.instagram.com/uvics_id/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/svg/instagram.svg"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                  className="hover:opacity-80 transition"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/uvics-unklab-virtue-in-computer-science/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/svg/linkedin.svg"
+                  alt="LinkedIn"
+                  width={24}
+                  height={24}
+                  className="hover:opacity-80 transition"
+                />
+              </a>
+              <a
+                href="https://github.com/WEBUVICS"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/svg/github-mark.svg"
+                  alt="GitHub"
+                  width={24}
+                  height={24}
+                  className="hover:opacity-80 transition"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Contacts */}
