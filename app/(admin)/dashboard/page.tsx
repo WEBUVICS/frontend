@@ -6,30 +6,30 @@ import AnalyticsChart from "@/components/analytics/analytics-chart";
 
 export default function Dashboard() {
   return (
-    <div className="p-6 flex flex-wrap gap-6">
+    <div className="p-6 flex flex-col items-center">
       {/* Cards */}
-      <div className="flex flex-wrap gap-6 w-full">
-        <div className="flex-1 min-w-[250px]">
+      <div className="flex flex-wrap gap-6 justify-center w-full">
+        <div className="flex-1 min-w-[250px] max-w-[300px]">
           <AnalyticsCard
             metric="activeUsers"
             label="Orang"
-            title="Pengunjung Setiap Hari (hari ini)"
+            title="Jumlah Pengunjung (hari ini)"
             timeRange="today"
             icon={<User />}
           />
         </div>
 
-        <div className="flex-1 min-w-[250px]">
+        <div className="flex-1 min-w-[250px] max-w-[300px]">
           <AnalyticsCard
             metric="realtimeUsers"
             label="Orang"
-            title="Live Pengunjung"
+            title="Jumlah Pengunjung (Live)"
             timeRange="real-time"
             icon={<UserPlus />}
           />
         </div>
 
-        <div className="flex-1 min-w-[250px]">
+        <div className="flex-1 min-w-[250px] max-w-[300px]">
           <AnalyticsCard
             metric="totalUsers"
             label="Orang"
@@ -39,11 +39,11 @@ export default function Dashboard() {
           />
         </div>
 
-        <div className="flex-1 min-w-[250px]">
+        <div className="flex-1 min-w-[250px] max-w-[300px]">
           <AnalyticsCard
             metric="screenPageViews"
             label="Views"
-            title="Page Views"
+            title="Total View"
             timeRange="all-time"
             icon={<MousePointerClick />}
           />
@@ -51,8 +51,10 @@ export default function Dashboard() {
       </div>
 
       {/* Chart Section */}
-      <div className="w-full">
-        <AnalyticsChart metric="activeUsers" title="Jumlah Pengunjung" />
+      <div className="w-full flex justify-center mt-6">
+        <div className="w-full md:w-3/4 lg:w-2/3">
+          <AnalyticsChart metric="activeUsers" title="Jumlah Pengunjung" />
+        </div>
       </div>
     </div>
   );
