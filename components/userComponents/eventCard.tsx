@@ -1,15 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 const EventCard = ({ title, image, description, hashtag }) => {
+  const ref = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) setHasAnimated(true);
+  }, [isInView, hasAnimated]);
+
   return (
     <motion.div
+      ref={ref}
       className="bg-[#e6f0ff] rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 p-4 sm:p-6 font-sans"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, y: 50 }}
+      animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       whileHover={{ y: -5 }}
     >
       {/* Title */}
