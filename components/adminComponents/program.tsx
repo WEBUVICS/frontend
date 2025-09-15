@@ -98,7 +98,7 @@ export default function ProgramSection() {
               {/* Edit & Delete Button */}
               <div
                 className="flex justify-center gap-4 mt-4"
-                a
+                
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
