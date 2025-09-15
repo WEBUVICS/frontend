@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { Edit, Trash2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Edit, Trash2, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,21 +20,68 @@ type GalleryProps = {
   items: GalleryItem[];
   onEdit?: (item: GalleryItem) => void;
   onDelete?: (id: number) => void;
+  onAdd?: (image: string) => void;
 };
 
-export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
+export default function GalleryCard({ items, onEdit, onDelete, onAdd }: GalleryProps) {
   const [editItem, setEditItem] = useState<GalleryItem | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [newImage, setNewImage] = useState<string>("");
+  const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
+  const [addPreviewImage, setAddPreviewImage] = useState<string>("");
+
+  const handleAddPhoto = () => {
+    setIsAddModalOpen(true);
+    setAddPreviewImage("");
+  };
+
+  const handleAddFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const result = e.target?.result as string;
+          setAddPreviewImage(result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert("Silakan pilih file gambar (JPG, PNG, GIF, dll.)");
+      }
+    }
+  };
+
+  const handleSaveNewPhoto = () => {
+    if (!addPreviewImage) {
+      alert("Silakan pilih foto terlebih dahulu!");
+      return;
+    }
+
+    onAdd?.(addPreviewImage);
+    setIsAddModalOpen(false);
+    setAddPreviewImage("");
+  };
 
   return (
     <div className="w-full max-w-6xl mx-auto py-12 relative">
-      <h2
-        className="text-xl md:text-2xl font-bold text-center mb-8"
-        style={{ color: "var(--color-second)" }}
-      >
-        GALLERY
-      </h2>
+      <div className="relative flex items-center justify-center mb-8">
+        <h2
+          className="text-xl md:text-2xl font-bold text-center"
+          style={{ color: "var(--color-second)" }}
+        >
+          GALLERY
+        </h2>
+
+        {/* Button Tambah Foto */}
+        <button
+          onClick={handleAddPhoto}
+          className="absolute right-0 px-4 py-2 bg-[var(--color-second)] text-white rounded-lg hover:scale-105 transition-transform flex items-center gap-2"
+        >
+          <Plus size={18} />
+          <span className="hidden sm:inline">Tambah Foto</span>
+          <span className="sm:hidden">+</span>
+        </button>
+      </div>
 
       {/* Tombol navigasi */}
       <button className="gallery-button-prev absolute -left-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform shadow-lg">
@@ -107,6 +154,77 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Modal Tambah Foto */}
+      {isAddModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md relative">
+            <button
+              onClick={() => {
+                setIsAddModalOpen(false);
+                setAddPreviewImage("");
+              }}
+              className="absolute top-3 right-3 text-gray-600 hover:text-black"
+            >
+              ✕
+            </button>
+
+            <h3 className="text-lg font-bold mb-4">Tambah Foto Baru</h3>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Pilih Foto <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleAddFileSelect}
+                  className="w-full border rounded-lg px-3 py-2 file:mr-4 file:py-1 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Pilih file gambar (JPG, PNG, GIF, dll.)
+                </p>
+              </div>
+
+              {/* Preview Foto */}
+              {addPreviewImage && (
+                <div className="mt-3">
+                  <p className="text-sm text-gray-600 mb-2">Preview Foto:</p>
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-2">
+                    <Image
+                      src={addPreviewImage}
+                      alt="Preview"
+                      width={400}
+                      height={300}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="flex justify-end gap-3 mt-6">
+              <button
+                onClick={() => {
+                  setIsAddModalOpen(false);
+                  setAddPreviewImage("");
+                }}
+                className="px-4 py-2 rounded-lg border hover:bg-gray-100 transition-colors"
+              >
+                Batal
+              </button>
+              <button
+                onClick={handleSaveNewPhoto}
+                className="px-4 py-2 bg-[var(--color-second)] text-white rounded-lg hover:scale-105 transition-transform"
+              >
+                Tambah Foto
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Popup Edit */}
       {editItem && (
