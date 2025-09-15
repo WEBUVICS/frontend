@@ -9,6 +9,7 @@ import ShowcaseCard, {
   ShowcaseItem,
 } from "@/components/adminComponents/showcaseCard";
 import ProgramCard, { ProgramItem } from "@/components/adminComponents/program";
+import BenefitSection from "@/components/adminComponents/benefit";
 
 export default function MediaBlog() {
   const [events, setEvents] = useState<Event[]>([
@@ -348,6 +349,11 @@ export default function MediaBlog() {
           onEdit={handleEditProgram}
           onDelete={handleDeleteProgram}
         />
+      </section>
+
+      {/* Benefits Section */}
+      <section className="w-full max-w-6xl mx-auto">
+        <BenefitSection />
       </section>
 
       {/* Modal Tambah Event */}
