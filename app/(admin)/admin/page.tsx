@@ -8,6 +8,7 @@ import GalleryCard, {
 import ShowcaseCard, {
   ShowcaseItem,
 } from "@/components/adminComponents/showcaseCard";
+import ProgramCard, { ProgramItem } from "@/components/adminComponents/program";
 
 export default function MediaBlog() {
   const [events, setEvents] = useState<Event[]>([
@@ -58,6 +59,58 @@ export default function MediaBlog() {
       description:
         "UVICS SUKSES MENGGELAR PERTEMUAN PERDANA PADA JUMAT, 11 OKTOBER 2024 DI SETU BABAKAN JAKARTA SELATAN. KEGIATAN ACARA INI DIHADIRI OLEH LEBIH DARI 30 ANGGOTA YANG ANTUSIAS UNTUK MENYAMBUT AGENDA DAN KOMPETISI TAHUN DEPAN. ACARA INI BERLANGSUNG DENGAN SANGAT MERIAH DENGAN POIN PENTING YANG DIBAHAS MELIPUTI PERKENALAN ORGANISASI, KEGIATAN KOMPETITIF, DAN UPACARA TAHUN DEPAN. UVICS SANGAT SENANG DAPAT BERTEMU DENGAN PARA ANGGOTA BARU YANG SIAP MELANGKAH MENUJU PRESTASI LEBIH BESAR TAHUN INI.",
       hashtag: "#UVICS2024 #BERSAMAMERAIHPRESTASI",
+    },
+  ]);
+
+  // State untuk programs
+  const [programs, setPrograms] = useState<ProgramItem[]>([
+    {
+      id: 1,
+      title: "Kamar Belajar",
+      division: "Web Development",
+      description: "Ini adalah program yang dibuat untuk semua anggota UVICS",
+    },
+    {
+      id: 2,
+      title: "Workshop Mobile App",
+      division: "Mobile Development",
+      description:
+        "Program pelatihan pengembangan aplikasi mobile untuk anggota",
+    },
+    {
+      id: 3,
+      title: "Data Science Bootcamp",
+      division: "Data Science",
+      description:
+        "Program intensif untuk mempelajari analisis data dan machine learning",
+    },
+    {
+      id: 4,
+      title: "UI/UX Design Course",
+      division: "Design",
+      description:
+        "Program pembelajaran desain antarmuka dan pengalaman pengguna",
+    },
+    {
+      id: 5,
+      title: "Cyber Security Training",
+      division: "Security",
+      description:
+        "Program pelatihan keamanan siber untuk melindungi sistem dan data",
+    },
+    {
+      id: 6,
+      title: "Cloud Computing Workshop",
+      division: "Infrastructure",
+      description:
+        "Program pembelajaran teknologi cloud computing dan deployment",
+    },
+    {
+      id: 7,
+      title: "AI & Machine Learning",
+      division: "Artificial Intelligence",
+      description:
+        "Program eksplorasi kecerdasan buatan dan pembelajaran mesin",
     },
   ]);
 
@@ -161,6 +214,15 @@ export default function MediaBlog() {
 
   const handleDeleteShowcase = useCallback((id: number) => {
     alert(`Delete showcase dengan id: ${id}`);
+  }, []);
+
+  // Program handlers
+  const handleEditProgram = useCallback((program: ProgramItem) => {
+    setPrograms((prev) => prev.map((p) => (p.id === program.id ? program : p)));
+  }, []);
+
+  const handleDeleteProgram = useCallback((id: number) => {
+    setPrograms((prev) => prev.filter((p) => p.id !== id));
   }, []);
 
   const galleries: GalleryItem[] = Array.from({ length: 10 }, (_, index) => ({
@@ -276,6 +338,15 @@ export default function MediaBlog() {
           items={showcases}
           onEdit={handleEditShowcase}
           onDelete={handleDeleteShowcase}
+        />
+      </section>
+
+      {/* Program Section */}
+      <section className="w-full max-w-6xl mx-auto">
+        <ProgramCard
+          programs={programs}
+          onEdit={handleEditProgram}
+          onDelete={handleDeleteProgram}
         />
       </section>
 
