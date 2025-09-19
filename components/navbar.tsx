@@ -49,14 +49,15 @@ export default function Navbar() {
 
   const navigationItems = [
     { href: "/", label: "Home" },
+    { href: "/media", label: "Media" },
     { href: "/showcase", label: "Showcase" },
     { href: "/faqs", label: "FAQs" },
     { href: "/about", label: "About" },
   ];
 
   const departmentItems = [
-    { href: "/department/batch-1", label: "Batch-1" },
-    { href: "/department/batch-2", label: "Batch-2" },
+    { href: "/department/batch1", label: "Batch-1" },
+    { href: "/department/batch2", label: "Batch-2" },
   ];
 
   return (
