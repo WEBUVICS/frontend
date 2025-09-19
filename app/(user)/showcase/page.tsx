@@ -36,7 +36,7 @@ export default function Showcase() {
     <section className="px-6 py-10 max-w-7xl mx-auto">
       {/* Page Title */}
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-3">
+        <h1 className="text-4xl font-extrabold text-second mb-3">
           UVICS Showcase
         </h1>
         <p className="text-gray-500 text-lg">

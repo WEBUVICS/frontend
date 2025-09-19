@@ -27,10 +27,10 @@ export default function FAQ() {
     <div className="font-sans min-h-screen p-8 pb-20 sm:p-20 flex justify-center">
       <div className="w-full max-w-6xl bg-[var(--color-muted)] rounded-lg p-10 shadow-md">
         {/* Title */}
-        <h1 className="text-3xl font-bold text-center text-white mb-4">
+        <h1 className="text-3xl font-bold text-center text-second mb-4">
           Frequently Asked Question
         </h1>
-        <p className="text-center text-white/90 mb-10 max-w-2xl mx-auto text-sm">
+        <p className="text-center text-gray-500 mb-10 max-w-2xl mx-auto text-sm">
           Frequently Asked Questions (FAQs) are a collection of commonly asked
           questions and their answers about a particular topic, service, product,
           or system. FAQs are designed to provide quick and accessible information
