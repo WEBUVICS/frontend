@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
 import "../globals.css";
 
@@ -23,10 +24,26 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
 });
 
-export default function UserLayout({
+export const metadata: Metadata = {
+  title: "UVICS WEBSITE",
+  description: "Silahkan kunjungi website uvics.",
+  icons: {
+    icon: {url: '/favicon.jpg', type: 'image/jpg', }
+  }
+};
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section>{children}</section>;
+  return (
+    <html lang="en">
+      <body
+        className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
+      >
+        {children}
+      </body>
+    </html>
+  );
 }

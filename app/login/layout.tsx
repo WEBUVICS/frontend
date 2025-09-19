@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   title: "UVICS WEBSITE",
   description: "Silahkan kunjungi website uvics.",
   icons: {
-    icon: { url: "/favicon.jpg", type: "image/jpg" },
-  },
+    icon: {url: '/favicon.jpg', type: 'image/jpg', }
+  }
 };
 
 export default function RootLayout({

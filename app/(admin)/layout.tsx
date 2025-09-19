@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
 import "../globals.css";
+import Sidebar from "@/components/Sidebar";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -24,10 +25,29 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
 });
 
-export default function AdminLayout({
+export const metadata: Metadata = {
+  title: "UVICS WEBSITE",
+  description: "Silahkan kunjungi website uvics.",
+  icons: {
+    icon: {url: '/favicon.jpg', type: 'image/jpg', }
+  }
+};
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section>{children}</section>;
+  return (
+    <html lang="en">
+      <body
+        className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
+      >
+        <section className="flex gap-x-5">
+          <Sidebar />
+          {children}
+        </section>
+      </body>
+    </html>
+  );
 }
