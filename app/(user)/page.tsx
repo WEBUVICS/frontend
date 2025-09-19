@@ -7,13 +7,7 @@ import Head from 'next/head';
 export default function HomePage() {
   return (
     <>
-      {/* Navbar */}
-      <nav className="bg-blue-500 p-4 text-white">
-        <div className="container mx-auto">
-          <h1 className="text-2xl font-bold">UVICS</h1>
-        </div>
-      </nav>
-
+      
       {/* Photo Section */}
       <section className="text-center">
         <div className="container mx-auto">
