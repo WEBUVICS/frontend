@@ -37,6 +37,7 @@ export default function EventCard({
     title: "",
     description: "",
     hashtag: "",
+    image: ""
   });
 
   const handleEditClick = (event: Event) => {
@@ -45,6 +46,7 @@ export default function EventCard({
       title: event.title,
       description: event.description,
       hashtag: event.hashtag,
+      image: ""
     });
   };
 
