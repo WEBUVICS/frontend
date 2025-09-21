@@ -58,7 +58,7 @@ const batches = ["Batch 1", "Batch 2", "Batch 2.5"];
 
 export default function AdvisorCarousel() {
   const [selectedBatch, setSelectedBatch] = React.useState("Batch 1");
-  const [api, setApi] = React.useState<CarouselApi | null>(null);
+  const [_, setApi] = React.useState<CarouselApi | null>(null);
   const [showModal, setShowModal] = React.useState(false);
 
   const filteredAdvisors = advisors.filter((a) => a.batch === selectedBatch);

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
-const EventCard = ({ title, image, description, hashtag }) => {
+const EventCard = ({ title, image, description, hashtag }:{title: string, image: string, description: string, hashtag: string}) => {
   const ref = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const isInView = useInView(ref, { once: true, amount: 0.2 });

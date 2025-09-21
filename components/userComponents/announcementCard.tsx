@@ -19,6 +19,14 @@ const AnnouncementCard = ({
   time,
   location,
   image,
+}: {
+  mainTitle: string,
+  title: string,
+  description: string,
+  date: string,
+  time: string,
+  location: string,
+  image: string 
 }) => {
   const ref = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
