@@ -7,8 +7,6 @@
   --color-primary: #0059ff;
   --color-second: #ff9e3d;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -38,6 +36,28 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --font-quick: "Quicksand", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+  --font-pop: "Poppins", sans-serif;
+  --font-roboto-mono: "Roboto Mono", monospace;
+}
+
+.font-quick {
+  font-family: var(--font-quick);
+}
+
+.font-open-sans {
+  font-family: var(--font-open-sans);
+}
+
+.font-pop {
+  font-family: var(--font-pop);
+}
+
+.font-roboto-mono {
+  font-family: var(--font-roboto-mono);
 }
 
 @theme inline {
@@ -84,7 +104,7 @@
 }
 
 body {
-  @apply font-sans
+  @apply font-sans;
 }
 
 .dark {
@@ -127,5 +147,14 @@ body {
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
