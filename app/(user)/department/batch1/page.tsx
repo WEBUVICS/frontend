@@ -7,23 +7,29 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 
-export default function DepartmentUvics() {
+// === Interface Member ===
+interface Member {
+  id: number;
+  name: string;
+  position: string;
+  image: string;
+}
 
-  const Advisor = [
+export default function DepartmentUvics() {
+  const Advisor: Member[] = [
     { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/dummy-profile.svg" },
   ];
 
-  const coreTeamMembers = [
-  { id: 1, name: "Aiko Lasut", position: "President", image: "/dummy-profile.svg" },
-  { id: 2, name: "Prince Tampi", position: "Vice President", image: "/dummy-profile.svg" },
-  { id: 3, name: "Dion Kobi", position: "Secretary", image: "/dummy-profile.svg" },
-  { id: 4, name: "Syelle Kolooy", position: "Vice Secretary", image: "/dummy-profile.svg" },
-  { id: 5, name: "Marcelo Poluoko", position: "Treasurer", image: "/dummy-profile.svg" },
-  { id: 6, name: "Ananda Solong", position: "Vice Treasurer", image: "/dummy-profile.svg" },
-];
+  const coreTeamMembers: Member[] = [
+    { id: 1, name: "Aiko Lasut", position: "President", image: "/dummy-profile.svg" },
+    { id: 2, name: "Prince Tampi", position: "Vice President", image: "/dummy-profile.svg" },
+    { id: 3, name: "Dion Kobi", position: "Secretary", image: "/dummy-profile.svg" },
+    { id: 4, name: "Syelle Kolooy", position: "Vice Secretary", image: "/dummy-profile.svg" },
+    { id: 5, name: "Marcelo Poluoko", position: "Treasurer", image: "/dummy-profile.svg" },
+    { id: 6, name: "Ananda Solong", position: "Vice Treasurer", image: "/dummy-profile.svg" },
+  ];
 
-
-  const webDevMembers = [
+  const webDevMembers: Member[] = [
     { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "" },
     { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "" },
     { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
@@ -35,7 +41,7 @@ export default function DepartmentUvics() {
     { id: 9, name: "Member Baru", position: "Member User Interface", image: "" },
   ];
 
-  const publicDocMembers = [
+  const publicDocMembers: Member[] = [
     { id: 1, name: "Marshelina Pedramuni", position: "PIC Content Creation", image: "" },
     { id: 2, name: "Arviel Parengkuan", position: "PIC Multimedia", image: "" },
     { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
@@ -47,7 +53,7 @@ export default function DepartmentUvics() {
     { id: 9, name: "Member Baru", position: "Member Content Creation", image: "" },
   ];
 
-  const eventEduMembers = [
+  const eventEduMembers: Member[] = [
     { id: 1, name: "Reva Rorie", position: "PIC Event", image: "" },
     { id: 2, name: "Marcel Pandelaki", position: "PIC Education", image: "" },
     { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
@@ -60,7 +66,7 @@ export default function DepartmentUvics() {
   ];
 
   // === Card Member ===
-  const MemberCard = ({ member }: { member: any }) => (
+  const MemberCard = ({ member }: { member: Member }) => (
     <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-full sm:w-32 md:w-40 lg:w-44 xl:w-48 h-44 sm:h-52 md:h-60 lg:h-64 overflow-hidden hover:scale-105 transition-transform duration-300">
       <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 bg-white flex items-center justify-center">
         <Image
@@ -83,7 +89,7 @@ export default function DepartmentUvics() {
   );
 
   // === Card PIC ===
-  const PICCard = ({ member }: { member: any }) => (
+  const PICCard = ({ member }: { member: Member }) => (
     <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-[120px] sm:w-[150px] md:w-[180px] h-[180px] sm:h-[210px] md:h-[240px] overflow-hidden hover:scale-105 transition-transform duration-300">
       <div className="relative w-full h-28 sm:h-32 md:h-36 bg-white flex items-center justify-center">
         <Image
@@ -104,7 +110,7 @@ export default function DepartmentUvics() {
   );
 
   // === PIC Section ===
-  const PICSection = ({ members }: { members: any[] }) => {
+  const PICSection = ({ members }: { members: Member[] }) => {
     const pics = members.filter(
       (m) => m.position.toLowerCase().includes("pic") || m.position.toLowerCase().includes("koordi")
     );
@@ -112,15 +118,15 @@ export default function DepartmentUvics() {
 
     return (
       <div className="mt-4 w-full max-w-5xl bg-[#4574C3] rounded-2xl shadow-lg px-3 sm:px-6 py-4 sm:py-6 flex flex-wrap justify-center gap-3 sm:gap-4">
-  {pics.map((pic) => (
-    <PICCard key={pic.id} member={pic} />
-  ))}
-</div>
+        {pics.map((pic) => (
+          <PICCard key={pic.id} member={pic} />
+        ))}
+      </div>
     );
   };
 
   // === Member Section ===
-  const MemberSection = ({ members }: { members: any[] }) => {
+  const MemberSection = ({ members }: { members: Member[] }) => {
     const normalMembers = members.filter(
       (m) => !m.position.toLowerCase().includes("pic") && !m.position.toLowerCase().includes("koordi")
     );
@@ -172,27 +178,19 @@ export default function DepartmentUvics() {
   };
 
   // === Advisor Section ===
-const AdvisorSection = ({ members }: { members: any[] }) => {
-  if (members.length === 0) return null;
+  const AdvisorSection = ({ members }: { members: Member[] }) => {
+    if (members.length === 0) return null;
 
-  return (
-    <div className="mt-6 w-full flex justify-center">
-      <div className="flex flex-wrap justify-center gap-4">
-        {members.map((advisor) => (
-          <MemberCard key={advisor.id} member={advisor} />
-        ))}
+    return (
+      <div className="mt-6 w-full flex justify-center">
+        <div className="flex flex-wrap justify-center gap-4">
+          {members.map((advisor) => (
+            <MemberCard key={advisor.id} member={advisor} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
-
-{/* === Core Team === */}
-<div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
-  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Core Team</h2>
-  <PICSection members={coreTeamMembers} />
-  <MemberSection members={coreTeamMembers} />
-</div>
-
+    );
+  };
 
   // === Render Halaman ===
   return (
@@ -224,21 +222,20 @@ const AdvisorSection = ({ members }: { members: any[] }) => {
         </div>
       </div>
 
-     {/* === Advisor === */}
-<div className="w-full flex flex-col items-center justify-center mt-10 sm:mt-16">
-  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">
-    Advisor
-  </h2>
-  <AdvisorSection members={Advisor} />   {/* ✅ pakai ini */}
-</div>
+      {/* === Advisor === */}
+      <div className="w-full flex flex-col items-center justify-center mt-10 sm:mt-16">
+        <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">
+          Advisor
+        </h2>
+        <AdvisorSection members={Advisor} />
+      </div>
 
-{/* === Core Team === */}
-<div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
-  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Core Team</h2>
-  <PICSection members={coreTeamMembers} />
-  <MemberSection members={coreTeamMembers} />
-</div>
-
+      {/* === Core Team === */}
+      <div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
+        <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Core Team</h2>
+        <PICSection members={coreTeamMembers} />
+        <MemberSection members={coreTeamMembers} />
+      </div>
 
       {/* === Public Documentation === */}
       <div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
