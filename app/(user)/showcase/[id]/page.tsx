@@ -30,8 +30,8 @@ async function getCardById(id: string) {
       lomba: "App Development 2025",
       members: ["Frank", "Grace"],
       description:
-        "We designed a modern responsive UI/UX for a travel platform using Next.js and TailwindCSS.",
-      tags: ["Design", "Next.js", "TailwindCSS"],
+        "Our mobile app focused on productivity and collaboration, helping users stay on track.",
+      tags: ["Mobile", "React Native", "Productivity"],
     },
   ];
 
@@ -41,9 +41,9 @@ async function getCardById(id: string) {
 export default async function CardDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
+  const { id } = params; // no await needed
   const card = await getCardById(id);
 
   if (!card) return notFound();
@@ -53,7 +53,7 @@ export default async function CardDetailPage({
       {/* Header Section */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Image */}
-        <div className="w-full  md:w-1/2 h-72 relative rounded-3xl overflow-hidden shadow-md">
+        <div className="w-full md:w-1/2 h-72 relative rounded-3xl overflow-hidden shadow-md">
           <Image
             src={card.image}
             alt={card.title}
