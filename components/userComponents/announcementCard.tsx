@@ -11,6 +11,16 @@ import {
   MapPin,
 } from "lucide-react";
 
+interface AnnouncementCardProps {
+  mainTitle: string;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  location: string;
+  image?: string;
+}
+
 const AnnouncementCard = ({
   mainTitle,
   title,
@@ -19,7 +29,7 @@ const AnnouncementCard = ({
   time,
   location,
   image,
-}) => {
+}: AnnouncementCardProps) => {
   const ref = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
