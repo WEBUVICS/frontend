@@ -1,5 +1,6 @@
 import ShowCaseCards from "@/components/showcase/showcase-cards";
-import { mockData } from "./[id]/page";
+import { mockData } from "./mockData";
+
 
 
 export default function Showcase() {
