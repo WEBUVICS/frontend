@@ -29,6 +29,9 @@ export default function About() {
                   skill dan soft skill mereka untuk meningkatkan pengalaman dan
                   portofolio.
                 </li>
+                <li>
+                  Menjadi organisasi yang memberikan manfaat dan dampak yang berkelanjutan dalam masyarakat.
+                </li>
               </ul>
             </div>
             <div className="bg-[var(--color-second)] text-white rounded-lg p-6">
@@ -45,6 +48,9 @@ export default function About() {
                 <li>
                   Menyediakan media belajar bersama untuk setiap anggota
                   meningkatkan hard skill dan soft skill mereka.
+                </li>
+                <li>
+                  Menciptakan program-program inovatif yang dapat memberikan dampak dalam masyarakat dan mengasah pola pikir kreatif member UVICS
                 </li>
               </ul>
             </div>
@@ -95,12 +101,10 @@ export default function About() {
               <h3 className="font-semibold mb-2">INTERNAL DEVELOPMENT</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>
-                  Merancang dan mengatur kegiatan lomba agar setiap anggota
-                  terlibat aktif dalam solid;
+                  Mendukung pengembangan potensi anggota
                 </li>
                 <li>
-                  Mengorganisir program pengembangan diri anggota channel
-                  akademik dan visualisasi.
+                  Memberikan pelatihan dan koordinasi untuk meningkatkan keterampilan tim
                 </li>
               </ul>
             </div>
@@ -120,10 +124,37 @@ export default function About() {
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
               <h3 className="font-semibold mb-2">EDITOR</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
-                <li>Mengedit video dan foto untuk setiap kebutuhan UVICS;</li>
+                <li>Mengelola konten tulisan maupun visual organisasi.</li>
                 <li>
                   Mendokumentasikan setiap kegiatan UVICS, baik melalui foto
                   maupun video.
+                </li>
+              </ul>
+            </div>
+            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+              <h3 className="font-semibold mb-2">Compatition Handler</h3>
+              <ul className="list-disc pl-4 space-y-2 text-sm">
+                <li>Mengatur dan mengawasi jalannya kompetisi</li>
+                <li>
+                  Memastikan kegiatan berjalan lancar, terstruktur, dan bermanfaat.
+                </li>
+              </ul>
+            </div>
+            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+              <h3 className="font-semibold mb-2">Web Development</h3>
+              <ul className="list-disc pl-4 space-y-2 text-sm">
+                <li>Mengembangkan dan merawat website organisasi</li>
+                <li>
+                  Menyediakan media informasi yang interaktif dan mudah diakses
+                </li>
+              </ul>
+            </div>
+            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+              <h3 className="font-semibold mb-2">Pulic Relation</h3>
+              <ul className="list-disc pl-4 space-y-2 text-sm">
+                <li>Menjalin hubungan dengan mitra, sponsor, dan masyarakat.</li>
+                <li>
+                  Membangun citra positif organisasi melalui komunikasi yang efektif.
                 </li>
               </ul>
             </div>
@@ -138,23 +169,24 @@ export default function About() {
           <div className="bg-[var(--color-second)] text-white p-6 rounded-lg shadow-md">
             <ul className="list-disc pl-4 space-y-2 text-sm">
               <li>
-                E-certificate bagi yang menyelesaikan tanggung jawab hingga
-                akhir.
+                Mendapatkan Mentoring Lomba dari para ahli-ahli di bidangnya
               </li>
               <li>
-                Mendapatkan tim yang memiliki visi dan motivasi yang sama untuk
-                meraih pengalaman lomba.
+                Kesempatan pembiayaan lomba
               </li>
               <li>
-                Kesempatan mengembangkan skill: Leadership, project management,
-                dan teamwork.
+                Mendapatkan E-Sertifikat.
               </li>
-              <li>Akses belajar Myskill.</li>
-              <li>Voucher e-course cakap.</li>
+              <li>Rekomendasi linkedin</li>
+              <li>Akses Canva Pro organisasi</li>
               <li>Rekomendasi LinkedIn.</li>
               <li>
-                Membangun portofolio projek dan prestasi selama kuliah.
+               Meningkatkan Personal Branding dan Networking
               </li>
+              <li>
+               Membangung Protofolio lewat project-project perlombaan
+              </li>
+              
             </ul>
           </div>
         </section>

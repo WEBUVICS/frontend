@@ -13,7 +13,7 @@ import { MemberType } from "@/types/data-type";
 
 export default function DepartmentUvics() {
   const Advisor: MemberType[] = [
-    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor.webp" },
+    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/ralf.webp" },
   ];
 
   const coreTeamMembers: MemberType[] = [
@@ -26,7 +26,7 @@ export default function DepartmentUvics() {
   ];
 
   const webDevMembers: MemberType[] = [
-    { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "/member/WEBDEV/grantly.png" },
+    { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "/member/WEBDEV/grantly.webp" },
     { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "/member/WEBDEV/nuel.webp" },
     { id: 3, name: "Prince Tampi", position: "Koordinator", image: "/member/CORETEAM/prince.webp" },
     { id: 4, name: "Adithia Gunawan", position: "Member Admin Interface", image: "/member/CH/adit.webp" },
@@ -45,7 +45,7 @@ export default function DepartmentUvics() {
     { id: 3, name: "Marcelo Poluoko", position: "Koordinator", image: "/member/CORETEAM/ralf.webp" },
     { id: 4, name: "Alya Manoppo", position: "Member Content Creation", image: "/member/CORETEAM/ralf.webp" },
     { id: 5, name: "Renaldy Mantiri", position: "Member Content Creation", image: "" },
-    { id: 5, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.jpeg" },
+    { id: 5, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.webp" },
     { id: 6, name: "Glenvidi Gerungan", position: "Member Content Creation", image: "/member/PR/cipeng.webp" },
     { id: 7, name: "Valentina Chang", position: "Member Multimedia", image: "/member/PR/chang.webp" },
     { id: 8, name: "Alyan Donuhulu", position: "Member Multimedia", image: "/member/EDITOR/tong.webp" },
@@ -61,9 +61,9 @@ export default function DepartmentUvics() {
     { id: 5, name: "Darryl Laluyan", position: "Member Event", image: "/member/INDEV/deril.webp" },
     { id: 6, name: "Riset Gosal", position: "Member Event", image: "/member/PR/riset.webp" },
     { id: 7, name: "Krismarvel Ticoalu", position: "Member Event", image: "/member/WEBDEV/avel.webp" },
-    { id: 8, name: "Gabriel Sumual", position: "Member Event", image: "/member/PR/tor.png" },
+    { id: 8, name: "Gabriel Sumual", position: "Member Event", image: "/member/PR/tor.webp" },
     { id: 9, name: "Vicky Majanduga", position: "Member Event", image: "/member/PR/vicky.webp" },
-    { id: 10, name: "Monica Mende", position: "Member Event", image: "" },
+    { id: 10, name: "Monica Mende", position: "Member Event", image: "/member/PR/monica.webp" },
   ];
 
   // === Card Member ===

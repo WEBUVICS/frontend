@@ -1,36 +1,8 @@
 import ShowCaseCards from "@/components/showcase/showcase-cards";
+import { mockData } from "./[id]/page";
+
 
 export default function Showcase() {
-  const showcaseItems = [
-    {
-      id: "1",
-      image: "/Logo UVICS White.jpeg",
-      title: "Sample Title 1",
-      lomba: "Nama Lomba 1",
-      tags: ["tag1", "tag2", "tag3"],
-    },
-    {
-      id: "2",
-      image: "/Logo UVICS White.jpeg",
-      title: "Sample Title 2",
-      lomba: "Nama Lomba 2",
-      tags: ["tag1", "tag2", "tag3"],
-    },
-    {
-      id: "3",
-      image: "/Logo UVICS White.jpeg",
-      title: "Sample Title 3",
-      lomba: "Nama Lomba 3",
-      tags: ["tag1", "tag2", "tag3"],
-    },
-    {
-      id: "4",
-      image: "/Logo UVICS White.jpeg",
-      title: "Sample Title 4",
-      lomba: "Nama Lomba 4",
-      tags: ["tag1", "tag2", "tag3"],
-    },
-  ];
 
   return (
     <section className="px-6 py-10 max-w-7xl mx-auto">
@@ -46,7 +18,7 @@ export default function Showcase() {
 
       {/* Flex Cards */}
       <div className="flex flex-wrap gap-6 justify-center items-center">
-        {showcaseItems.map((item) => (
+        {mockData.map((item) => (
           <div
             key={item.id}
             className="flex-shrink-0 w-full max-w-sm sm:w-[45%] md:w-[30%] lg:w-[22%] mx-auto sm:mx-0"

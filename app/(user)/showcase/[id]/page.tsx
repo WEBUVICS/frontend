@@ -1,40 +1,20 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-async function getCardById(id: string) {
-  const mockData = [
+export const mockData = [
     {
       id: "1",
-      image: "/Logo UVICS.jpeg",
-      title: "AI Hackathon",
-      lomba: "Hackathon 2025",
-      members: ["Alice", "Bob", "Charlie"],
+      image: "/project/techpoin.webp",
+      title: "TechPoint",
+      lomba: "UI/UX Competition – Indonesian IT Competition 2025",
+      members: ["Grantly", "Adithia", "Jordan", "Dion"],
       description:
-        "Our team developed an AI model that achieved first place in the 2025 hackathon event.",
-      tags: ["AI", "Hackathon", "Winner"],
-    },
-    {
-      id: "2",
-      image: "/sample2.jpg",
-      title: "Web Design Contest",
-      lomba: "Creative Design 2025",
-      members: ["David", "Emma"],
-      description:
-        "We designed a modern responsive UI/UX for a travel platform using Next.js and TailwindCSS.",
-      tags: ["Design", "Next.js", "TailwindCSS"],
-    },
-    {
-      id: "3",
-      image: "/sample3.jpg",
-      title: "Mobile App Challenge",
-      lomba: "App Development 2025",
-      members: ["Frank", "Grace"],
-      description:
-        "We designed a modern responsive UI/UX for a travel platform using Next.js and TailwindCSS.",
-      tags: ["Design", "Next.js", "TailwindCSS"],
-    },
+        "Tim TechPoint berhasil meraih Juara 1 dalam ajang Indonesian IT Competition 2025 kategori UI/UX Design. Kompetisi ini mempertemukan berbagai talenta muda dari seluruh Indonesia untuk beradu kreativitas dalam menciptakan desain antarmuka yang inovatif dan berorientasi pada pengguna. Dengan konsep yang matang, riset mendalam, dan kolaborasi yang solid, tim TechPoint berhasil menciptakan solusi desain yang dinilai unggul dalam aspek fungsionalitas, estetika, dan pengalaman pengguna. Keberhasilan ini menjadi bukti dedikasi dan kerja keras tim dalam menggabungkan teknologi dengan kreativitas untuk menghasilkan karya yang berdampak positif.",
+      tags: ["competition", "UIUX", "winner", "innovation", "techpoint"]
+    }
   ];
 
+async function getCardById(id: string) {
   return mockData.find((card) => card.id === id) || null;
 }
 

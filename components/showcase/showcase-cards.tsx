@@ -41,7 +41,7 @@ export default function ShowCaseCards({
 
           <div>
             <h2 className="text-base font-semibold">{title}</h2>
-            <p className="italic text-gray-600 text-sm">{lomba}</p>
+            <p className="italic text-gray-600 text-sm truncate">{lomba}</p>
           </div>
 
           {tags.length > 0 && (

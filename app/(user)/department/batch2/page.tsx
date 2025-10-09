@@ -29,7 +29,7 @@ export default function DepartmentUvics() {
   const webDevMembers:MemberType[] = [
     { id: 1, name: "Krismarvel Ticoalu", position: "PIC Admin Interface", image: "/member/WEBDEV/avel.webp" },
     { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "/member/WEBDEV/nuel.webp" },
-    { id: 3, name: "Grantly Sorongan", position: "Koordinator", image: "/member/WEBDEV/grantly.png" },
+    { id: 3, name: "Grantly Sorongan", position: "Koordinator", image: "/member/WEBDEV/grantly.webp" },
     { id: 5, name: "Jordan Sutarto", position: "Member User Interface", image: "/member/WEBDEV/jordan.webp" },
     { id: 6, name: "Betrand Saputra", position: "Member User Interface", image: "/member/WEBDEV/betrand.webp" },
     { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "/member/WEBDEV/timo.webp" },
@@ -42,7 +42,7 @@ export default function DepartmentUvics() {
   { id: 3, name: "Darryl Laluyan", position: "Koordinator", image: "/member/INDEV/deril.webp" },
   { id: 4, name: "Ariellya Sayow", position: "Member INDEV", image: "/member/INDEV/aril.webp" },
   { id: 5, name: "Ivana Sondakh", position: "Member INDEV", image: "/member/INDEV/ivana.webp" },
-  { id: 6, name: "Vania Karwur", position: "Member INDEV", image: "" },
+  { id: 6, name: "Vania Karwur", position: "Member INDEV", image: "/member/PR/vania.webp" },
   { id: 7, name: "Marcheilla Wenas", position: "Member INDEV", image: "" }
 ];
 
@@ -68,7 +68,7 @@ const editorMembers:MemberType[] = [
 ];
 
 const prMembers:MemberType[] = [
-  { id: 2, name: "Jeany Pratiwi", position: "PIC PR", image: "/member/PR/jeany.jpeg" },
+  { id: 2, name: "Jeany Pratiwi", position: "PIC PR", image: "/member/PR/jeany.webp" },
   { id: 3, name: "Marshanda Padmarini", position: "Koordinator", image: "/member/PR/marsha.webp" },
   { id: 4, name: "Glenvidi Gerungan", position: "Member PR", image: "/member/PR/cipeng.webp" },
   { id: 5, name: "Cinta Walukow", position: "Member PR", image: "/member/PR/cinta.webp" },

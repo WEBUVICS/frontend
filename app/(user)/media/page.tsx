@@ -6,22 +6,23 @@ import EventCard from "@/components/userComponents/eventCard";
 import AnnouncementCard from "@/components/userComponents/announcementCard";
 
 const images = [
-  "https://picsum.photos/id/1015/600/400",
-  "https://picsum.photos/id/1016/600/400",
-  "https://picsum.photos/id/1018/600/400",
-  "https://picsum.photos/id/1020/600/400",
-  "https://picsum.photos/id/1024/600/400",
-  "https://picsum.photos/id/1027/600/400",
-  "https://picsum.photos/id/1035/600/400",
-  "https://picsum.photos/id/1039/600/400",
-  "https://picsum.photos/id/1041/600/400",
-  "https://picsum.photos/id/1042/600/400",
-  "https://picsum.photos/id/1043/600/400",
-  "https://picsum.photos/id/1044/600/400",
-  "https://picsum.photos/id/1045/600/400",
-  "https://picsum.photos/id/1047/600/400",
-  "https://picsum.photos/id/1048/600/400",
-  "https://picsum.photos/id/1049/600/400",
+  "/gallery/foto-1.webp",
+  "/gallery/foto-2.webp",
+  "/gallery/foto-3.webp",
+  "/gallery/foto-4.webp",
+  "/gallery/foto-5.webp",
+  "/gallery/foto-7.webp",
+  "/gallery/foto-8.webp",
+  "/gallery/foto-9.webp",
+  "/gallery/foto-10.webp",
+  "/gallery/foto-11.webp",
+  "/gallery/foto-12.webp",
+  "/gallery/foto-13.webp",
+  "/gallery/foto-14.webp",
+  "/gallery/foto-15.webp",
+  "/gallery/foto-16.webp",
+  "/gallery/foto-17.webp",
+ 
 ];
 
 // bagi foto jadi beberapa baris

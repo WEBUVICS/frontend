@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Instagram, Linkedin, LucideLinkedin, GithubIcon } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -53,39 +53,21 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src="/svg/instagram.svg"
-                  alt="Instagram"
-                  width={24}
-                  height={24}
-                  className="hover:opacity-80 transition"
-                />
+                <Instagram />
               </a>
               <a
                 href="https://www.linkedin.com/company/uvics-unklab-virtue-in-computer-science/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src="/svg/linkedin.svg"
-                  alt="LinkedIn"
-                  width={24}
-                  height={24}
-                  className="hover:opacity-80 transition"
-                />
+                <LucideLinkedin />
               </a>
               <a
                 href="https://github.com/WEBUVICS"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src="/svg/github-mark.svg"
-                  alt="GitHub"
-                  width={24}
-                  height={24}
-                  className="hover:opacity-80 transition"
-                />
+                <GithubIcon />
               </a>
             </div>
           </div>
