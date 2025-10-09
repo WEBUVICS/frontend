@@ -6,74 +6,76 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
+import { MemberType } from "@/types/data-type";
 
 // === Interface Member ===
-interface Member {
-  id: number;
-  name: string;
-  position: string;
-  image: string;
-}
+
 
 export default function DepartmentUvics() {
-  const Advisor: Member[] = [
-    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/dummy-profile.svg" },
+  const Advisor: MemberType[] = [
+    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor.webp" },
   ];
 
-  const coreTeamMembers: Member[] = [
-    { id: 1, name: "Aiko Lasut", position: "President", image: "/dummy-profile.svg" },
-    { id: 2, name: "Prince Tampi", position: "Vice President", image: "/dummy-profile.svg" },
-    { id: 3, name: "Dion Kobi", position: "Secretary", image: "/dummy-profile.svg" },
-    { id: 4, name: "Syelle Kolooy", position: "Vice Secretary", image: "/dummy-profile.svg" },
-    { id: 5, name: "Marcelo Poluoko", position: "Treasurer", image: "/dummy-profile.svg" },
-    { id: 6, name: "Ananda Solong", position: "Vice Treasurer", image: "/dummy-profile.svg" },
+  const coreTeamMembers: MemberType[] = [
+    { id: 1, name: "Aiko Lasut", position: "President", image: "/member/CORETEAM/aiko.webp" },
+    { id: 2, name: "Prince Tampi", position: "Vice President", image: "/member/CORETEAM/prince.webp" },
+    { id: 3, name: "Dion Kobi", position: "Secretary", image: "/member/CORETEAM/dion.webp" },
+    { id: 4, name: "Syelle Kolooy", position: "Vice Secretary", image: "/member/CORETEAM/sela.png" },
+    { id: 5, name: "Marcelo Poluoko", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
+    { id: 6, name: "Ananda Solong", position: "Vice Treasurer", image: "/member/PR/ananda.webp" },
   ];
 
-  const webDevMembers: Member[] = [
-    { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "" },
-    { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "" },
-    { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
-    { id: 4, name: "Adithia Gunawan", position: "Member User Interface", image: "" },
-    { id: 5, name: "Jordan Sutarto", position: "Member User Interface", image: "" },
-    { id: 6, name: "Betrand Saputra", position: "Member User Interface", image: "" },
-    { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "" },
-    { id: 8, name: "Nazarya Kandou", position: "Member User Interface", image: "" },
-    { id: 9, name: "Member Baru", position: "Member User Interface", image: "" },
+  const webDevMembers: MemberType[] = [
+    { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "/member/WEBDEV/grantly.png" },
+    { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "/member/WEBDEV/nuel.webp" },
+    { id: 3, name: "Prince Tampi", position: "Koordinator", image: "/member/CORETEAM/prince.webp" },
+    { id: 4, name: "Adithia Gunawan", position: "Member Admin Interface", image: "/member/CH/adit.webp" },
+    { id: 5, name: "Jordan Sutarto", position: "Member Admin Interface", image: "/member/WEBDEV/jordan.webp" },
+    { id: 6, name: "Betrand Saputra", position: "Member Admin Interface", image: "/member/WEBDEV/betrand.webp" },
+    { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "/member/WEBDEV/timo.webp" },
+    { id: 8, name: "Nazarya Kandou", position: "Member User Interface", image: "/member/WEBDEV/nazar.webp" },
+    { id: 9, name: "Adriel", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
+    { id: 9, name: "Kevin", position: "Member User Interface", image: "/member/WEBDEV/kevin.webp" },
+    { id: 10, name: "David", position: "Member User Interface", image: "/member/WEBDEV/david.webp" },
   ];
 
-  const publicDocMembers: Member[] = [
-    { id: 1, name: "Marshelina Pedramuni", position: "PIC Content Creation", image: "" },
-    { id: 2, name: "Arviel Parengkuan", position: "PIC Multimedia", image: "" },
-    { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
-    { id: 4, name: "Alya Manoppo", position: "Member Content Creation", image: "" },
+  const publicDocMembers: MemberType[] = [
+    { id: 1, name: "Marshelina Pedramuni", position: "PIC Content Creation", image: "/member/PR/marsha.webp" },
+    { id: 2, name: "Arviel Parengkuan", position: "PIC Multimedia", image: "/member/EDITOR/avril.webp" },
+    { id: 3, name: "Marcelo Poluoko", position: "Koordinator", image: "/member/CORETEAM/ralf.webp" },
+    { id: 4, name: "Alya Manoppo", position: "Member Content Creation", image: "/member/CORETEAM/ralf.webp" },
     { id: 5, name: "Renaldy Mantiri", position: "Member Content Creation", image: "" },
-    { id: 6, name: "Glenvidi Gerungan", position: "Member Content Creation", image: "" },
-    { id: 7, name: "Member Baru", position: "Member Content Creation", image: "" },
-    { id: 8, name: "Member Baru", position: "Member Content Creation", image: "" },
-    { id: 9, name: "Member Baru", position: "Member Content Creation", image: "" },
+    { id: 5, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.jpeg" },
+    { id: 6, name: "Glenvidi Gerungan", position: "Member Content Creation", image: "/member/PR/cipeng.webp" },
+    { id: 7, name: "Valentina Chang", position: "Member Multimedia", image: "/member/PR/chang.webp" },
+    { id: 8, name: "Alyan Donuhulu", position: "Member Multimedia", image: "/member/EDITOR/tong.webp" },
+    { id: 9, name: "Thrilya Potalangi", position: "Member Multimedia", image: "/member/EDITOR/Thrilya.webp" },
+    { id: 10, name: "Aulia Ollo", position: "Member Multimedia", image: "/member/EDITOR/aulia.webp" },
   ];
 
-  const eventEduMembers: Member[] = [
-    { id: 1, name: "Reva Rorie", position: "PIC Event", image: "" },
-    { id: 2, name: "Marcel Pandelaki", position: "PIC Education", image: "" },
-    { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
-    { id: 4, name: "Natanel Rantung", position: "Member Event", image: "" },
-    { id: 5, name: "Darryl Laluyan", position: "Member Event", image: "" },
-    { id: 6, name: "Riset Gosal", position: "Member Event", image: "" },
-    { id: 7, name: "Member Baru", position: "Member Event", image: "" },
-    { id: 8, name: "Member Baru", position: "Member Event", image: "" },
-    { id: 9, name: "Member Baru", position: "Member Event", image: "" },
+  const eventEduMembers: MemberType[] = [
+    { id: 1, name: "Reva Rorie", position: "PIC Event", image: "/member/EXTERNAL/reva.webp" },
+    { id: 2, name: "Marcel Pandelaki", position: "PIC Education", image: "/member/PR/marsel.webp" },
+    { id: 3, name: "Aiko Lasut", position: "Koordinator", image: "/member/CORETEAM/aiko.webp" },
+    { id: 4, name: "Natanel Rantung", position: "Member Event", image: "/member/PR/natan.webp" },
+    { id: 5, name: "Darryl Laluyan", position: "Member Event", image: "/member/INDEV/deril.webp" },
+    { id: 6, name: "Riset Gosal", position: "Member Event", image: "/member/PR/riset.webp" },
+    { id: 7, name: "Krismarvel Ticoalu", position: "Member Event", image: "/member/WEBDEV/avel.webp" },
+    { id: 8, name: "Gabriel Sumual", position: "Member Event", image: "/member/PR/tor.png" },
+    { id: 9, name: "Vicky Majanduga", position: "Member Event", image: "/member/PR/vicky.webp" },
+    { id: 10, name: "Monica Mende", position: "Member Event", image: "" },
   ];
 
   // === Card Member ===
-  const MemberCard = ({ member }: { member: Member }) => (
-    <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-full sm:w-32 md:w-40 lg:w-44 xl:w-48 h-44 sm:h-52 md:h-60 lg:h-64 overflow-hidden hover:scale-105 transition-transform duration-300">
+  const MemberCard = ({ member }: { member: MemberType }) => (
+    <div key={member.id} className="flex flex-col items-center bg-white rounded-xl shadow-lg w-full sm:w-32 md:w-40 lg:w-44 xl:w-48 h-44 sm:h-52 md:h-60 lg:h-64 overflow-hidden hover:scale-105 transition-transform duration-300">
+      
       <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 bg-white flex items-center justify-center">
         <Image
           src={member.image && member.image.trim() !== "" ? member.image : "/dummy-profile.svg"}
           alt={member.name}
           fill
-          className="object-contain"
+          className="object-cover"
           priority
         />
       </div>
@@ -89,14 +91,14 @@ export default function DepartmentUvics() {
   );
 
   // === Card PIC ===
-  const PICCard = ({ member }: { member: Member }) => (
+  const PICCard = ({ member }: { member: MemberType }) => (
     <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-[120px] sm:w-[150px] md:w-[180px] h-[180px] sm:h-[210px] md:h-[240px] overflow-hidden hover:scale-105 transition-transform duration-300">
       <div className="relative w-full h-28 sm:h-32 md:h-36 bg-white flex items-center justify-center">
         <Image
           src={member.image && member.image.trim() !== "" ? member.image : "/dummy-profile.svg"}
           alt={member.name}
           fill
-          className="object-contain"
+          className="object-cover"
           priority
         />
       </div>
@@ -110,7 +112,7 @@ export default function DepartmentUvics() {
   );
 
   // === PIC Section ===
-  const PICSection = ({ members }: { members: Member[] }) => {
+  const PICSection = ({ members }: { members: MemberType[] }) => {
     const pics = members.filter(
       (m) => m.position.toLowerCase().includes("pic") || m.position.toLowerCase().includes("koordi")
     );
@@ -119,14 +121,16 @@ export default function DepartmentUvics() {
     return (
       <div className="mt-4 w-full max-w-5xl bg-[#4574C3] rounded-2xl shadow-lg px-3 sm:px-6 py-4 sm:py-6 flex flex-wrap justify-center gap-3 sm:gap-4">
         {pics.map((pic) => (
-          <PICCard key={pic.id} member={pic} />
+          <div key={pic.id}>
+            <PICCard member={pic} />
+          </div>
         ))}
       </div>
     );
   };
 
   // === Member Section ===
-  const MemberSection = ({ members }: { members: Member[] }) => {
+  const MemberSection = ({ members }: { members: MemberType[] }) => {
     const normalMembers = members.filter(
       (m) => !m.position.toLowerCase().includes("pic") && !m.position.toLowerCase().includes("koordi")
     );
@@ -154,7 +158,7 @@ export default function DepartmentUvics() {
           }}
         >
           {normalMembers.map((member) => (
-            <SwiperSlide key={member.id} className="flex justify-center">
+            <SwiperSlide className="flex justify-center">
               <MemberCard member={member} />
             </SwiperSlide>
           ))}
@@ -178,7 +182,7 @@ export default function DepartmentUvics() {
   };
 
   // === Advisor Section ===
-  const AdvisorSection = ({ members }: { members: Member[] }) => {
+  const AdvisorSection = ({ members }: { members: MemberType[] }) => {
     if (members.length === 0) return null;
 
     return (

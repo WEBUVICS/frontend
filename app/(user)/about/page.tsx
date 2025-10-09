@@ -19,12 +19,10 @@ export default function About() {
               <h3 className="text-xl font-semibold mb-4">Visi</h3>
               <ul className="list-disc pl-4 space-y-2">
                 <li>
-                  Menjadi wadah untuk Mahasiswa-Mahasiswi yang ingin bertumbuh
-                  dan berprestasi dalam lomba;
+                  Menjadi wadah untuk Mahasiswa-Mahasiswi yang ingin bertumbuh dan berprestasi dalam lomba;
                 </li>
                 <li>
-                  Menjadi organisasi yang membawa prestasi dan nama baik bagi
-                  kampus Universitas Klabat;
+                  Menjadi organisasi yang membawa prestasi dan nama baik bagi kampus Universitas Klabat;
                 </li>
                 <li>
                   Menjadi tempat mahasiswa untuk mengasah dan meningkatkan hard
