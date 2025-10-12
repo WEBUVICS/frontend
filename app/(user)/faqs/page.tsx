@@ -5,16 +5,16 @@ import { ChevronDown } from "lucide-react"; // make sure lucide-react is install
 
 export default function FAQ() {
   const faqs = [
-    { q: "Apa itu UVICS?", a: "UVICS adalah organisasi mahasiswa ..." },
-    { q: "Siapa saja yang bisa bergabung dengan UVICS?", a: "Semua mahasiswa Universitas Klabat dapat bergabung ..." },
-    { q: "Apakah ada biaya untuk bergabung dengan UVICS?", a: "Tidak ada biaya, semua kegiatan gratis ..." },
-    { q: "Bagaimana UVICS mendukung mahasiswa dalam kompetisi?", a: "UVICS menyediakan bimbingan, pelatihan, dan dukungan penuh ..." },
-    { q: "Apakah anggota bisa mengusulkan jenis lomba baru untuk diikuti?", a: "Ya, anggota dapat mengajukan usulan kepada pengurus ..." },
-    { q: "Bagaimana cara menjadi anggota UVICS?", a: "Cukup mendaftar melalui formulir yang disediakan ..." },
-    { q: "Jenis lomba apa saja yang diikuti UVICS?", a: "Berbagai lomba teknologi, bisnis, dan komunikasi ..." },
-    { q: "Apakah UVICS menyediakan bimbingan atau pelatihan untuk lomba?", a: "Ya, setiap lomba disertai dengan sesi mentoring ..." },
-    { q: "Apa keuntungan menjadi anggota UVICS?", a: "Pengalaman organisasi, jejaring, portofolio, dan e-certificate ..." },
-    { q: "Bagaimana UVICS menampilkan prestasi para anggotanya?", a: "Prestasi akan dipublikasikan di website dan media sosial UVICS ..." },
+    { q: "Apa ada syarat masuk UVICS?", a: "Tidak ada dong! yang penting niat semua pasti bisa" },
+    { q: "Siapa saja yang bisa bergabung dengan UVICS?", a: "Mahasiswa/i Universitas Klabat dari semua jurusan dan angkatan dapat bergabung, tidak terbatas hanya untuk jurusan komputer atau teknologi." },
+    { q: "Bagaimana cara mendaftar menjadi anggota UVICS?", a: "Pendaftaran dilakukan melalui formulir rekrutmen anggota yang dibuka setiap periode tertentu. Informasi pendaftaran biasanya diumumkan di Instagram @uvics_id dan website resmi UVICS." },
+    { q: "Apa saja benefit yang akan saya dapatkan jika bergabung?", a: "Anggota UVICS akan mendapatkan mentoring lomba, kesempatan pembiayaan lomba, e-sertifikat, rekomendasi LinkedIn, akses Canva Pro organisasi, serta pengalaman membangun personal branding, networking, dan portofolio melalui project lomba." },
+    { q: "Apakah hanya lomba IT atau komputer saja yang diikuti UVICS?", a: "Tidak. UVICS mendukung berbagai jenis lomba, baik di bidang teknologi, bisnis, desain, maupun kategori lain sesuai minat dan potensi anggota." },
+    { q: "Bagaimana sistem pembagian divisi di UVICS?", a: "Setiap anggota dapat memilih divisi sesuai minat, seperti Public Relations, Editor, Competition Handler, Web Development, atau Internal Development. Setiap divisi memiliki peran khusus dalam mendukung kegiatan organisasi." },
+    { q: "Apakah UVICS hanya fokus pada kompetisi internal kampus?", a: "Tidak. UVICS juga berpartisipasi dalam kompetisi tingkat nasional maupun internasional, serta membuat program-program inovatif yang memberi dampak ke masyarakat" },
+    { q: "AApakah mahasiswa baru boleh langsung ikut lomba melalui UVICS?", a: "Ya, tentu saja! Mahasiswa baru justru sangat dianjurkan untuk ikut serta agar bisa belajar sejak awal, mendapatkan pengalaman, dan membangun portofolio lebih cepat." },
+    { q: "Bagaimana cara menghubungi UVICS jika ingin bertanya lebih lanjut?", a: "Kamu bisa menghubungi kami melalui email di uvics@unklab.ac.id, Instagram @uvics_id, atau LinkedIn UVICS UNKLAB." },
+    { q: "Apakah semua anggota UVICS wajib ikut lomba?", a: "Tidak semua lomba wajib diikuti, tetapi anggota diharapkan aktif berpartisipasi sesuai bidang dan minat masing-masing" },
   ];
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
