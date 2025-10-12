@@ -13,16 +13,16 @@ import { MemberType } from "@/types/data-type";
 
 export default function DepartmentUvics() {
   const Advisor: MemberType[] = [
-    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/ralf.webp" },
+    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor.webp" },
   ];
 
   const coreTeamMembers: MemberType[] = [
     { id: 1, name: "Aiko Lasut", position: "President", image: "/member/CORETEAM/aiko.webp" },
     { id: 2, name: "Prince Tampi", position: "Vice President", image: "/member/CORETEAM/prince.webp" },
     { id: 3, name: "Dion Kobi", position: "Secretary", image: "/member/CORETEAM/dion.webp" },
-    { id: 4, name: "Syelle Kolooy", position: "Vice Secretary", image: "/member/CORETEAM/sela2.webp" },
-    { id: 5, name: "Marcelo Poluoko", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
-    { id: 6, name: "Ananda Solong", position: "Vice Treasurer", image: "/member/PR/ananda.webp" },
+    { id: 4, name: "Syelle Koloay", position: "Vice Secretary", image: "/member/CORETEAM/sela2.webp" },
+    { id: 5, name: "Marcelo Poluakan", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
+    { id: 6, name: "Ananda Solang", position: "Vice Treasurer", image: "/member/PR/ananda.webp" },
   ];
 
   const webDevMembers: MemberType[] = [
@@ -34,15 +34,15 @@ export default function DepartmentUvics() {
     { id: 6, name: "Betrand Saputra", position: "Member Admin Interface", image: "/member/WEBDEV/betrand.webp" },
     { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "/member/WEBDEV/timo.webp" },
     { id: 8, name: "Nazarya Kandou", position: "Member User Interface", image: "/member/WEBDEV/nazar.webp" },
-    { id: 9, name: "Adriel", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
-    { id: 9, name: "Kevin", position: "Member User Interface", image: "/member/WEBDEV/kevin.webp" },
-    { id: 10, name: "David", position: "Member User Interface", image: "/member/WEBDEV/david.webp" },
+    { id: 9, name: "Adriel Walintukan", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
+    { id: 9, name: "Kevin Tjiu", position: "Member User Interface", image: "/member/WEBDEV/kevin.webp" },
+    { id: 10, name: "David Tjia", position: "Member User Interface", image: "/member/WEBDEV/david.webp" },
   ];
 
   const publicDocMembers: MemberType[] = [
-    { id: 1, name: "Marshelina Pedramuni", position: "PIC Content Creation", image: "/member/PR/marsha.webp" },
-    { id: 2, name: "Arviel Parengkuan", position: "PIC Multimedia", image: "/member/EDITOR/avril.webp" },
-    { id: 3, name: "Marcelo Poluoko", position: "Koordinator", image: "/member/CORETEAM/ralf.webp" },
+    { id: 1, name: "Marshanda Padmarini", position: "PIC Content Creation", image: "/member/PR/marsha.webp" },
+    { id: 2, name: "Avriel Parengkuan", position: "PIC Multimedia", image: "/member/EDITOR/avril.webp" },
+    { id: 3, name: "Marcelo Poluakan", position: "Koordinator", image: "/member/CORETEAM/ralf.webp" },
     { id: 4, name: "Alya Manoppo", position: "Member Content Creation", image: "/member/CORETEAM/ralf.webp" },
     { id: 5, name: "Renaldy Mantiri", position: "Member Content Creation", image: "" },
     { id: 5, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.webp" },
@@ -55,7 +55,7 @@ export default function DepartmentUvics() {
 
   const eventEduMembers: MemberType[] = [
     { id: 1, name: "Reva Rorie", position: "PIC Event", image: "/member/EXTERNAL/reva.webp" },
-    { id: 2, name: "Marcel Pandelaki", position: "PIC Education", image: "/member/PR/marsel.webp" },
+    { id: 2, name: "Marcell Pandelaki", position: "PIC Education", image: "/member/PR/marsel.webp" },
     { id: 3, name: "Aiko Lasut", position: "Koordinator", image: "/member/CORETEAM/aiko.webp" },
     { id: 4, name: "Natanel Rantung", position: "Member Event", image: "/member/PR/natan.webp" },
     { id: 5, name: "Darryl Laluyan", position: "Member Event", image: "/member/INDEV/deril.webp" },
