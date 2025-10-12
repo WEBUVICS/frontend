@@ -13,7 +13,7 @@ import { MemberType } from "@/types/data-type";
 
 export default function DepartmentUvics() {
   const Advisor: MemberType[] = [
-    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/ralf.webp" },
+    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor.webp" },
   ];
 
   const coreTeamMembers: MemberType[] = [

@@ -52,9 +52,9 @@ const exafMembers:MemberType[] = [
   { id: 4, name: "Riset Gosal", position: "Member EXAF", image: "/member/PR/riset.webp" },
   { id: 5, name: "Rivaldo Kindangen", position: "Member EXAF", image: "" },
   { id: 6, name: "Lamtiar Nainggolan", position: "Member EXAF", image: "" },
-  { id: 7, name: "Alya Manoppo", position: "Member EXAF", image: "" },
+  { id: 7, name: "Alya Manoppo", position: "Member EXAF", image: "/member/PR/alya.webp" },
   { id: 8, name: "Yoel Kosenda", position: "Member EXAF", image: "" },
-  { id: 9, name: "Vanda Woruntu", position: "Member EXAF", image: "" },
+  { id: 9, name: "Vanda Woruntu", position: "Member EXAF", image: "/member/PR/vanda.webp" },
   { id: 1, name: "Cheiselio Benne", position: "Member EXAF", image: "" },
 ];
 
