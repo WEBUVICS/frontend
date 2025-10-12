@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react"; // make sure lucide-react is installed
+import { ChevronDown } from "lucide-react";
 
 export default function FAQ() {
   const faqs = [
@@ -12,15 +12,25 @@ export default function FAQ() {
     { q: "Apakah hanya lomba IT atau komputer saja yang diikuti UVICS?", a: "Tidak. UVICS mendukung berbagai jenis lomba, baik di bidang teknologi, bisnis, desain, maupun kategori lain sesuai minat dan potensi anggota." },
     { q: "Bagaimana sistem pembagian divisi di UVICS?", a: "Setiap anggota dapat memilih divisi sesuai minat, seperti Public Relations, Editor, Competition Handler, Web Development, atau Internal Development. Setiap divisi memiliki peran khusus dalam mendukung kegiatan organisasi." },
     { q: "Apakah UVICS hanya fokus pada kompetisi internal kampus?", a: "Tidak. UVICS juga berpartisipasi dalam kompetisi tingkat nasional maupun internasional, serta membuat program-program inovatif yang memberi dampak ke masyarakat" },
-    { q: "AApakah mahasiswa baru boleh langsung ikut lomba melalui UVICS?", a: "Ya, tentu saja! Mahasiswa baru justru sangat dianjurkan untuk ikut serta agar bisa belajar sejak awal, mendapatkan pengalaman, dan membangun portofolio lebih cepat." },
+    { q: "Apakah mahasiswa baru boleh langsung ikut lomba melalui UVICS?", a: "Ya, tentu saja! Mahasiswa baru justru sangat dianjurkan untuk ikut serta agar bisa belajar sejak awal, mendapatkan pengalaman, dan membangun portofolio lebih cepat." },
     { q: "Bagaimana cara menghubungi UVICS jika ingin bertanya lebih lanjut?", a: "Kamu bisa menghubungi kami melalui email di uvics@unklab.ac.id, Instagram @uvics_id, atau LinkedIn UVICS UNKLAB." },
     { q: "Apakah semua anggota UVICS wajib ikut lomba?", a: "Tidak semua lomba wajib diikuti, tetapi anggota diharapkan aktif berpartisipasi sesuai bidang dan minat masing-masing" },
   ];
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  // state untuk masing-masing sisi
+  const [openLeft, setOpenLeft] = useState<number | null>(0);
+  const [openRight, setOpenRight] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleFAQ = (index: number, side: "left" | "right") => {
+    if (side === "left") {
+      // tutup kanan jika kiri dibuka
+      setOpenRight(null);
+      setOpenLeft(openLeft === index ? null : index);
+    } else {
+      // tutup kiri jika kanan dibuka
+      setOpenLeft(null);
+      setOpenRight(openRight === index ? null : index);
+    }
   };
 
   return (
@@ -39,27 +49,65 @@ export default function FAQ() {
         </p>
 
         {/* FAQ Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {faqs.map((faq, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-lg shadow px-4 py-3 cursor-pointer transition"
-              onClick={() => toggleFAQ(i)}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium">{faq.q}</span>
-                <ChevronDown
-                  className={`w-5 h-5 transition-transform ${
-                    openIndex === i ? "rotate-180" : ""
+        <section className="flex gap-3">
+          {/* Kiri */}
+          <div className="w-1/2 flex flex-col gap-2">
+            {faqs.slice(0, 5).map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-lg shadow px-4 py-3 cursor-pointer transition"
+                onClick={() => toggleFAQ(i, "left")}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="font-medium">{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 transition-transform ${
+                      openLeft === i ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
+
+                {/* Konten dengan animasi height */}
+                <div
+                  className={`transition-all overflow-hidden duration-300 ${
+                    openLeft === i ? "max-h-40 mt-3" : "max-h-0"
                   }`}
-                />
+                >
+                  <p className="text-sm text-gray-600">{faq.a}</p>
+                </div>
               </div>
-              {openIndex === i && (
-                <p className="mt-3 text-sm text-gray-600">{faq.a}</p>
-              )}
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          {/* Kanan */}
+          <div className="w-1/2 flex flex-col gap-2">
+            {faqs.slice(5, 10).map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-lg shadow px-4 py-3 cursor-pointer transition"
+                onClick={() => toggleFAQ(i, "right")}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="font-medium">{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 transition-transform ${
+                      openRight === i ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
+
+                {/* Konten dengan animasi height */}
+                <div
+                  className={`transition-all overflow-hidden duration-300 ${
+                    openRight === i ? "max-h-40 mt-3" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-sm text-gray-600">{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
