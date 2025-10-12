@@ -28,5 +28,15 @@ export const mockData = [
       description:
         "Tim MIAWVICS menciptakan sebuah website inovatif bertema terapi mental online yang mempertemukan pengguna dengan para ahli psikologi dan konselor profesional secara daring. Dalam ajang De Code Web Design Competition 2024, tim ini menonjol dengan pendekatan desain yang humanis, antarmuka yang tenang, serta pengalaman pengguna yang empatik dan mudah diakses. Melalui fitur konsultasi online, journaling, dan edukasi kesehatan mental, MIAWVICS berhasil menghadirkan solusi digital yang tidak hanya estetis, tetapi juga memiliki nilai sosial tinggi. Website ini dirancang untuk membantu masyarakat mendapatkan dukungan emosional dengan aman, nyaman, dan terjangkau — mencerminkan sinergi antara teknologi, empati, dan kreativitas dalam satu platform yang berdampak nyata.",
       tags: ["competition", "webdesign", "mentalhealth", "innovation", "miawvics"]
+    },
+    {
+      id: "4",
+      image: "/project/pionner_impact.webp",
+      title: "Pionner Impact",
+      lomba: "Business Plan Competition – ProxoCorris 2025",
+      members: ["Alya Priskila Gracia Manoppo", "Vanda Godelia Woruntu", "Yoel Wuysan Kosenda", "Marcel Johan Alexander Pandelaki"],
+      description:
+        "Tim Pionner Impact dari Universitas Klabat mengembangkan sebuah platform digital berbasis kecerdasan buatan (AI) yang dirancang untuk membantu masyarakat dalam mencari pekerjaan dan memulai usaha di sektor UMKM. Aplikasi ini menjadi solusi bagi pengangguran dan calon pelaku usaha yang kesulitan mengakses peluang kerja, modal, serta bimbingan bisnis. Melalui fitur pencocokan kerja berbasis AI, konsultasi dengan pakar, pembuatan proposal otomatis, serta forum komunitas, JobNesia berperan sebagai jembatan antara pencari kerja dan pelaku UMKM di seluruh Indonesia. Proyek ini menonjol dalam aspek inovasi sosial dan teknologi, dengan tujuan menciptakan ekosistem kerja yang inklusif, memperkuat digitalisasi UMKM, dan berkontribusi pada pengentasan kemiskinan melalui pemberdayaan ekonomi. Dan tim Pionner Impact berhasil masuk kategori Best Presentation - Business Plan Category",
+      tags: ["competition", "business", "AI", "UMKM", "innovation", "jobnesia"]
     }
 ];
