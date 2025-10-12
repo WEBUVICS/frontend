@@ -8,5 +8,25 @@ export const mockData = [
       description:
         "Tim TechPoint berhasil meraih Juara 1 dalam ajang Indonesian IT Competition 2025 kategori UI/UX Design. Kompetisi ini mempertemukan berbagai talenta muda dari seluruh Indonesia untuk beradu kreativitas dalam menciptakan desain antarmuka yang inovatif dan berorientasi pada pengguna. Dengan konsep yang matang, riset mendalam, dan kolaborasi yang solid, tim TechPoint berhasil menciptakan solusi desain yang dinilai unggul dalam aspek fungsionalitas, estetika, dan pengalaman pengguna. Keberhasilan ini menjadi bukti dedikasi dan kerja keras tim dalam menggabungkan teknologi dengan kreativitas untuk menghasilkan karya yang berdampak positif.",
       tags: ["competition", "UIUX", "winner", "innovation", "techpoint"]
+    },
+    {
+      id: "2",
+      image: "/project/inovatex.webp",
+      title: "InnovateX",
+      lomba: "Business Case Competition – ProxoCorris 2025",
+      members: ["Gheiselio Benne", "Riset Virginia Gosal", "Rivaldo Milano Santos Kindangen"],
+      description:
+        "Tim PROXOCORIS dari Universitas Klabat berhasil menorehkan prestasi gemilang dalam ajang InnovateX Business Case Competition 2025 melalui proyek inovatif bertajuk Asset.GO. Proyek ini menghadirkan solusi fintech berbasis aplikasi yang memfasilitasi akses pinjaman aset produktif bagi masyarakat berpenghasilan rendah tanpa memerlukan agunan. Dengan pendekatan berbasis teknologi, sistem monitoring pintar, dan integrasi blockchain untuk transparansi, Asset.GO menjadi langkah konkret dalam mendorong inklusi keuangan dan pertumbuhan ekonomi berkelanjutan. Keberhasilan tim menunjukkan kemampuan mereka dalam menggabungkan visi sosial, inovasi teknologi, serta strategi bisnis yang berkelanjutan untuk menjawab tantangan ekonomi masyarakat bawah.",
+      tags: ["competition", "business", "fintech", "innovation", "assetgo", "proxocoris"]
+    },
+    {
+      id: "3",
+      image: "/project/miawvics.webp",
+      title: "MIAWVICS",
+      lomba: "De Code Web Design Competition 2024",
+      members: ["Krismarvel Ticoalu", "Avriel Parengkuan", "Glenvidi Gerungan"],
+      description:
+        "Tim MIAWVICS menciptakan sebuah website inovatif bertema terapi mental online yang mempertemukan pengguna dengan para ahli psikologi dan konselor profesional secara daring. Dalam ajang De Code Web Design Competition 2024, tim ini menonjol dengan pendekatan desain yang humanis, antarmuka yang tenang, serta pengalaman pengguna yang empatik dan mudah diakses. Melalui fitur konsultasi online, journaling, dan edukasi kesehatan mental, MIAWVICS berhasil menghadirkan solusi digital yang tidak hanya estetis, tetapi juga memiliki nilai sosial tinggi. Website ini dirancang untuk membantu masyarakat mendapatkan dukungan emosional dengan aman, nyaman, dan terjangkau — mencerminkan sinergi antara teknologi, empati, dan kreativitas dalam satu platform yang berdampak nyata.",
+      tags: ["competition", "webdesign", "mentalhealth", "innovation", "miawvics"]
     }
-  ];
+];

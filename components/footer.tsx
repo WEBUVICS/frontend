@@ -16,14 +16,14 @@ export default function Footer() {
           {/* Logos */}
           <div className="flex justify-center md:justify-start items-center gap-4 ">
             <Image
-              src="/Logo_UVICS-removebg-preview.png"
+              src="/icon/logo_uvics.webp"
               alt="UVICS Logo"
               width={80}
               height={80}
               className="rounded-full"
             />
             <Image
-              src="/Logo_Unklab-removebg-preview.png"
+              src="/icon/logo_unklab.webp"
               alt="UNKLAB Logo"
               width={60}
               height={60}

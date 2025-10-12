@@ -19,7 +19,7 @@ const images = [
   "/gallery/foto-12.webp",
   "/gallery/foto-13.webp",
   "/gallery/foto-14.webp",
-  "/gallery/foto-15.webp",
+  "/gallery/foto15.webp",
   "/gallery/foto-16.webp",
   "/gallery/foto-17.webp",
  

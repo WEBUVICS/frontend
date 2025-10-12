@@ -67,7 +67,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <div className="w-[50px] h-[50px] flex items-center justify-center">
             <Image
-              src="/Logo UVICS White.jpeg"
+              src="/icon/logo_uvics.webp"
               alt="Logo"
               width={40}
               height={40}
