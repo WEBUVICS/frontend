@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react"; // make sure lucide-react is installed
+import { ChevronDown } from "lucide-react"; // pastikan lucide-react terinstal
 
 export default function FAQ() {
   const faqs = [
@@ -28,7 +28,7 @@ export default function FAQ() {
       <div className="w-full max-w-6xl bg-[var(--color-muted)] rounded-lg p-10 shadow-md">
         {/* Title */}
         <h1 className="text-3xl font-bold text-center text-second mb-4">
-          Frequently Asked Question
+          Frequently Asked Questions
         </h1>
         <p className="text-center text-gray-500 mb-10 max-w-2xl mx-auto text-sm">
           Frequently Asked Questions (FAQs) are a collection of commonly asked
@@ -38,12 +38,12 @@ export default function FAQ() {
           clarification.
         </p>
 
-        {/* FAQ Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* FAQ Layout: FLEX agar tinggi tiap kolom independen */}
+        <div className="flex flex-wrap gap-6">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white rounded-lg shadow px-4 py-3 cursor-pointer transition"
+              className="bg-white rounded-lg shadow px-4 py-3 cursor-pointer transition-all duration-300 w-full md:w-[48%]"
               onClick={() => toggleFAQ(i)}
             >
               <div className="flex justify-between items-center">
@@ -54,9 +54,14 @@ export default function FAQ() {
                   }`}
                 />
               </div>
-              {openIndex === i && (
-                <p className="mt-3 text-sm text-gray-600">{faq.a}</p>
-              )}
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === i ? "max-h-40 mt-3" : "max-h-0"
+                }`}
+              >
+                <p className="text-sm text-gray-600">{faq.a}</p>
+              </div>
             </div>
           ))}
         </div>

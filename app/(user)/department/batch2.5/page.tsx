@@ -6,14 +6,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
+import { MemberType } from "@/types/data-type";
 
 export default function DepartmentUvics() {
 
-  const Advisor = [
+
+  const Advisor:MemberType[] = [
     { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/dummy-profile.svg" },
   ];
 
-  const coreTeamMembers = [
+  const coreTeamMembers:MemberType[] = [
   { id: 1, name: "Aiko Lasut", position: "President", image: "/dummy-profile.svg" },
   { id: 2, name: "Prince Tampi", position: "Vice President", image: "/dummy-profile.svg" },
   { id: 3, name: "Dion Kobi", position: "Secretary", image: "/dummy-profile.svg" },
@@ -23,7 +25,7 @@ export default function DepartmentUvics() {
 ];
 
 
-  const webDevMembers = [
+  const webDevMembers:MemberType[] = [
     { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "" },
     { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "" },
     { id: 3, name: "Nama Koordi", position: "Koordinator", image: "" },
@@ -35,7 +37,7 @@ export default function DepartmentUvics() {
     { id: 9, name: "Member Baru", position: "Member User Interface", image: "" },
   ];
 
-  const indevMembers = [
+  const indevMembers:MemberType[] = [
   { id: 1, name: "John Doe", position: "PIC INDEV", image: "" },
   { id: 2, name: "John Doe", position: "PIC INDEV", image: "" },
   { id: 3, name: "John Doe", position: "Koordinator", image: "" },
@@ -47,7 +49,7 @@ export default function DepartmentUvics() {
 ];
 
 
-const editorMembers = [
+const editorMembers:MemberType[] = [
   { id: 1, name: "John Doe", position: "PIC Editor", image: "" },
   { id: 2, name: "John Doe", position: "PIC Editor", image: "" },
   { id: 3, name: "John Doe", position: "Koordinator", image: "" },
@@ -58,7 +60,7 @@ const editorMembers = [
   { id: 8, name: "John Doe", position: "Member Editor", image: "" },
 ];
 
-const prMembers = [
+const prMembers:MemberType[] = [
   { id: 1, name: "John Doe", position: "PIC PR", image: "" },
   { id: 2, name: "John Doe", position: "PIC PR", image: "" },
   { id: 3, name: "John Doe", position: "Koordinator", image: "" },
@@ -69,7 +71,7 @@ const prMembers = [
   { id: 8, name: "John Doe", position: "Member PR", image: "" },
   { id: 9, name: "John Doe", position: "Member PR", image: "" },
 ];
-const comhandmembers = [
+const comhandmembers:MemberType[] = [
   { id: 1, name: "John Doe", position: "PIC PR", image: "" },
   { id: 2, name: "John Doe", position: "PIC PR", image: "" },
   { id: 3, name: "John Doe", position: "Koordinator", image: "" },
@@ -82,7 +84,7 @@ const comhandmembers = [
 ];
 
   // === Card Member ===
-  const MemberCard = ({ member }: { member: any }) => (
+  const MemberCard = ({ member }: { member: MemberType }) => (
     <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-28 sm:w-32 md:w-40 lg:w-44 xl:w-48 h-44 sm:h-52 md:h-60 lg:h-64 overflow-hidden hover:scale-105 transition-transform duration-300">
       <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 bg-white flex items-center justify-center">
         <Image
@@ -105,7 +107,7 @@ const comhandmembers = [
   );
 
   // === Card PIC ===
-  const PICCard = ({ member }: { member: any }) => (
+  const PICCard = ({ member }: { member: MemberType }) => (
     <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-[120px] sm:w-[150px] md:w-[180px] h-[180px] sm:h-[210px] md:h-[240px] overflow-hidden hover:scale-105 transition-transform duration-300">
       <div className="relative w-full h-28 sm:h-32 md:h-36 bg-white flex items-center justify-center">
         <Image
@@ -126,7 +128,7 @@ const comhandmembers = [
   );
 
   // === PIC Section ===
-  const PICSection = ({ members }: { members: any[] }) => {
+  const PICSection = ({ members }: { members: MemberType[] }) => {
     const pics = members.filter(
       (m) => m.position.toLowerCase().includes("pic") || m.position.toLowerCase().includes("koordi")
     );
@@ -142,7 +144,7 @@ const comhandmembers = [
   };
 
   // === Member Section ===
-  const MemberSection = ({ members }: { members: any[] }) => {
+  const MemberSection = ({ members }: { members: MemberType[] }) => {
     const normalMembers = members.filter(
       (m) => !m.position.toLowerCase().includes("pic") && !m.position.toLowerCase().includes("koordi")
     );
@@ -194,7 +196,7 @@ const comhandmembers = [
   };
 
   // === Advisor Section ===
-const AdvisorSection = ({ members }: { members: any[] }) => {
+const AdvisorSection = ({ members }: { members: MemberType[] }) => {
   if (members.length === 0) return null;
 
   return (

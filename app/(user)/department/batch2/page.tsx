@@ -17,12 +17,12 @@ export default function DepartmentUvics() {
   ];
 
   const coreTeamMembers:MemberType[] = [
-  { id: 1, name: "Aiko Lasut", position: "President", image: "/member/CORETEAM/aiko.webp" },
-  { id: 2, name: "Prince Tampi", position: "Vice President", image: "/member/CORETEAM/prince.webp" },
-  { id: 3, name: "Dion Kobi", position: "Secretary", image: "/member/CORETEAM/dion.webp" },
-  { id: 4, name: "Syelle Kolooy", position: "Vice Secretary", image: "/member/CORETEAM/sela2.webp" },
-  { id: 5, name: "Marcelo Poluoko", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
-  { id: 6, name: "Ananda Solong", position: "Vice Treasurer", image: "/member/PR/ananda.webp" },
+    { id: 1, name: "Aiko Lasut", position: "President", image: "/member/CORETEAM/aiko.webp" },
+    { id: 2, name: "Prince Tampi", position: "Vice President", image: "/member/CORETEAM/prince.webp" },
+    { id: 3, name: "Dion Kobi", position: "Secretary", image: "/member/CORETEAM/dion.webp" },
+    { id: 4, name: "Syelle Koloay", position: "Vice Secretary", image: "/member/CORETEAM/sela2.webp" },
+    { id: 5, name: "Marcelo Poluakan", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
+    { id: 6, name: "Ananda Solang", position: "Vice Treasurer", image: "/member/PR/ananda.webp" },
 ];
 
 
