@@ -267,10 +267,10 @@ const AdvisorSection = ({ members }: { members: MemberType[] }) => {
         <div className="flex-1 text-white pr-0 sm:pr-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Departement UVICS</h2>
           <p className="text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            UVICS terdiri dari berbagai departemen yang memperkenalkan peran dan anggota yang berkontribusi dalam mendukung visi dan misi organisasi.
+            Batch kedua UVICS hadir dengan semangat pembaruan! Kini terdiri dari lima divisi ialah Web Development, Internal Development, Eksternal Affairs, Editor, Public Relation, dan Competition Handler.
           </p>
           <p className="mt-2 sm:mt-4 text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Mulai dari tim inti hingga departemen khusus seperti publikasi, pendidikan, dan pengembangan web, setiap peran memiliki kontribusi penting dalam membangun komunitas UVICS yang inspiratif dan progresif.
+            Batch ini membawa UVICS ke level yang lebih tinggi. Setiap divisi berperan aktif dalam mengembangkan potensi anggota dan memperluas jangkauan organisasi baik di dalam maupun luar kampus.
           </p>
         </div>
         <div className="flex-shrink-0">

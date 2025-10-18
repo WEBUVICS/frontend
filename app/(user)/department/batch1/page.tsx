@@ -44,7 +44,7 @@ export default function DepartmentUvics() {
     { id: 2, name: "Avriel Parengkuan", position: "PIC Multimedia", image: "/member/EDITOR/avril.webp" },
     { id: 3, name: "Marcelo Poluakan", position: "Koordinator", image: "/member/CORETEAM/ralf.webp" },
     { id: 4, name: "Alya Manoppo", position: "Member Content Creation", image: "/member/CORETEAM/ralf.webp" },
-    { id: 5, name: "Renaldy Mantiri", position: "Member Content Creation", image: "" },
+    { id: 5, name: "Renaldy Mantiri", position: "Member Content Creation", image: "/member/PR/renaldy.webp" },
     { id: 5, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.webp" },
     { id: 6, name: "Glenvidi Gerungan", position: "Member Content Creation", image: "/member/PR/cipeng.webp" },
     { id: 7, name: "Valentina Chang", position: "Member Multimedia", image: "/member/PR/chang.webp" },
@@ -204,10 +204,10 @@ export default function DepartmentUvics() {
         <div className="flex-1 text-white pr-0 sm:pr-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Departement UVICS</h2>
           <p className="text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            UVICS terdiri dari berbagai departemen yang memperkenalkan peran dan anggota yang berkontribusi dalam mendukung visi dan misi organisasi.
+            Batch pertama UVICS menjadi langkah awal lahirnya komunitas yang inspiratif. Dengan tiga divisi utama yaitu Web Development, Public and Documentation, serta Event & Education. 
           </p>
           <p className="mt-2 sm:mt-4 text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Mulai dari tim inti hingga departemen khusus seperti publikasi, pendidikan, dan pengembangan web, setiap peran memiliki kontribusi penting dalam membangun komunitas UVICS yang inspiratif dan progresif.
+            Batch ini membangun dasar yang kuat untuk kerja sama lintas bidang dan memperkenalkan semangat berorganisasi di kalangan mahasiswa Universitas Klabat.
           </p>
         </div>
         <div className="flex-shrink-0">

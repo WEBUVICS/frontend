@@ -12,7 +12,8 @@ export default function DepartmentUvics() {
 
 
   const Advisor:MemberType[] = [
-    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor.webp" },
+    { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor1.webp" },
+    { id: 2, name: "Semmy W. Taju S.Kom, M.S, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor2.webp" },
   ];
   
 
@@ -43,8 +44,8 @@ export default function DepartmentUvics() {
   { id: 3, name: "Ariellya Sayow", position: "Member INDEV", image: "/member/INDEV/aril.webp" },
   { id: 4, name: "Reva Rorie", position: "Member INDEV", image: "/member/EXTERNAL/reva.webp" },
   { id: 5, name: "Marcheilla Wenas", position: "Member INDEV", image: "/member/INDEV/cheilla.webp" },
-  { id: 6, name: "Arji Legi", position: "Member INDEV", image: "" },
-  { id: 7, name: "Joel Mantiri", position: "Member INDEV", image: "" },
+  { id: 6, name: "Arji Legi", position: "Member INDEV", image: "/member/INDEV/arji.webp" },
+  { id: 7, name: "Joel Mantiri", position: "Member INDEV", image: "/member/INDEV/joel.webp" },
 ];
 
 
@@ -54,10 +55,10 @@ const editorMembers:MemberType[] = [
   { id: 3, name: "Arlan Jonsend", position: "Member Editor", image: "/member/EDITOR/Arlan.webp" },
   { id: 4, name: "Mutiara Makarawung", position: "Member Editor", image: "/member/EDITOR/Mutiara.webp" },
   { id: 5, name: "Matthew Kambey", position: "Member Editor", image: "/member/EDITOR/met_kambey.webp" },
-  { id: 6, name: "Matthew Pangemanan", position: "Member Editor", image: "" },
-  { id: 7, name: "Febriansyah Sahay", position: "Member Editor", image: "" },
-  { id: 8, name: "Jeremiah Lengkong", position: "Member Editor", image: "" },
-  { id: 9, name: "Channy Thomas", position: "Member Editor", image: "" },
+  { id: 6, name: "Matthew Pangemanan", position: "Member Editor", image: "/member/EDITOR/met_pangemanan.webp" },
+  { id: 7, name: "Febriansyah Sahay", position: "Member Editor", image: "/member/EDITOR/febriansyah.webp" },
+  { id: 8, name: "Jeremiah Lengkong", position: "Member Editor", image: "/member/EDITOR/jere.webp" },
+  { id: 9, name: "Channy Thomas", position: "Member Editor", image: "/member/EDITOR/channy.webp" },
 ];
 
 const prMembers:MemberType[] = [
@@ -65,8 +66,8 @@ const prMembers:MemberType[] = [
   { id: 2, name: "Glenvidi Gerungan", position: "Koordinator", image: "/member/PR/cipeng.webp" },
   { id: 3, name: "Cinta Walukow", position: "Member PR", image: "/member/PR/cinta.webp" },
   { id: 4, name: "Dhesy Corneles", position: "Member PR", image: "/member/PR/cici.webp" },
-  { id: 5, name: "Tiara Mamuaya", position: "Member PR", image: "" },
-  { id: 6, name: "Regiana Monangin", position: "Member PR", image: "" },
+  { id: 5, name: "Tiara Mamuaya", position: "Member PR", image: "/member/PR/tiara.webp" },
+  { id: 6, name: "Regiana Monangin", position: "Member PR", image: "/member/PR/regiana.webp" },
   { id: 7, name: "Agatha Kolanus", position: "Member PR", image: "" },
   { id: 8, name: "Rivaldo Kindangen", position: "Member PR", image: "/member/EXTERNAL/rivaldo.webp" },
   { id: 9, name: "Riset Gosal", position: "Member PR", image: "/member/PR/riset.webp" },
@@ -77,8 +78,8 @@ const comhandmembers:MemberType[] = [
   { id: 3, name: "Adithia Gunawan", position: "Member Comhand", image: "/member/CH/adit.webp" },
   { id: 4, name: "Anggreiny Sondakh", position: "Member Comhand", image: "/member/CH/ang.webp" },
   { id: 1, name: "Siao Ling nyo", position: "Member Comhand", image: "/member/CH/Xiaoling.webp" },
-  { id: 6, name: "Samuel Anasim", position: "Member Comhand", image: "" },
-  { id: 7, name: "Jofan Kalengkongan", position: "Member Comhand", image: "" },
+  { id: 6, name: "Samuel Anasim", position: "Member Comhand", image: "/member/CH/samuel.webp" },
+  { id: 7, name: "Jofan Kalengkongan", position: "Member Comhand", image: "/member/CH/jofan.webp" },
 ];
 
   // === Card Member ===
@@ -224,10 +225,10 @@ const AdvisorSection = ({ members }: { members: MemberType[] }) => {
         <div className="flex-1 text-white pr-0 sm:pr-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Departement UVICS</h2>
           <p className="text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            UVICS terdiri dari berbagai departemen yang memperkenalkan peran dan anggota yang berkontribusi dalam mendukung visi dan misi organisasi.
+            Batch 2.5 melanjutkan perjalanan UVICS dengan formasi yang lebih fokus dan solid. Terdapat lima divisi yang aktif, yakni Web Development, Internal Development, Editor, Public Relation, dan Competition Handler. 
           </p>
           <p className="mt-2 sm:mt-4 text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Mulai dari tim inti hingga departemen khusus seperti publikasi, pendidikan, dan pengembangan web, setiap peran memiliki kontribusi penting dalam membangun komunitas UVICS yang inspiratif dan progresif.
+            Batch ini menonjolkan kreativitas, komunikasi, serta pengembangan diri anggota dalam suasana kolaboratif yang hangat dan produktif.
           </p>
         </div>
         <div className="flex-shrink-0">

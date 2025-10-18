@@ -70,26 +70,53 @@ export default function About() {
         </section>
 
         {/* Our Program */}
-        <section className="bg-[var(--color-muted)] rounded-lg p-8 shadow-md text-center">
-          <h2 className="text-2xl font-bold text-[var(--color-second)] mb-6">
-            OUR PROGRAM
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="bg-[var(--color-second)] text-white p-6 rounded-lg shadow-md"
-              >
-                <h3 className="text-lg font-semibold mb-2">1. Kamar Belajar</h3>
-                <p className="text-sm">Internal Development</p>
-                <p className="mt-2 text-sm">
-                  Ini adalah program yang dibuat untuk mengembangkan kemampuan
-                  semua anggota UVICS.
-                </p>
-              </div>
-            ))}
+<section className="bg-[var(--color-muted)] rounded-lg p-8 shadow-md text-center">
+  <h2 className="text-2xl font-bold text-[var(--color-second)] mb-6">
+    OUR PROGRAM
+  </h2>
+
+  {/* Daftar program UVICS */}
+  {(() => {
+    const programs = [
+      {
+        title: "Mini Kabel",
+        division: "Internal Development",
+        description:
+          "Pembekalan yang akan dilakukan per divisi atau terbuka untuk semua divisi",
+      },
+      {
+        title: "Champions of Change (CoC)",
+        division: "Internal Development",
+        description:
+          "Anggota yang aktif di dalam program akan diberi apresiasi dan reward di akhir, dan akan di post di media sosial UVICS.",
+      },
+      {
+        title: "Bonding",
+        division: "Internal Development",
+        description:
+          "Program yang dilaksanakan dengan tujuan memperat hubungan antar anggota UVICS melalui berbagai kegiatan seru dan menyenangkan.",
+      },
+    ]
+
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {programs.map((program, index) => (
+          <div
+            key={index}
+            className="bg-[var(--color-second)] text-white p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-200"
+          >
+            <h3 className="text-lg font-semibold mb-2">
+              {index + 1}. {program.title}
+            </h3>
+            <p className="text-sm italic">{program.division}</p>
+            <p className="mt-2 text-sm">{program.description}</p>
           </div>
-        </section>
+        ))}
+      </div>
+    );
+  })()}
+</section>
+
 
         {/* Job Desc */}
         <section>

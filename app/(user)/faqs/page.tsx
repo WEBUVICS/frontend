@@ -41,11 +41,7 @@ export default function FAQ() {
           Frequently Asked Question
         </h1>
         <p className="text-center text-gray-500 mb-10 max-w-2xl mx-auto text-sm">
-          Frequently Asked Questions (FAQs) are a collection of commonly asked
-          questions and their answers about a particular topic, service, product,
-          or system. FAQs are designed to provide quick and accessible information
-          to users or customers, reducing the need for additional support or
-          clarification.
+          Frequently Asked Questions (FAQs) berisi kumpulan pertanyaan dan jawaban yang sering ditanyakan seputar organisasi UVICS. Mulai dari kegiatan, keanggotaan, hingga program yang dijalankan. Tujuannya adalah membantu mahasiswa mengenal UVICS lebih mudah dan cepat, tanpa perlu menunggu penjelasan langsung dari pengurus.
         </p>
 
         {/* FAQ Grid */}
