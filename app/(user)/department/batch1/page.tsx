@@ -20,23 +20,23 @@ export default function DepartmentUvics() {
     { id: 1, name: "Aiko Lasut", position: "President", image: "/member/CORETEAM/aiko.webp" },
     { id: 2, name: "Prince Tampi", position: "Vice President", image: "/member/CORETEAM/prince.webp" },
     { id: 3, name: "Dion Kobi", position: "Secretary", image: "/member/CORETEAM/dion.webp" },
-    { id: 4, name: "Syelle Koloay", position: "Vice Secretary", image: "/member/CORETEAM/sela2.webp" },
+    { id: 4, name: "Syeela Koloay", position: "Vice Secretary", image: "/member/CORETEAM/sela2.webp" },
     { id: 5, name: "Marcelo Poluakan", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
     { id: 6, name: "Ananda Solang", position: "Vice Treasurer", image: "/member/PR/ananda.webp" },
   ];
 
   const webDevMembers: MemberType[] = [
-    { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "/member/WEBDEV/grantly.webp" },
-    { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "/member/WEBDEV/nuel.webp" },
+    { id: 1, name: "Grantly Sorongan", position: "PIC Admin Interface", image: "/member/WEBDEV/grenly.webp" },
+    { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "/member/WEBDEV/noel.webp" },
     { id: 3, name: "Prince Tampi", position: "Koordinator", image: "/member/CORETEAM/prince.webp" },
     { id: 4, name: "Adithia Gunawan", position: "Member Admin Interface", image: "/member/CH/adit.webp" },
     { id: 5, name: "Jordan Sutarto", position: "Member Admin Interface", image: "/member/WEBDEV/jordan.webp" },
     { id: 6, name: "Betrand Saputra", position: "Member Admin Interface", image: "/member/WEBDEV/betrand.webp" },
+    { id: 9, name: "Adriel Walintukan", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
     { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "/member/WEBDEV/timo.webp" },
     { id: 8, name: "Nazarya Kandou", position: "Member User Interface", image: "/member/WEBDEV/nazar.webp" },
-    { id: 9, name: "Adriel Walintukan", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
-    { id: 9, name: "Kevin Tjiu", position: "Member User Interface", image: "/member/WEBDEV/kevin.webp" },
-    { id: 10, name: "David Tjia", position: "Member User Interface", image: "/member/WEBDEV/david.webp" },
+    { id: 9, name: "Clio Mataheru", position: "Member User Interface", image: "/member/WEBDEV/clio.webp" },
+    { id: 10, name: "Arlan Jonsend", position: "Member User Interface", image: "/member/EDITOR/Arlan.webp" },
   ];
 
   const publicDocMembers: MemberType[] = [

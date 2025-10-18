@@ -40,12 +40,8 @@ async function getCardById(id: string) {
   return mockData.find((card) => card.id === id) || null;
 }
 
-export default async function CardDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { id } = params; // no await needed
+export default async function CardDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params 
   const card = await getCardById(id);
 
   if (!card) return notFound();

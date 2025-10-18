@@ -103,12 +103,14 @@ const showcaseItems = [
   },
 ];
 
-export default function ShowcasePage({
+export default async function ShowcasePage({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
-  const currentPage = Number(searchParams.page) || 1;
+  const params = await searchParams
+  const currentPage = Number(params.page) || 1;
+
   const cardsPerPage = 8;
   const totalPages = Math.ceil(showcaseItems.length / cardsPerPage);
 

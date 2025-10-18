@@ -27,61 +27,66 @@ export default function DepartmentUvics() {
 
 
   const webDevMembers:MemberType[] = [
-    { id: 1, name: "Krismarvel Ticoalu", position: "PIC Admin Interface", image: "/member/WEBDEV/avel.webp" },
-    { id: 2, name: "Imanuel Palenewen", position: "PIC User Interface", image: "/member/WEBDEV/nuel.webp" },
-    { id: 3, name: "Grantly Sorongan", position: "Koordinator", image: "/member/WEBDEV/grantly.webp" },
-    { id: 5, name: "Jordan Sutarto", position: "Member User Interface", image: "/member/WEBDEV/jordan.webp" },
-    { id: 6, name: "Betrand Saputra", position: "Member User Interface", image: "/member/WEBDEV/betrand.webp" },
-    { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "/member/WEBDEV/timo.webp" },
-    { id: 8, name: "Nazarya Kandou", position: "Member User Interface", image: "/member/WEBDEV/nazar.webp" },
-    { id: 9, name: "Kevin Tjiu", position: "Member User Interface", image: "/member/WEBDEV/kevin.webp" },
+    { id: 1, name: "Krismarvel Ticoalu", position: "PIC Web", image: "/member/WEBDEV/avel.webp" },
+    { id: 2, name: "Imanuel Palenewen", position: "PIC Web", image: "/member/WEBDEV/noel.webp" },
+    { id: 3, name: "Grantly Sorongan", position: "Koordinator", image: "/member/WEBDEV/grenly.webp" },
+    { id: 5, name: "Jordan Sutarto", position: "Member Web", image: "/member/WEBDEV/jordan.webp" },
+    { id: 6, name: "Betrand Saputra", position: "Member Web", image: "/member/WEBDEV/betrand.webp" },
+    { id: 7, name: "Timothy Weley", position: "Member Web", image: "/member/WEBDEV/timo.webp" },
+    { id: 8, name: "Nazarya Kandou", position: "Member Web", image: "/member/WEBDEV/nazar.webp" },
+    { id: 9, name: "Kevin Tjiu", position: "Member Web", image: "/member/WEBDEV/kevin.webp" },
+    { id: 10, name: "David Tjia", position: "Member Web", image: "/member/WEBDEV/david.webp" },
+    { id: 11, name: "Clio Mataheru", position: "Member Web", image: "/member/WEBDEV/clio.webp" },
+    { id: 12, name: "Julio Weol", position: "Member Web", image: "/member/WEBDEV/julio.webp" },
+    { id: 13, name: "Adithia Gunawan", position: "Member Web", image: "/member/CH/adit.webp" },
   ];
 
   const indevMembers:MemberType[] = [
-  { id: 2, name: "Natanael Rantung", position: "PIC INDEV", image: "/member/PR/natan.webp" },
-  { id: 3, name: "Darryl Laluyan", position: "Koordinator", image: "/member/INDEV/deril.webp" },
-  { id: 4, name: "Ariellya Sayow", position: "Member INDEV", image: "/member/INDEV/aril.webp" },
-  { id: 5, name: "Ivana Sondakh", position: "Member INDEV", image: "/member/INDEV/ivana.webp" },
-  { id: 6, name: "Vania Karwur", position: "Member INDEV", image: "/member/PR/vania.webp" },
-  { id: 7, name: "Marcheilla Wenas", position: "Member INDEV", image: "" }
+  { id: 1, name: "Natanael Rantung", position: "PIC INDEV", image: "/member/PR/natan.webp" },
+  { id: 2, name: "Darryl Laluyan", position: "Koordinator", image: "/member/INDEV/deril.webp" },
+  { id: 3, name: "Ariellya Sayow", position: "Member INDEV", image: "/member/INDEV/aril.webp" },
+  { id: 4, name: "Ivana Sondakh", position: "Member INDEV", image: "/member/INDEV/ivana.webp" },
+  { id: 5, name: "Vania Karwur", position: "Member INDEV", image: "/member/PR/vania.webp" },
+  { id: 6, name: "Marcheilla Wenas", position: "Member INDEV", image: "/member/INDEV/cheilla.webp" }
 ];
 
 const exafMembers:MemberType[] = [
-  { id: 2, name: "Marcel Pandelaki", position: "PIC EXAF", image: "/member/PR/marsel.webp" },
-  { id: 3, name: "Reva Rorie", position: "Koordinator", image: "/member/EXTERNAL/reva.webp" },
-  { id: 4, name: "Riset Gosal", position: "Member EXAF", image: "/member/PR/riset.webp" },
-  { id: 5, name: "Rivaldo Kindangen", position: "Member EXAF", image: "" },
-  { id: 6, name: "Lamtiar Nainggolan", position: "Member EXAF", image: "" },
-  { id: 7, name: "Alya Manoppo", position: "Member EXAF", image: "/member/PR/alya.webp" },
-  { id: 8, name: "Yoel Kosenda", position: "Member EXAF", image: "" },
-  { id: 9, name: "Vanda Woruntu", position: "Member EXAF", image: "/member/PR/vanda.webp" },
-  { id: 1, name: "Cheiselio Benne", position: "Member EXAF", image: "" },
+  { id: 1, name: "Marcel Pandelaki", position: "PIC EXAF", image: "/member/PR/marsel.webp" },
+  { id: 2, name: "Reva Rorie", position: "Koordinator", image: "/member/EXTERNAL/reva.webp" },
+  { id: 3, name: "Riset Gosal", position: "Member EXAF", image: "/member/PR/riset.webp" },
+  { id: 4, name: "Rivaldo Kindangen", position: "Member EXAF", image: "/member/EXTERNAL/rivaldo.webp" },
+  { id: 5, name: "Lamtiar Nainggolan", position: "Member EXAF", image: "/member/EXTERNAL/lamtiar.webp" },
+  { id: 6, name: "Alya Manoppo", position: "Member EXAF", image: "/member/PR/alya.webp" },
+  { id: 7, name: "Yoel Kosenda", position: "Member EXAF", image: "/member/EXTERNAL/yoel.webp" },
+  { id: 8, name: "Vanda Woruntu", position: "Member EXAF", image: "/member/EXTERNAL/vanda.webp" },
+  { id: 9, name: "Cheiselio Benne", position: "Member EXAF", image: "/member/EXTERNAL/benne.webp" },
 ];
 
 const editorMembers:MemberType[] = [
-  { id: 2, name: "Thrilya Potalangi", position: "PIC Editor", image: "/member/EDITOR/Thrilya.webp" },
-  { id: 3, name: "Avriel Parengkuan", position: "Koordinator", image: "/member/EDITOR/avril.webp" },
-  { id: 4, name: "Edwardo Waturandang", position: "Member Editor", image: "/member/EDITOR/Edwardo.webp" },
-  { id: 5, name: "Matthew Kambey", position: "Member Editor", image: "" },
-  { id: 6, name: "Mutiara Makarawung", position: "Member Editor", image: "/member/EDITOR/Mutiara.webp" },
-  { id: 7, name: "Gabriel Sumual", position: "Member Editor", image: "" },
+  { id: 1, name: "Thrilya Potalangi", position: "PIC Editor", image: "/member/EDITOR/Thrilya.webp" },
+  { id: 2, name: "Avriel Parengkuan", position: "Koordinator", image: "/member/EDITOR/avril.webp" },
+  { id: 3, name: "Edwardo Waturandang", position: "Member Editor", image: "/member/EDITOR/Edwardo.webp" },
+  { id: 4, name: "Matthew Kambey", position: "Member Editor", image: "/member/EDITOR/met_kambey.webp" },
+  { id: 5, name: "Mutiara Makarawung", position: "Member Editor", image: "/member/EDITOR/Mutiara.webp" },
+  { id: 6, name: "Gabriel Sumual", position: "Member Editor", image: "/member/PR/tor.webp" },
 ];
 
 const prMembers:MemberType[] = [
-  { id: 2, name: "Jeany Pratiwi", position: "PIC PR", image: "/member/PR/jeany.webp" },
-  { id: 3, name: "Marshanda Padmarini", position: "Koordinator", image: "/member/PR/marsha.webp" },
-  { id: 4, name: "Glenvidi Gerungan", position: "Member PR", image: "/member/PR/cipeng.webp" },
-  { id: 5, name: "Cinta Walukow", position: "Member PR", image: "/member/PR/cinta.webp" },
-  { id: 6, name: "Christia Weol", position: "Member PR", image: "/member/PR/christy.webp" },
-  { id: 7, name: "Dhesy Corneles", position: "Member PR", image: "/member/PR/cici.webp" },
-  { id: 8, name: "Renaldy Mantiri", position: "Member PR", image: "" },
+  { id: 1, name: "Jeany Pratiwi", position: "PIC PR", image: "/member/PR/jeany.webp" },
+  { id: 2, name: "Marshanda Padmarini", position: "Koordinator", image: "/member/PR/marsha.webp" },
+  { id: 3, name: "Glenvidi Gerungan", position: "Member PR", image: "/member/PR/cipeng.webp" },
+  { id: 4, name: "Cinta Walukow", position: "Member PR", image: "/member/PR/cinta.webp" },
+  { id: 5, name: "Christia Weol", position: "Member PR", image: "/member/PR/christy.webp" },
+  { id: 6, name: "Dhesy Corneles", position: "Member PR", image: "/member/PR/cici.webp" },
+  { id: 7, name: "Tiara Mamuaya", position: "Member PR", image: "/member/PR/tiara.webp" },
+  { id: 8, name: "Renaldy Mantiri", position: "Member PR", image: "/member/PR/renaldy.webp" },
   { id: 9, name: "Vicky Manjanduga", position: "Member PR", image: "/member/PR/vicky.webp" },
 ];
 const comhandmembers:MemberType[] = [
-  { id: 2, name: "Siao Ling nyo", position: "PIC PR", image: "/member/CH/Xiaoling.webp" },
-  { id: 3, name: "Arlan Jonsend", position: "Koordinator", image: "/member/EDITOR/Arlan.webp" },
-  { id: 4, name: "Anggreiny Sondakh", position: "Member PR", image: "/member/CH/ang.webp" },
-  { id: 5, name: "Syalom Angginaloy", position: "Member PR", image: "" }
+  { id: 1, name: "Siao Ling nyo", position: "PIC Comhand", image: "/member/CH/Xiaoling.webp" },
+  { id: 2, name: "Arlan Jonsend", position: "Koordinator", image: "/member/EDITOR/Arlan.webp" },
+  { id: 3, name: "Anggreiny Sondakh", position: "Member Comhand", image: "/member/CH/ang.webp" },
+  { id: 4, name: "Syalom Angginaloy", position: "Member Comhand", image: "/member/CH/syalom.webp" }
 ];
 
   // === Card Member ===

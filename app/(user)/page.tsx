@@ -31,7 +31,7 @@ export default function HomePage() {
                 membantu anggotanya mengembangkan keterampilan, kolaborasi, dan inovasi.
               </p>
               <div className="absolute bottom-2 -mb-5 right-4 p-1 ">
-                <a href="#" className="bg-blue-500 opacity-60 hover:opacity-100 text-white text-sm px-1 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors duration-300 inline-flex items-center">
+                <a href="/about" className="bg-blue-500 opacity-60 hover:opacity-100 text-white text-sm px-1 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors duration-300 inline-flex items-center">
                   Selengkapnya
                 </a>
               </div>
