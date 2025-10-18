@@ -58,7 +58,7 @@ export default function Navbar() {
   const departmentItems = [
     { href: "/department/batch1", label: "Batch-1" },
     { href: "/department/batch2", label: "Batch-2" },
-    { href: "/department/batch2-5", label: "Batch-2-5" },
+    { href: "/department/batch3", label: "Batch-2.5" },
   ];
 
   return (
