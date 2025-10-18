@@ -4,44 +4,15 @@ import { mockData } from "../mockData";
 
 
 async function getCardById(id: string) {
-  const mockData = [
-    {
-      id: "1",
-      image: "/Logo UVICS.jpeg",
-      title: "AI Hackathon",
-      lomba: "Hackathon 2025",
-      members: ["Alice", "Bob", "Charlie"],
-      description:
-        "Our team developed an AI model that achieved first place in the 2025 hackathon event.",
-      tags: ["AI", "Hackathon", "Winner"],
-    },
-    {
-      id: "2",
-      image: "/sample2.jpg",
-      title: "Web Design Contest",
-      lomba: "Creative Design 2025",
-      members: ["David", "Emma"],
-      description:
-        "We designed a modern responsive UI/UX for a travel platform using Next.js and TailwindCSS.",
-      tags: ["Design", "Next.js", "TailwindCSS"],
-    },
-    {
-      id: "3",
-      image: "/sample3.jpg",
-      title: "Mobile App Challenge",
-      lomba: "App Development 2025",
-      members: ["Frank", "Grace"],
-      description:
-        "Our mobile app focused on productivity and collaboration, helping users stay on track.",
-      tags: ["Mobile", "React Native", "Productivity"],
-    },
-  ];
-
   return mockData.find((card) => card.id === id) || null;
 }
 
-export default async function CardDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params 
+export default async function CardDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const card = await getCardById(id);
 
   if (!card) return notFound();
@@ -51,7 +22,7 @@ export default async function CardDetailPage({ params }: { params: Promise<{ id:
       {/* Header Section */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Image */}
-        <div className="w-full md:w-1/2 h-72 relative rounded-3xl overflow-hidden shadow-md">
+        <div className="w-full  md:w-1/2 h-72 relative rounded-3xl overflow-hidden shadow-md">
           <Image
             src={card.image}
             alt={card.title}
