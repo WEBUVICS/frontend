@@ -14,6 +14,7 @@ export default function DepartmentUvics() {
   const Advisor:MemberType[] = [
     { id: 1, name: "Stenly R. Pungus, S.Kom, M.IT, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor1.webp" },
     { id: 2, name: "Semmy W. Taju S.Kom, M.S, Ph.D", position: "Advisor", image: "/member/CORETEAM/advisor2.webp" },
+    
   ];
   
 
@@ -167,7 +168,7 @@ const comhandmembers:MemberType[] = [
             640: { slidesPerView: 4 },
             768: { slidesPerView: 4 },
             1024: { slidesPerView: 5 },
-            1440: { slidesPerView: 6 },
+            1440: { slidesPerView: 5 },
           }}
         >
           {normalMembers.map((member) => (

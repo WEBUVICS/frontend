@@ -15,6 +15,7 @@ export default function FAQ() {
     { q: "Apakah UVICS hanya fokus pada kompetisi internal kampus?", a: "Tidak. UVICS juga berpartisipasi dalam kompetisi tingkat nasional maupun internasional, serta membuat program-program inovatif yang memberi dampak ke masyarakat" },
     { q: "Apakah semua anggota UVICS wajib ikut lomba?", a: "Tidak semua lomba wajib diikuti, tetapi anggota diharapkan aktif berpartisipasi sesuai bidang dan minat masing-masing" },
     { q: "Apakah mahasiswa baru boleh langsung ikut lomba melalui UVICS?", a: "Ya, tentu saja! Mahasiswa baru justru sangat dianjurkan untuk ikut serta agar bisa belajar sejak awal, mendapatkan pengalaman, dan membangun portofolio lebih cepat." },
+    
   ];
 
   // state untuk masing-masing sisi
