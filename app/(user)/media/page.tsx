@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { CalendarX, MegaphoneOff } from "lucide-react"; // ✅ icon untuk empty state
 import EventCard from "@/components/userComponents/eventCard";
 import AnnouncementCard from "@/components/userComponents/announcementCard";
+import { DataAnnouncement } from "./dataAnnounce";
+import { DataEvent } from "./dataEvent";
 
 const images = [
   "/gallery/foto-1.webp",
@@ -22,10 +25,9 @@ const images = [
   "/gallery/foto15.webp",
   "/gallery/foto-16.webp",
   "/gallery/foto-17.webp",
- 
 ];
 
-// bagi foto jadi beberapa baris
+// Bagi foto menjadi beberapa baris
 const rows = 4;
 const rowImages = Array.from({ length: rows }, (_, rowIndex) =>
   images.filter((_, i) => i % rows === rowIndex)
@@ -42,7 +44,6 @@ export default function UserMedia() {
           </span>
         </div>
 
-        {/* baris */}
         <div className="flex flex-col gap-10 w-full">
           {rowImages.map((row, rowIndex) => {
             const toLeft = rowIndex % 2 === 0;
@@ -58,7 +59,6 @@ export default function UserMedia() {
                     ease: "linear",
                   }}
                 >
-                  {/* isi row */}
                   {row.map((src, i) => (
                     <div
                       key={i}
@@ -99,102 +99,73 @@ export default function UserMedia() {
       {/* Event Section */}
       <section className="min-h-screen bg-white py-16 w-full font-sans">
         <div className="max-w-7xl mx-auto px-8">
-          {/* Header */}
           <div className="text-center mb-16">
             <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
               EVENT
             </span>
           </div>
 
-          {/* Event Cards */}
-          <div className="space-y-8">
-            {/* Horizontal Layout */}
-            <EventCard
-              image="https://picsum.photos/id/1015/800/600"
-              title="UVICS GELAR PERTEMUAN PERDANA 2024"
-              description="UVICS SUKSES MENGGELAR PERTEMUAN PERDANA PADA JUMAT, 11 OKTOBER 2024 DI SETU BABAKAN JAKARTA SELATAN. KEGIATAN ACARA INI DIHADIRI OLEH LEBIH DARI 30 ANGGOTA YANG ANTUSIAS UNTUK MENYAMBUT AGENDA DAN KOMPETISI TAHUN DEPAN. ACARA INI BERLANGSUNG DENGAN SANGAT MERIAH DENGAN POIN PENTING YANG DIBAHAS MELIPUTI PERKENALAN ORGANISASI, KEGIATAN KOMPETITIF, DAN UPACARA TAHUN DEPAN. UVICS SANGAT SENANG DAPAT BERTEMU DENGAN PARA ANGGOTA BARU YANG SIAP MELANGKAH MENUJU PRESTASI LEBIH BESAR TAHUN INI."
-              hashtag="#UVICS2024 #BERSAMAMERAIHPRESTASI"
-            />
-
-            <EventCard
-              image="https://picsum.photos/id/1015/800/600"
-              title="UVICS GELAR PERTEMUAN PERDANA 2024"
-              description="UVICS SUKSES MENGGELAR PERTEMUAN PERDANA PADA JUMAT, 11 OKTOBER 2024 DI SETU BABAKAN JAKARTA SELATAN. KEGIATAN ACARA INI DIHADIRI OLEH LEBIH DARI 30 ANGGOTA YANG ANTUSIAS UNTUK MENYAMBUT AGENDA DAN KOMPETISI TAHUN DEPAN. ACARA INI BERLANGSUNG DENGAN SANGAT MERIAH DENGAN POIN PENTING YANG DIBAHAS MELIPUTI PERKENALAN ORGANISASI, KEGIATAN KOMPETITIF, DAN UPACARA TAHUN DEPAN. UVICS SANGAT SENANG DAPAT BERTEMU DENGAN PARA ANGGOTA BARU YANG SIAP MELANGKAH MENUJU PRESTASI LEBIH BESAR TAHUN INI."
-              hashtag="#UVICS2024 #BERSAMAMERAIHPRESTASI"
-            />
-
-            <EventCard
-              image="https://picsum.photos/id/1015/800/600"
-              title="UVICS GELAR PERTEMUAN PERDANA 2024"
-              description="UVICS SUKSES MENGGELAR PERTEMUAN PERDANA PADA JUMAT, 11 OKTOBER 2024 DI SETU BABAKAN JAKARTA SELATAN. KEGIATAN ACARA INI DIHADIRI OLEH LEBIH DARI 30 ANGGOTA YANG ANTUSIAS UNTUK MENYAMBUT AGENDA DAN KOMPETISI TAHUN DEPAN. ACARA INI BERLANGSUNG DENGAN SANGAT MERIAH DENGAN POIN PENTING YANG DIBAHAS MELIPUTI PERKENALAN ORGANISASI, KEGIATAN KOMPETITIF, DAN UPACARA TAHUN DEPAN. UVICS SANGAT SENANG DAPAT BERTEMU DENGAN PARA ANGGOTA BARU YANG SIAP MELANGKAH MENUJU PRESTASI LEBIH BESAR TAHUN INI."
-              hashtag="#UVICS2024 #BERSAMAMERAIHPRESTASI"
-            />
-          </div>
+          {DataEvent.length > 0 ? (
+            <div className="space-y-8">
+              {DataEvent.map((event) => (
+                <EventCard
+                  key={event.id}
+                  image={event.image}
+                  title={event.title}
+                  description={event.description}
+                  hashtag={event.hashtag}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 rounded-3xl shadow-inner">
+              <CalendarX className="w-20 h-20 text-gray-400 mb-6" strokeWidth={1.5} />
+              <h2 className="text-2xl font-semibold text-gray-600">
+                Belum ada event yang tersedia
+              </h2>
+              <p className="text-gray-500 mt-2">
+                Nantikan event menarik dari kami selanjutnya 🎉
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Announcement Section */}
       <section className="min-h-screen bg-white py-16 w-full font-sans">
         <div className="max-w-7xl mx-auto px-8">
-          {/* Header */}
           <div className="text-center mb-16">
             <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
               ANNOUNCEMENT
             </span>
           </div>
 
-          {/* Announcement Cards */}
-          <div className="space-y-12">
-            <AnnouncementCard
-              mainTitle="UVICS Guest Speaker Session"
-              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
-              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
-              date="Sabtu, 14 Desember 2024"
-              time="10:00 - 12:00 WITA"
-              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
-              image="https://picsum.photos/id/1043/400/400"
-            />
-
-            <AnnouncementCard
-              mainTitle="UVICS Guest Speaker Session"
-              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
-              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
-              date="Sabtu, 14 Desember 2024"
-              time="10:00 - 12:00 WITA"
-              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
-              image="https://picsum.photos/id/1043/400/400"
-            />
-
-            <AnnouncementCard
-              mainTitle="UVICS Guest Speaker Session"
-              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
-              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
-              date="Sabtu, 14 Desember 2024"
-              time="10:00 - 12:00 WITA"
-              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
-              image="https://picsum.photos/id/1043/400/400"
-            />
-
-            <AnnouncementCard
-              mainTitle="UVICS Guest Speaker Session"
-              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
-              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
-              date="Sabtu, 14 Desember 2024"
-              time="10:00 - 12:00 WITA"
-              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
-              image="https://picsum.photos/id/1043/400/400"
-            />
-
-            <AnnouncementCard
-              mainTitle="UVICS Guest Speaker Session"
-              title="Unlocking Creativity: Innovative Solutions for the Digital Era"
-              description="UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital."
-              date="Sabtu, 14 Desember 2024"
-              time="10:00 - 12:00 WITA"
-              location="Aula Universitas Klabat atau via Zoom (link akan diberikan)"
-              image="https://picsum.photos/id/1043/400/400"
-            />
-          </div>
+          {DataAnnouncement.length > 0 ? (
+            <div className="space-y-12">
+              {DataAnnouncement.map((announc) => (
+                <AnnouncementCard
+                  key={announc.id}
+                  mainTitle={announc.mainTitle}
+                  title={announc.title}
+                  description={announc.description}
+                  date={announc.date}
+                  location={announc.location}
+                  time={announc.time}
+                  image={announc.image}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 rounded-3xl shadow-inner">
+              <MegaphoneOff className="w-20 h-20 text-gray-400 mb-6" strokeWidth={1.5} />
+              <h2 className="text-2xl font-semibold text-gray-600">
+                Belum ada pengumuman saat ini
+              </h2>
+              <p className="text-gray-500 mt-2">
+                Cek kembali nanti untuk informasi terbaru 📢
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </>
