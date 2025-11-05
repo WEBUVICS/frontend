@@ -2,6 +2,10 @@
 "use client";
 
 import Image from "next/image";
+import { DataEvent, EventType } from "./media/dataEvent";
+import { CalendarX, MegaphoneOff } from "lucide-react"; // icon untuk empty state
+import EventCard from "@/components/userComponents/eventCard";
+import { RegistrationButton } from "@/components/userComponents/RegistrationButton";
 
 export default function HomePage() {
   return (
@@ -114,9 +118,7 @@ export default function HomePage() {
 
           {/* Call to Action */}
           <div className="text-center mt-12">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md">
-              Daftar Sekarang
-            </button>
+            <RegistrationButton />
           </div>
         </div>
       </section>
@@ -134,7 +136,7 @@ export default function HomePage() {
       </section>
 
       {/* Carousel Section */}
-      <section className="my-12">
+      {/* <section className="my-12">
         <div className="container mx-auto">
           <h2 className="text-2xl font-bold text-center mb-6">Events</h2>
           <div className="flex flex-col md:flex-row justify-around items-center gap-4">
@@ -160,6 +162,41 @@ export default function HomePage() {
               className="w-1/2 md:w-1/4 h-auto"
             />
           </div>
+        </div>
+      </section> */}
+
+      {/* Event Section */}
+      <section className="min-h-screen bg-white py-16 w-full font-sans">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-16">
+            <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
+              EVENT
+            </span>
+          </div>
+
+          {DataEvent.length > 0 && DataEvent ? (
+            <div className="space-y-8">
+              {DataEvent.map((event:EventType) => (
+                <EventCard
+                  key={event.id}
+                  image={event.image}
+                  title={event.title}
+                  description={event.description}
+                  hashtag={event.hashtag}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 rounded-3xl shadow-inner">
+              <CalendarX className="w-20 h-20 text-gray-400 mb-6" strokeWidth={1.5} />
+              <h2 className="text-2xl font-semibold text-gray-600">
+                Belum ada event yang tersedia
+              </h2>
+              <p className="text-gray-500 mt-2">
+                Nantikan event menarik dari kami selanjutnya 🎉
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
