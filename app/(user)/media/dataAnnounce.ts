@@ -1,12 +1,12 @@
 export const DataAnnouncement = [
     {
         id: 'A001',
-        mainTitle: "UVICS Guest Speaker Session",
-        title: "Unlocking Creativity: Innovative Solutions for the Digital Era",
-        description: "UVICS dengan bangga mengundang Anda untuk menghadiri sesi bersama pembicara tamu kami yang luar biasa. [Nama Pembicara], seorang ahli di bidang keahlian pembicara, seperti UI/UX, Web Development, atau Bisnis Digital]. Dalam sesi ini, kita akan membahas strategi dan wawasan terkini untuk menciptakan solusi inovatif di era digital.",
-        date: "Sabtu, 14 Desember 2024",
-        time: "10:00 - 12:00 WITA",
-        location: "Aula Universitas Klabat atau via Zoom (link akan diberikan)",
-        image: "https://picsum.photos/id/1043/400/400"
+        mainTitle: "UVICS Goes To Beach 2025",
+        title: "UVICS Goes To Beach – Sunday, 30 November 2025",
+        description: "UVICS akan mengadakan kegiatan refreshing bersama di pantai! Kegiatan ini bertujuan untuk mempererat kebersamaan dan bersama-sama menikmati waktu santai di akhir pekan. Di kegiatan ini sudah termasuk makan siang, transportation, fun games, dan beach entry. Yuk ikut dan nikmati momen seru bersama teman-teman UVICS!",
+        date: "Minggu, 30 November 2025",
+        time: "9.00 - Selesai",
+        location: "Indo Beach Lalumpe",
+        image: "/event/announcement1.webp"
     }
 ]
