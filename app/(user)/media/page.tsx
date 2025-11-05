@@ -6,7 +6,7 @@ import { CalendarX, MegaphoneOff } from "lucide-react"; // ✅ icon untuk empty 
 import EventCard from "@/components/userComponents/eventCard";
 import AnnouncementCard from "@/components/userComponents/announcementCard";
 import { DataAnnouncement } from "./dataAnnounce";
-import { DataEvent } from "./dataEvent";
+import { DataEvent, EventType } from "./dataEvent";
 
 const images = [
   "/gallery/foto-1.webp",
@@ -105,9 +105,9 @@ export default function UserMedia() {
             </span>
           </div>
 
-          {DataEvent.length > 0 ? (
+          {DataEvent.length > 0 && DataEvent ? (
             <div className="space-y-8">
-              {DataEvent.map((event) => (
+              {DataEvent.map((event:EventType) => (
                 <EventCard
                   key={event.id}
                   image={event.image}

@@ -7,3 +7,13 @@ export const DataEvent = [
     //     hashtag: "#UVICS2024 #BERSAMAMERAIHPRESTASI"
     // }
 ]
+
+
+
+export interface EventType {
+    id:string
+    image: string
+    title: string
+    description: string
+    hashtag: string
+}
