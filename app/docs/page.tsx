@@ -76,13 +76,16 @@ export default function DocsPage() {
                     </ol>
 
                     <h3 className="text-xl font-semibold mt-6 text-blue-600">Penanganan Gambar Anggota:</h3>
+                    <InfoAlert>
+                        Dan untuk image wajib memiliki format .webp dengan size lebih kecil dari 1MB
+                    </InfoAlert>
                     <ol className="list-decimal list-inside ml-6 space-y-3">
-                        <li>Simpan file gambar (misalnya, `john.jpg`) ke folder:
+                        <li>Simpan file gambar (misalnya, `john.webp`) ke folder:
                             <CodeBlock>public/member/&lt;department&gt;</CodeBlock>
                         </li>
                         <li>Perbarui *field* `image` di *array* dengan URL relatif:
-                            <CodeBlock>{"/member/<department>/<nama-file>.jpg"}</CodeBlock>
-                            <span className="text-xs text-gray-500 block mt-1">Contoh: `"image": "/member/dev/jane.png"`</span>
+                            <CodeBlock>{"/member/<department>/<nama-file>.webp"}</CodeBlock>
+                            <span className="text-xs text-gray-500 block mt-1">Contoh: `"image": "/member/dev/jane.webp"`</span>
                         </li>
                     </ol>
                 </SectionCard>
@@ -109,8 +112,11 @@ export default function DocsPage() {
                     </ul>
 
                     <h3 className="text-xl font-semibold mt-6 text-blue-600">Penanganan Gambar Proyek:</h3>
+                    <InfoAlert>
+                        Dan untuk image wajib memiliki format .webp dengan size lebih kecil dari 1MB
+                    </InfoAlert>
                     <ol className="list-decimal list-inside ml-6 space-y-3">
-                        <li>Simpan file gambar *showcase* (misalnya, `app_project.png`) ke folder:
+                        <li>Simpan file gambar *showcase* (misalnya, `app_project.webp`) ke folder:
                             <CodeBlock>public/project</CodeBlock>
                         </li>
                         <li>Perbarui *field* `image` di `mockDate.ts` dengan URL relatif:
@@ -126,7 +132,7 @@ export default function DocsPage() {
                     icon={<Megaphone className="w-6 h-6 text-orange-500" />}
                 >
                     <InfoAlert>
-                        Pembaruan data media dibagi menjadi dua file terpisah: satu untuk pengumuman, satu untuk acara.
+                        Pembaruan data media dibagi menjadi dua file terpisah: satu untuk pengumuman, satu untuk acara. Dan untuk image wajib memiliki format .webp dengan size lebih kecil dari 1MB
                     </InfoAlert>
                     
                     <h3 className="text-xl font-semibold mt-6 text-gray-700">3.1. Announcement (Pengumuman)</h3>
@@ -139,7 +145,7 @@ export default function DocsPage() {
                     <CodeBlock>public/announcement</CodeBlock>
                     {/* END PERBAIKAN */}
 
-                    <CodeBlock className="mt-1 text-xs">Contoh URL: `"image": "/announcement/poster_rapat.jpg"`</CodeBlock>
+                    <CodeBlock className="mt-1 text-xs">Contoh URL: `"image": "/announcement/poster_rapat.webp"`</CodeBlock>
 
                     <h3 className="text-xl font-semibold mt-6 text-gray-700">3.2. Event (Acara)</h3>
                     <h4 className="font-semibold mt-2">Lokasi File:</h4>
@@ -151,7 +157,7 @@ export default function DocsPage() {
                     <CodeBlock>public/event</CodeBlock>
                     {/* END PERBAIKAN */}
 
-                    <CodeBlock className="mt-1 text-xs">Contoh URL: `"image": "/event/webinar_poster.png"`</CodeBlock>
+                    <CodeBlock className="mt-1 text-xs">Contoh URL: `"image": "/event/webinar_poster.webp"`</CodeBlock>
                 </SectionCard>
                 
                 {/* --- Bagian 4: Frequently Asked Questions (FAQ) (Tidak Ada Perubahan) --- */}
