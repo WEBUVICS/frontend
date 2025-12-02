@@ -78,7 +78,7 @@ export default function FAQ() {
 
           {/* Kanan */}
           <div className="w-1/2 flex flex-col gap-2">
-            {faqs.slice(5, 10).map((faq, i) => (
+            {faqs.slice(5, faqs.length).map((faq, i) => (
               <div
                 key={i}
                 className="bg-white rounded-lg shadow px-4 py-3 cursor-pointer transition"

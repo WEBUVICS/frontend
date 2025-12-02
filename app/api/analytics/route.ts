@@ -1,6 +1,43 @@
 import { NextResponse } from "next/server";
 import { getGA4Data } from "@/lib/analytics";
 
+/**
+ * @swagger
+ * /api/analytics:
+ *   get:
+ *     tags:
+ *       - Analytics
+ *     summary: Get analytics data from GA4
+ *     parameters:
+ *       - in: query
+ *         name: metric
+ *         required: false
+ *         schema:
+ *           type: string
+ *           example: activeUsers
+ *       - in: query
+ *         name: range
+ *         required: false
+ *         schema:
+ *           type: string
+ *           enum: [today, 7days, 30days, all-time]
+ *           example: today
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 metric:
+ *                   type: string
+ *                   example: activeUsers
+ *                 value:
+ *                   type: number
+ *                   example: 157
+ */
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const metric = searchParams.get("metric") || "activeUsers";
