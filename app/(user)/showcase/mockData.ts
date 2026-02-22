@@ -48,5 +48,15 @@ export const mockData = [
       description:
         "Tim D’Netra dari Universitas Klabat berhasil meraih Juara 3 dalam ajang Business Plan Competition 2025 kategori Bisnis Digital melalui proyek inovatif mereka yang berfokus pada pendidikan inklusif. D’Netra merupakan platform pembelajaran digital yang dirancang khusus untuk mendukung siswa penyandang disabilitas tunanetra agar dapat belajar secara mandiri dan setara. Aplikasi ini mengintegrasikan teknologi AI, pembaca layar, navigasi suara, dan dukungan perangkat Braille Display, sehingga pengalaman belajar menjadi lebih mudah diakses dan interaktif. Dengan pendekatan Universal Design for Learning (UDL) dan kepatuhan terhadap standar WCAG 2.1, D’Netra menjadi terobosan nyata dalam upaya mewujudkan pendidikan inklusif di Indonesia. Keberhasilan tim D’Netra mencerminkan komitmen mereka dalam menggabungkan empati, inovasi, dan teknologi untuk menciptakan solusi pendidikan yang berkeadilan bagi semua.",
       tags: ["competition", "businessplan", "e-learning", "AI", "inclusion", "innovation", "dnetra"]
+    },
+    {
+      id: "6",
+      image: "/project/project_5.webp",
+      title: "D'Netra",
+      lomba: "Business Plan Competition – Indonesian IT Competition 2025",
+      members: ["Reva Elzany Rorie", "Darryl Daniel Laluyan", "Alya Priskila Gracia Manoppo"],
+      description:
+        "Tim D’Netra dari Universitas Klabat berhasil meraih Juara 3 dalam ajang Business Plan Competition 2025 kategori Bisnis Digital melalui proyek inovatif mereka yang berfokus pada pendidikan inklusif. D’Netra merupakan platform pembelajaran digital yang dirancang khusus untuk mendukung siswa penyandang disabilitas tunanetra agar dapat belajar secara mandiri dan setara. Aplikasi ini mengintegrasikan teknologi AI, pembaca layar, navigasi suara, dan dukungan perangkat Braille Display, sehingga pengalaman belajar menjadi lebih mudah diakses dan interaktif. Dengan pendekatan Universal Design for Learning (UDL) dan kepatuhan terhadap standar WCAG 2.1, D’Netra menjadi terobosan nyata dalam upaya mewujudkan pendidikan inklusif di Indonesia. Keberhasilan tim D’Netra mencerminkan komitmen mereka dalam menggabungkan empati, inovasi, dan teknologi untuk menciptakan solusi pendidikan yang berkeadilan bagi semua.",
+      tags: ["competition", "businessplan", "e-learning", "AI", "inclusion", "innovation", "dnetra"]
     }
 ];

@@ -22,7 +22,7 @@ export default function DepartmentUvics() {
   { id: 1, name: "Aiko Lasut", position: "President", image: "/member/CORETEAM/aiko.webp" },
   { id: 2, name: "Prince Tampi", position: "Vice President", image: "/member/CORETEAM/prince.webp" },
   { id: 3, name: "Dion Kobi", position: "Secretary", image: "/member/CORETEAM/dion.webp" },
-  { id: 4, name: "Vania Karwur", position: "Vice Secretary", image: "/member/PR/vania.webp" },
+  { id: 4, name: "Vania", position: "Vice Secretary", image: "/member/PR/vania.webp" },
   { id: 5, name: "Marcelo Poluakan", position: "Treasurer", image: "/member/CORETEAM/ralf.webp" },
   { id: 6, name: "Timothy Weley", position: "Vice Treasurer", image: "/member/CORETEAM/wakil-ben.webp" },
 ];
