@@ -25,7 +25,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UVICS WEBSITE",
+  title: "UVICS",
   description: "Silahkan kunjungi website uvics.",
   icons: { icon: { url: "/favicon.jpg", type: "image/jpg" } },
 };
