@@ -304,9 +304,5 @@ Punya pertanyaan, saran, atau ingin berkolaborasi? Hubungi kami melalui:
 ---
 
 <p align="center">
-  Dibuat dengan ❤️ oleh <strong>Tim Web Development UVICS</strong>
-</p>
-
-<p align="center">
-  <img src="public/icon/logo_uvics.webp" alt="UVICS" width="60" />
+  Dibuat oleh <strong>Divisi Web Development UVICS</strong>
 </p>
