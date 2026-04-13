@@ -59,6 +59,7 @@ export default function Navbar() {
     { href: "/department/batch1", label: "Batch-1" },
     { href: "/department/batch2", label: "Batch-2" },
     { href: "/department/batch3", label: "Batch-2.5" },
+    { href: "#", label: "Batch-3.0", disabled: true },
   ];
 
   return (
@@ -130,21 +131,30 @@ export default function Navbar() {
                       : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                   }`}
                 >
-                  {departmentItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={cn(
-                        "block px-4 py-2 rounded-md transition-colors duration-300 font-semibold text-sm first:rounded-t-md last:rounded-b-md",
-                        isActiveRoute(item.href)
-                          ? "!bg-[#ff9e3d] !text-white"
-                          : "hover:!bg-[#ff9e3d] hover:text-black"
-                      )}
-                      onClick={() => setDeptOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+                  {departmentItems.map((item) =>
+                    item.disabled ? (
+                      <span
+                        key={item.label}
+                        className="block px-4 py-2 rounded-md font-semibold text-sm first:rounded-t-md last:rounded-b-md opacity-50 cursor-not-allowed"
+                      >
+                        {item.label}
+                      </span>
+                    ) : (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                          "block px-4 py-2 rounded-md transition-colors duration-300 font-semibold text-sm first:rounded-t-md last:rounded-b-md",
+                          isActiveRoute(item.href)
+                            ? "!bg-[#ff9e3d] !text-white"
+                            : "hover:!bg-[#ff9e3d] hover:text-black"
+                        )}
+                        onClick={() => setDeptOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -221,24 +231,33 @@ export default function Navbar() {
               mobileDeptOpen ? "max-h-40" : "max-h-0"
             }`}
           >
-            {departmentItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "block px-6 py-2 text-left font-medium transition-colors duration-300",
-                  isActiveRoute(item.href)
-                    ? "!bg-[rgb(255,158,61)] !text-white"
-                    : "hover:!bg-[#ff9e3d] hover:text-black"
-                )}
-                onClick={() => {
-                  setIsOpen(false);
-                  setMobileDeptOpen(false);
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {departmentItems.map((item) =>
+              item.disabled ? (
+                <span
+                  key={item.label}
+                  className="block px-6 py-2 text-left font-medium opacity-50 cursor-not-allowed"
+                >
+                  {item.label}
+                </span>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "block px-6 py-2 text-left font-medium transition-colors duration-300",
+                    isActiveRoute(item.href)
+                      ? "!bg-[rgb(255,158,61)] !text-white"
+                      : "hover:!bg-[#ff9e3d] hover:text-black"
+                  )}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setMobileDeptOpen(false);
+                  }}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
         </div>
 
