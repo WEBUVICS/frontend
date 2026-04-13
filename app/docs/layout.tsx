@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   title: "Dokumentasi UVICS",
   description: "Silahkan kunjungi dokumentasi uvics",
   icons: {
-    icon: {url: '/favicon.jpg', type: 'image/jpg', }
-  }
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
