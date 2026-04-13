@@ -264,7 +264,7 @@ Proyek ini bersifat **private** dan dikembangkan secara internal oleh tim **UVIC
 Semua hak cipta dilindungi. Penggunaan, distribusi, atau reproduksi tanpa izin tertulis dari organisasi UVICS tidak diperkenankan.
 
 ```
-Copyright © 2025 UVICS · UNKLAB Virtue in Computer Science.
+Copyright © 2026 UVICS · UNKLAB Virtue in Computer Science.
 All rights reserved.
 ```
 
