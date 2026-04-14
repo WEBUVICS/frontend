@@ -34,14 +34,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://uvics.unklab.ac.id",
+    url: "https://uvics.my.id",
     siteName: "UVICS - Unklab Virtue in Computer Science",
     title: "UVICS | Bersama Meraih Prestasi",
     description:
       "Organisasi mahasiswa Unklab untuk kompetisi teknologi & bisnis. Kembangkan potensi, bangun tim solid, raih prestasi bersama-sama.",
     images: [
       {
-        url: "https://uvics.unklab.ac.id/uvics-og-image.jpg",
+        url: "https://uvics.my.id/uvics-og-image.jpg",
         width: 1200,
         height: 630,
         alt: "UVICS - Unklab Virtue in Computer Science",
