@@ -25,10 +25,29 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UVICS WEBSITE",
-  description: "Silahkan kunjungi website uvics.",
+  title: "UVICS | Bersama Meraih Prestasi",
+  description:
+    "Organisasi mahasiswa Unklab untuk kompetisi teknologi & bisnis. Kembangkan potensi, bangun tim solid, raih prestasi bersama-sama.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://uvics.unklab.ac.id",
+    siteName: "UVICS - Unklab Virtue in Computer Science",
+    title: "UVICS | Bersama Meraih Prestasi",
+    description:
+      "Organisasi mahasiswa Unklab untuk kompetisi teknologi & bisnis. Kembangkan potensi, bangun tim solid, raih prestasi bersama-sama.",
+    images: [
+      {
+        url: "https://uvics.unklab.ac.id/uvics-og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "UVICS - Unklab Virtue in Computer Science",
+        type: "image/jpeg",
+      },
+    ],
   },
 };
 
