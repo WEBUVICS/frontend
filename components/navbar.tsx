@@ -63,8 +63,8 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-[#4d8bff] text-white shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <nav className="bg-[#4d8bff] text-white border-b border-white/10 shadow-sm fixed w-full z-50">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <div className="w-[50px] h-[50px] flex items-center justify-center">
@@ -86,7 +86,7 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:block">
           <NavigationMenu className="relative">
-            <NavigationMenuList className="flex items-center gap-2">
+            <NavigationMenuList className="flex items-center gap-4">
               {/* Home */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -97,7 +97,7 @@ export default function Navbar() {
                       "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
                       isActiveRoute("/")
                         ? "!bg-[#ff9e3d] !text-white"
-                        : "hover:!bg-[#ff9e3d] hover:text-black"
+                        : "hover:!bg-[#ff9e3d] hover:!text-white"
                     )}
                   >
                     Home
@@ -114,7 +114,7 @@ export default function Navbar() {
                     "px-5 py-2 rounded-md font-bold transition-colors duration-300 flex items-center gap-1 cursor-pointer text-sm",
                     isActiveRoute("/department")
                       ? "!bg-[#ff9e3d] !text-white"
-                      : "hover:!bg-[#ff9e3d] hover:text-black"
+                      : "hover:!bg-[#ff9e3d] hover:!text-white"
                   )}
                 >
                   Department
@@ -148,7 +148,7 @@ export default function Navbar() {
                           "block px-4 py-2 rounded-md transition-colors duration-300 font-semibold text-sm first:rounded-t-md last:rounded-b-md",
                           isActiveRoute(item.href)
                             ? "!bg-[#ff9e3d] !text-white"
-                            : "hover:!bg-[#ff9e3d] hover:text-black"
+                            : "hover:!bg-[#ff9e3d] hover:!text-white"
                         )}
                         onClick={() => setDeptOpen(false)}
                       >
@@ -170,7 +170,7 @@ export default function Navbar() {
                         "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
                         isActiveRoute(item.href)
                           ? "!bg-[#ff9e3d] !text-white"
-                          : "hover:!bg-[#ff9e3d] hover:text-black"
+                          : "hover:!bg-[#ff9e3d] hover:!text-white"
                       )}
                     >
                       {item.label}
@@ -195,7 +195,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "md:hidden bg-[#4d8bff] transition-all duration-500 ease-in-out overflow-hidden",
+          "md:hidden bg-[#4d8bff] transition-all duration-500 ease-in-out overflow-hidden border-b border-white/10",
           isOpen ? "max-h-[500px] opacity-100 py-2" : "max-h-0 opacity-0 py-0"
         )}
       >
@@ -206,7 +206,7 @@ export default function Navbar() {
             "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
             isActiveRoute("/")
               ? "!bg-[#ff9e3d] !text-white"
-              : "hover:!bg-[#ff9e3d] hover:text-black"
+              : "hover:!bg-[#ff9e3d] hover:!text-white"
           )}
           onClick={() => setIsOpen(false)}
         >
@@ -248,7 +248,7 @@ export default function Navbar() {
                     "block px-6 py-2 text-left font-medium transition-colors duration-300",
                     isActiveRoute(item.href)
                       ? "!bg-[rgb(255,158,61)] !text-white"
-                      : "hover:!bg-[#ff9e3d] hover:text-black"
+                      : "hover:!bg-[#ff9e3d] hover:!text-white"
                   )}
                   onClick={() => {
                     setIsOpen(false);
@@ -271,7 +271,7 @@ export default function Navbar() {
               "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
               isActiveRoute(item.href)
                 ? "!bg-[#ff9e3d] !text-white"
-                : "hover:!bg-[#ff9e3d] hover:text-black"
+                : "hover:!bg-[#ff9e3d] hover:!text-white"
             )}
             onClick={() => setIsOpen(false)}
           >
