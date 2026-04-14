@@ -71,10 +71,11 @@ export default function Navbar() {
             <Image
               src="/icon/logo_uvics.webp"
               alt="Logo"
-              width={40}
-              height={40}
+              width={50}
+              height={50}
               priority
-              className="rounded-full hover:scale-105 transition-transform duration-300"
+              quality={100}
+              className="rounded-full"
             />
           </div>
           <span className={`${quicksand.className} font-bold text-3xl`}>

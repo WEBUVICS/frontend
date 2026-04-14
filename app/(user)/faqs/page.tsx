@@ -19,7 +19,7 @@ export default function FAQ() {
   ];
 
   // state untuk masing-masing sisi
-  const [openLeft, setOpenLeft] = useState<number | null>(0);
+  const [openLeft, setOpenLeft] = useState<number | null>(null);
   const [openRight, setOpenRight] = useState<number | null>(null);
 
   const toggleFAQ = (index: number, side: "left" | "right") => {
