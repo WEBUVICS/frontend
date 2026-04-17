@@ -120,7 +120,7 @@ export default function About() {
 
         {/* Job Desc */}
         <section>
-          <h2 className="text-2xl font-bold text-[var(--color-second)] mb-6">
+          <h2 className="text-2xl font-bold text-center text-[var(--color-second)] mb-6">
             Job Desc
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -190,7 +190,7 @@ export default function About() {
 
         {/* Benefits */}
         <section className="flex flex-col gap-6">
-          <h2 className="text-2xl font-bold text-[var(--color-second)]">
+          <h2 className="text-2xl font-bold text-center text-[var(--color-second)]">
             Benefits
           </h2>
           <div className="bg-[var(--color-second)] text-white p-6 rounded-lg shadow-md">
