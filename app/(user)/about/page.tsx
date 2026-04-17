@@ -202,18 +202,17 @@ export default function About() {
                 Kesempatan pembiayaan lomba
               </li>
               <li>
-                Mendapatkan E-Sertifikat.
+                Mendapatkan E-Sertifikat
               </li>
-              <li>Rekomendasi linkedin</li>
+              <li>Rekomendasi LinkedIn</li>
               <li>Akses Canva Pro organisasi</li>
-              <li>Rekomendasi LinkedIn.</li>
+              <li>Akses CapCut Pro organisasi</li>
               <li>
-               Meningkatkan Personal Branding dan Networking
+                Meningkatkan Personal Branding dan Networking
               </li>
               <li>
-               Membangung Protofolio lewat project-project perlombaan
+                Membangun Portofolio lewat project-project perlombaan
               </li>
-              
             </ul>
           </div>
         </section>
