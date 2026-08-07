@@ -7,6 +7,9 @@
 // export default nextConfig;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     qualities: [100, 75],
     remotePatterns: [

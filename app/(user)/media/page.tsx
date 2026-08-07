@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CalendarX, MegaphoneOff } from "lucide-react"; // ✅ icon untuk empty state
+import { CalendarX, MegaphoneOff } from "lucide-react";
 import EventCard from "@/components/userComponents/eventCard";
 import AnnouncementCard from "@/components/userComponents/announcementCard";
 import { DataAnnouncement } from "./dataAnnounce";
@@ -97,7 +97,7 @@ export default function UserMedia() {
       </section>
 
       {/* Event Section */}
-      <section className="min-h-screen bg-white py-16 w-full font-sans">
+      <section className="w-full bg-white py-16 font-sans">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
             <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
@@ -105,9 +105,9 @@ export default function UserMedia() {
             </span>
           </div>
 
-          {DataEvent.length > 0 && DataEvent ? (
+          {DataEvent.length > 0 ? (
             <div className="space-y-8">
-              {DataEvent.map((event:EventType) => (
+              {DataEvent.map((event: EventType) => (
                 <EventCard
                   key={event.id}
                   image={event.image}
@@ -118,8 +118,8 @@ export default function UserMedia() {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 rounded-3xl shadow-inner">
-              <CalendarX className="w-20 h-20 text-gray-400 mb-6" strokeWidth={1.5} />
+            <div className="flex flex-col items-center justify-center rounded-3xl bg-gray-50 py-12 text-center shadow-inner">
+              <CalendarX className="mb-4 h-16 w-16 text-gray-400" strokeWidth={1.5} />
               <h2 className="text-2xl font-semibold text-gray-600">
                 Belum ada event yang tersedia
               </h2>
@@ -132,7 +132,7 @@ export default function UserMedia() {
       </section>
 
       {/* Announcement Section */}
-      <section className="min-h-screen bg-white py-16 w-full font-sans">
+      <section className="w-full bg-white py-16 font-sans">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
             <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
@@ -156,8 +156,8 @@ export default function UserMedia() {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 rounded-3xl shadow-inner">
-              <MegaphoneOff className="w-20 h-20 text-gray-400 mb-6" strokeWidth={1.5} />
+            <div className="flex flex-col items-center justify-center rounded-3xl bg-gray-50 py-12 text-center shadow-inner">
+              <MegaphoneOff className="mb-4 h-16 w-16 text-gray-400" strokeWidth={1.5} />
               <h2 className="text-2xl font-semibold text-gray-600">
                 Belum ada pengumuman saat ini
               </h2>

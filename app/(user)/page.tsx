@@ -1,12 +1,10 @@
-// ========= UNTUK HALAMAN HOME UBAH DISINI ===========
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { DataEvent, EventType } from "./media/dataEvent";
-import { CalendarX, MegaphoneOff } from "lucide-react"; // icon untuk empty state
 import EventCard from "@/components/userComponents/eventCard";
-import { RegistrationButton } from "@/components/userComponents/RegistrationButton";
-
+import RecruitmentSection from "@/components/userComponents/RecruitmentSection";
 export default function HomePage() {
   return (
     <>
@@ -23,21 +21,23 @@ export default function HomePage() {
           />
         </div>
 
+        <RecruitmentSection />
+
       {/* About Section */}
         <div className="my-15 mx-auto max-w-6xl px-4">
           <div className="bg-[#4D8BFF21] pb-5 rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
             <div className="p-8 relative min-h-[250px]">
-              <h2 className="text-3xl font-semibold text-amber-500 mb-4 font-['Quicksand']">About</h2>
+              <h2 className="text-3xl font-semibold text-amber-500 mb-4 font-['Quicksand']">About UVICS</h2>
               <p className="text-lg text-gray-600 leading-relaxed font-['Open_Sans']">
-                UVICS (Unklab Virtue in Computer Science) hadir sebagai komunitas mahasiswa Universitas 
-                Klabat yang dirancang untuk menggali potensi dan menciptakan prestasi bersama. 
-                Melalui partisipasi dalam berbagai kompetisi teknologi dan bisnis, UVICS
-                membantu anggotanya mengembangkan keterampilan, kolaborasi, dan inovasi.
+                UVICS is a student-driven organization at Universitas Klabat that
+                connects students with shared ambitions and supports them in
+                developing their potential through competitions, teamwork,
+                mentoring, and collaborative growth.
               </p>
               <div className="absolute bottom-2 -mb-5 right-4 p-1 ">
-                <a href="/about" className="bg-blue-500 opacity-60 hover:opacity-100 text-white text-sm px-1 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors duration-300 inline-flex items-center">
-                  Selengkapnya
-                </a>
+                <Link href="/about" className="bg-blue-500 opacity-60 hover:opacity-100 text-white text-sm px-1 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors duration-300 inline-flex items-center">
+                  Learn More
+                </Link>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function HomePage() {
           {/* Header Section */}
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-4 font-['Quicksand']">
-              Mengapa Bergabung dengan UVICS?
+A community built to grow, compete, and achieve together.
             </h2>
           </div>
 
@@ -71,11 +71,11 @@ export default function HomePage() {
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-center text-gray-800 mb-3">
-                Berkembang dan Berprestasi
+Grow
               </h3>
               <p className="text-gray-600 text-center">
-                Peluang besar untuk meningkatkan pengalaman, dan membangun
-                portofolio yang kuat melalui berbagai kompetisi dan proyek.
+                Supporting member development through mentoring, internal programs,
+                leadership experiences, and collaborative learning.
               </p>
             </div>
 
@@ -89,11 +89,11 @@ export default function HomePage() {
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-center text-gray-800 mb-3">
-                Jaringan Relasi yang Mendukung
+Connect
               </h3>
               <p className="text-gray-600 text-center">
-                UVICS menyediakan lingkungan belajar yang dinamis, mendukung
-                eksplorasi ide kreatif dan membangun koneksi dengan profesional.
+                Bringing together students with shared ambitions while building
+                connections with mentors, communities, professionals, and fellow competitors.
               </p>
             </div>
 
@@ -107,76 +107,29 @@ export default function HomePage() {
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-center text-gray-800 mb-3">
-                Meningkatkan Soft Skill
+Compete
               </h3>
               <p className="text-gray-600 text-center">
-                UVICS mendorong peningkatan keterampilan komunikasi, kolaborasi,
-                dan kepemimpinan melalui berbagai aktivitas kelompok.
+                Connecting students with competition opportunities and supporting
+                teams through preparation, mentoring, progress monitoring, and evaluation.
               </p>
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center mt-12">
-            <RegistrationButton />
-          </div>
         </div>
       </section>
 
-      {/* Quote Section */}
-      <section className="text-center mb-10 px-4 py-5 pb-15 bg-gradient-to-b  from-blue-50 to-white">
-        <div className="flex items-center justify-center">
-          <div className="w-full max-w-[1324px] h-0 outline  outline-gray-300"></div>
-        </div>  
-        <blockquote className="italic text-lg pt-20">
-          "Kehidupan adalah 10% apa yang terjadi padamu dan 90% bagaimana kamu
-          meresponsnya."
-          <footer className="mt-2">– Charles R. Swindoll</footer>
-        </blockquote>
-      </section>
 
-      {/* Carousel Section */}
-      {/* <section className="my-12">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-6">Events</h2>
-          <div className="flex flex-col md:flex-row justify-around items-center gap-4">
-            <Image
-              src="/Event.jpg"
-              alt="Event 1"
-              width={300}
-              height={200}
-              className="w-1/2 md:w-1/4 h-auto"
-            />
-            <Image
-              src="/Event.jpg"
-              alt="Event 2"
-              width={300}
-              height={200}
-              className="w-1/2 md:w-1/4 h-100px"
-            />
-            <Image
-              src="/Event.jpg"
-              alt="Event 3"
-              width={300}
-              height={200}
-              className="w-1/2 md:w-1/4 h-auto"
-            />
-          </div>
-        </div>
-      </section> */}
-
-      {/* Event Section */}
-      <section className="min-h-screen bg-white py-16 w-full font-sans">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
-              EVENT
-            </span>
-          </div>
-
-          {DataEvent.length > 0 && DataEvent ? (
+      {DataEvent.length > 0 && (
+        <section className="w-full bg-white py-16 font-sans">
+          <div className="mx-auto max-w-7xl px-8">
+            <div className="mb-12 text-center">
+              <span className="bg-[var(--color-primary)] text-white px-10 py-2 rounded-xl font-bold tracking-[0.5em] text-lg shadow-md font-head">
+                EVENT
+              </span>
+            </div>
             <div className="space-y-8">
-              {DataEvent.map((event:EventType) => (
+              {DataEvent.slice(0, 2).map((event: EventType) => (
                 <EventCard
                   key={event.id}
                   image={event.image}
@@ -186,21 +139,17 @@ export default function HomePage() {
                 />
               ))}
             </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center text-center py-20 bg-gray-50 rounded-3xl shadow-inner">
-              <CalendarX className="w-20 h-20 text-gray-400 mb-6" strokeWidth={1.5} />
-              <h2 className="text-2xl font-semibold text-gray-600">
-                Belum ada event yang tersedia
-              </h2>
-              <p className="text-gray-500 mt-2">
-                Nantikan event menarik dari kami selanjutnya 🎉
-              </p>
+            <div className="mt-10 text-center">
+              <Link
+                href="/media"
+                className="inline-flex rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+              >
+                Lihat Semua Event
+              </Link>
             </div>
-          )}
-        </div>
-      </section>
-
-      {/* Footer */}
+          </div>
+        </section>
+      )}
     </>
   );
 };

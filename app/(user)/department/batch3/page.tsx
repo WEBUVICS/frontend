@@ -143,7 +143,7 @@ const comhandmembers:MemberType[] = [
     );
   };
 
-  // === Member Section ===
+  // === Members Section ===
   const MemberSection = ({ members }: { members: MemberType[] }) => {
     const normalMembers = members.filter(
       (m) => !m.position.toLowerCase().includes("pic") && !m.position.toLowerCase().includes("koordi")
@@ -210,9 +210,9 @@ const AdvisorSection = ({ members }: { members: MemberType[] }) => {
   );
 };
 
-{/* === Core Team === */}
+{/* === Tim Inti === */}
 <div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
-  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Core Team</h2>
+  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Tim Inti</h2>
   <PICSection members={coreTeamMembers} />
   <MemberSection members={coreTeamMembers} />
 </div>
@@ -224,9 +224,9 @@ const AdvisorSection = ({ members }: { members: MemberType[] }) => {
       {/* Card Utama */}
       <div className="w-full bg-[#FFA447] rounded-lg shadow-lg px-4 sm:px-8 md:px-10 py-6 sm:py-12 md:py-14 flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-10">
         <div className="flex-1 text-white pr-0 sm:pr-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Departement UVICS</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Department UVICS</h2>
           <p className="text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Batch 2.5 melanjutkan perjalanan UVICS dengan formasi yang lebih fokus dan solid. Terdapat lima divisi yang aktif, yakni Web Development, Internal Development, Editor, Public Relation, dan Competition Handler. 
+            Batch 2.5 melanjutkan perjalanan UVICS dengan formasi yang lebih fokus dan solid. Terdapat lima divisi yang aktif, yakni Web Development, Internal Development, Editor, Public Relation, dan Competition Handler.
           </p>
           <p className="mt-2 sm:mt-4 text-justify leading-relaxed text-sm sm:text-base md:text-lg">
             Batch ini menonjolkan kreativitas, komunikasi, serta pengembangan diri anggota dalam suasana kolaboratif yang hangat dan produktif.
@@ -248,17 +248,17 @@ const AdvisorSection = ({ members }: { members: MemberType[] }) => {
         </div>
       </div>
 
-     {/* === Advisor === */}
+     {/* === Pembina === */}
 <div className="w-full flex flex-col items-center justify-center mt-10 sm:mt-16">
   <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">
-    Advisor
+    Pembina
   </h2>
-  <AdvisorSection members={Advisor} />   {/* ✅ pakai ini */}
+  <AdvisorSection members={Advisor} />
 </div>
 
-{/* === Core Team === */}
+{/* === Tim Inti === */}
 <div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
-  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Core Team</h2>
+  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Tim Inti</h2>
   <PICSection members={coreTeamMembers} />
   <MemberSection members={coreTeamMembers} />
 </div>

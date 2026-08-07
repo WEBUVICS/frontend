@@ -1,4 +1,15 @@
-export const DataAnnouncement = [
+export type AnnouncementType = {
+  id: string;
+  mainTitle: string;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  location: string;
+  image?: string;
+};
+
+export const DataAnnouncement: AnnouncementType[] = [
   {
     id: "A001",
     mainTitle: "UVICS Goes To Waterpark 2026",

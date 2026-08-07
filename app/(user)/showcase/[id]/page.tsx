@@ -50,7 +50,7 @@ export default async function CardDetailPage({
         </div>
       </div>
 
-      {/* Description Section */}
+      {/* Bagian Description */}
       <div className="mt-10">
         <h2 className="text-2xl font-semibold mb-4">Description</h2>
         <p className="text-gray-700 leading-relaxed">{card.description}</p>

@@ -6,95 +6,79 @@ export default function About() {
       <div className="w-full max-w-6xl mx-auto flex flex-col gap-12">
         {/* Title */}
         <h1 className="text-3xl font-bold text-center text-second">
-          About
+          About UVICS
         </h1>
 
         {/* Visi & Misi */}
         <section className="bg-[var(--popover)] rounded-lg p-8 shadow-md">
           <h2 className="text-2xl font-bold text-center text-[var(--color-second)] mb-6">
-            VISI DAN MISI
+            Vision & Mission
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-[var(--color-second)] text-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Visi</h3>
+              <h3 className="text-xl font-semibold mb-4">Vision</h3>
               <ul className="list-disc pl-4 space-y-2">
                 <li>
-                  Menjadi wadah untuk Mahasiswa-Mahasiswi yang ingin bertumbuh dan berprestasi dalam lomba;
+                  To become a community where students can continuously grow, develop their potential, and achieve through competitions.
                 </li>
                 <li>
-                  Menjadi organisasi yang membawa prestasi dan nama baik bagi kampus Universitas Klabat;
+                  UVICS strives to contribute meaningful achievements and a positive reputation to Universitas Klabat.
                 </li>
                 <li>
-                  Menjadi tempat mahasiswa untuk mengasah dan meningkatkan hard
-                  skill dan soft skill mereka untuk meningkatkan pengalaman dan
-                  portofolio.
+                  UVICS provides opportunities for students to strengthen their technical skills, interpersonal skills, experience, and professional portfolios.
                 </li>
                 <li>
-                  Menjadi organisasi yang memberikan manfaat dan dampak yang berkelanjutan dalam masyarakat.
+                  Beyond individual development, UVICS aims to create sustainable initiatives that positively impact the community.
                 </li>
               </ul>
             </div>
             <div className="bg-[var(--color-second)] text-white rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4">Misi</h3>
+              <h3 className="text-xl font-semibold mb-4">Mission</h3>
               <ul className="list-disc pl-4 space-y-2">
                 <li>
-                  Mengumpulkan mahasiswa dari berbagai tingkat dan jurusan untuk
-                  sama-sama bertumbuh dan berprestasi membangun portofolio;
+                  Bring together students from different academic levels and disciplines in an environment where they can learn, collaborate, compete, and build meaningful portfolios.
                 </li>
                 <li>
-                  Memberikan sistem dan kesempatan yang sama kepada mahasiswa
-                  untuk melatih kerjasama, komunikasi, dan leadership mereka;
+                  Provide equal opportunities for members to develop teamwork, communication, leadership, technical skills, and professional capabilities.
                 </li>
                 <li>
-                  Menyediakan media belajar bersama untuk setiap anggota
-                  meningkatkan hard skill dan soft skill mereka.
+                  Support collaborative learning that strengthens both technical and interpersonal capabilities.
                 </li>
                 <li>
-                  Menciptakan program-program inovatif yang dapat memberikan dampak dalam masyarakat dan mengasah pola pikir kreatif member UVICS
+                  Develop innovative programs that encourage members to create solutions that can contribute positively to society.
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Sejarah */}
-        <section className="bg-[var(--color-muted)] rounded-lg p-8 shadow-md text-center">
-          <h2 className="text-2xl font-bold text-[var(--color-second)] mb-6">
-            Sejarah
-          </h2>
-          <div className="bg-white rounded-lg h-64 flex items-center justify-center shadow-inner">
-            <p className="text-gray-400">
-              Konten sejarah UVICS akan ditempatkan di sini.
-            </p>
-          </div>
-        </section>
 
         {/* Our Program */}
 <section className="bg-[var(--color-muted)] rounded-lg p-8 shadow-md text-center">
   <h2 className="text-2xl font-bold text-[var(--color-second)] mb-6">
-    OUR PROGRAM
+    Our Program
   </h2>
 
   {/* Daftar program UVICS */}
   {(() => {
     const programs = [
       {
-        title: "Mini Kabel",
+        title: "Kabel",
         division: "Internal Development",
         description:
-          "Pembekalan yang akan dilakukan per divisi atau terbuka untuk semua divisi",
+          "A structured member development initiative designed to support personal growth, competition readiness, professional development, and portfolio building.",
       },
       {
         title: "Champions of Change (CoC)",
         division: "Internal Development",
         description:
-          "Anggota yang aktif di dalam program akan diberi apresiasi dan reward di akhir, dan akan di post di media sosial UVICS.",
+          "A recognition initiative that highlights active member participation, contribution, and growth within UVICS programs.",
       },
       {
         title: "Bonding",
         division: "Internal Development",
         description:
-          "Program yang dilaksanakan dengan tujuan memperat hubungan antar anggota UVICS melalui berbagai kegiatan seru dan menyenangkan.",
+          "A member engagement program that strengthens relationships, collaboration, and organizational culture among UVICS members.",
       },
     ]
 
@@ -118,70 +102,67 @@ export default function About() {
 </section>
 
 
-        {/* Job Desc */}
+        {/* Job Description */}
         <section>
           <h2 className="text-2xl font-bold text-center text-[var(--color-second)] mb-6">
-            Job Desc
+            Job Description
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
-              <h3 className="font-semibold mb-2">INTERNAL DEVELOPMENT</h3>
+              <h3 className="font-semibold mb-2">Internal Development</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>
-                  Mendukung pengembangan potensi anggota
+                  Organizes bonding activities that strengthen relationships among UVICS members.
                 </li>
                 <li>
-                  Memberikan pelatihan dan koordinasi untuk meningkatkan keterampilan tim
+                  Manages internal development initiatives such as Kabel and supports periodic member performance growth.
                 </li>
               </ul>
             </div>
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
-              <h3 className="font-semibold mb-2">EXTERNAL AFFAIRS</h3>
+              <h3 className="font-semibold mb-2">Public Relations</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>
-                  Merancang dan melaksanakan event-event keren, mulai dari
-                  webinar, workshop, hingga program pengabdian masyarakat;
+                  Builds and maintains the public presence of UVICS through communication, storytelling, audience engagement, and promotional content.
                 </li>
                 <li>
-                  Membangun hubungan dengan sponsor dan komunitas untuk
-                  perkembangan UVICS.
+                  Plans social media content, produces organizational updates, and collaborates with other departments to communicate UVICS activities effectively.
                 </li>
               </ul>
             </div>
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
-              <h3 className="font-semibold mb-2">EDITOR</h3>
+              <h3 className="font-semibold mb-2">Editor</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
-                <li>Mengelola konten tulisan maupun visual organisasi.</li>
+                <li>Produces photo and video documentation for UVICS activities.</li>
                 <li>
-                  Mendokumentasikan setiap kegiatan UVICS, baik melalui foto
-                  maupun video.
+                  Creates and edits visual materials, maintains organized digital archives, and supports communication through creative assets.
                 </li>
               </ul>
             </div>
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
-              <h3 className="font-semibold mb-2">Compatition Handler</h3>
+              <h3 className="font-semibold mb-2">Competition Handler</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
-                <li>Mengatur dan mengawasi jalannya kompetisi</li>
+                <li>Identifies and shares relevant competition opportunities with UVICS members.</li>
                 <li>
-                  Memastikan kegiatan berjalan lancar, terstruktur, dan bermanfaat.
+                  Supports team preparation, mentoring coordination, progress monitoring, and achievement recognition.
                 </li>
               </ul>
             </div>
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
               <h3 className="font-semibold mb-2">Web Development</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
-                <li>Mengembangkan dan merawat website organisasi</li>
+                <li>Maintains and improves the official UVICS website.</li>
                 <li>
-                  Menyediakan media informasi yang interaktif dan mudah diakses
+                  Publishes approved content and develops web-based projects based on organizational needs and advisor direction.
                 </li>
               </ul>
             </div>
             <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
-              <h3 className="font-semibold mb-2">Pulic Relation</h3>
+              <h3 className="font-semibold mb-2">CREATE</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
-                <li>Menjalin hubungan dengan mitra, sponsor, dan masyarakat.</li>
+                <li>Providing opportunities for members to contribute through digital projects, creative production, communication, and organizational initiatives.</li>
                 <li>
-                  Membangun citra positif organisasi melalui komunikasi yang efektif.
+                  Supporting UVICS programs through collaboration across departments and member-led initiatives.
                 </li>
               </ul>
             </div>
@@ -196,23 +177,26 @@ export default function About() {
           <div className="bg-[var(--color-second)] text-white p-6 rounded-lg shadow-md">
             <ul className="list-disc pl-4 space-y-2 text-sm">
               <li>
-                Mendapatkan Mentoring Lomba dari para ahli-ahli di bidangnya
+                Competition Mentoring
               </li>
               <li>
-                Kesempatan pembiayaan lomba
+                Competition Funding
               </li>
               <li>
-                Mendapatkan E-Sertifikat
+                E-Certificates
               </li>
-              <li>Rekomendasi LinkedIn</li>
-              <li>Akses Canva Pro organisasi</li>
-              <li>Akses CapCut Pro organisasi</li>
+              <li>LinkedIn Recommendations</li>
+              <li>Competition Consultation with Mentors</li>
+              <li>Portfolio Building</li>
               <li>
-                Meningkatkan Personal Branding dan Networking
+                Progress Monitoring & Expectation Setting
               </li>
               <li>
-                Membangun Portofolio lewat project-project perlombaan
+                Networking Opportunities
               </li>
+              <li>Canva Pro Access</li>
+              <li>Skill Development</li>
+              <li>Personal Branding Development</li>
             </ul>
           </div>
         </section>

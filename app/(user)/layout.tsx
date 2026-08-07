@@ -4,6 +4,8 @@ import { Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import BackToTopButton from "@/components/back-to-top-button";
+import RecruitmentAnnouncementBar from "@/components/userComponents/RecruitmentAnnouncementBar";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -25,9 +27,9 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UVICS | Bersama Meraih Prestasi",
+  title: "UVICS | Connect. Develop. Compete. Achieve.",
   description:
-    "Organisasi mahasiswa Unklab untuk kompetisi teknologi & bisnis. Kembangkan potensi, bangun tim solid, raih prestasi bersama-sama.",
+    "UVICS is a student-driven organization at Universitas Klabat that supports students through competitions, teamwork, mentoring, and collaborative growth.",
   icons: {
     icon: "/favicon.png",
   },
@@ -35,16 +37,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
     url: "https://uvics.my.id",
-    siteName: "UVICS - Unklab Virtue in Computer Science",
-    title: "UVICS | Bersama Meraih Prestasi",
+    siteName: "UVICS - UNKLAB Virtue in Computer Science",
+    title: "UVICS | Connect. Develop. Compete. Achieve.",
     description:
-      "Organisasi mahasiswa Unklab untuk kompetisi teknologi & bisnis. Kembangkan potensi, bangun tim solid, raih prestasi bersama-sama.",
+      "UVICS is a student-driven organization at Universitas Klabat that supports students through competitions, teamwork, mentoring, and collaborative growth.",
     images: [
       {
         url: "https://uvics.my.id/uvics-og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "UVICS - Unklab Virtue in Computer Science",
+        alt: "UVICS - UNKLAB Virtue in Computer Science",
         type: "image/jpeg",
       },
     ],
@@ -61,9 +63,13 @@ export default function RootLayout({
       <body
         className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Navbar />
-        <main className="flex-grow pt-16">{children}</main>
+        <header className="sticky top-0 z-50">
+          <RecruitmentAnnouncementBar />
+          <Navbar />
+        </header>
+        <main className="flex-grow">{children}</main>
         <Footer />
+        <BackToTopButton />
       </body>
     </html>
   );

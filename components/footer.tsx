@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,216 +6,155 @@ import {
   Instagram,
   LucideLinkedin,
   GithubIcon,
-  ChevronUp,
-  MapPin,
 } from "lucide-react";
-import { Quicksand as QuicksandFont } from "next/font/google";
 
-const quicksand = QuicksandFont({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
+const siteMapLinks = [
+  { href: "/", label: "Home" },
+  { href: "/showcase", label: "Showcase" },
+  { href: "/media", label: "Media" },
+  { href: "/about", label: "About" },
+  { href: "/faqs", label: "FAQs" },
+];
+
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/uvics_id/",
+    icon: Instagram,
+    label: "Instagram",
+  },
+  {
+    href: "https://www.linkedin.com/company/uvics-unklab-virtue-in-computer-science/",
+    icon: LucideLinkedin,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://github.com/WEBUVICS",
+    icon: GithubIcon,
+    label: "GitHub",
+  },
+];
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-br from-[#4d8bff] via-[#3b7bf5] to-[#2d6ce0] text-white overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large blurred circle top-right */}
-        <div className="absolute -top-20 -right-20 w-[350px] h-[350px] rounded-full bg-white/5 blur-3xl" />
-        {/* Small blurred circle bottom-left */}
-        <div className="absolute -bottom-10 -left-10 w-[200px] h-[200px] rounded-full bg-[#ff9e3d]/10 blur-3xl" />
-        {/* Geometric lines bottom-right */}
-        <svg
-          className="absolute bottom-0 right-0 w-[450px] h-[350px] opacity-10"
-          viewBox="0 0 450 350"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line x1="80" y1="350" x2="380" y2="60" stroke="#ff9e3d" strokeWidth="1.2" />
-          <line x1="140" y1="350" x2="420" y2="90" stroke="white" strokeWidth="0.8" />
-          <line x1="200" y1="350" x2="400" y2="160" stroke="#ff9e3d" strokeWidth="0.6" />
-          <polygon points="350,90 380,50 410,90" fill="none" stroke="#ff9e3d" strokeWidth="1.2" />
-          <circle cx="250" cy="280" r="40" fill="none" stroke="white" strokeWidth="0.4" />
-        </svg>
-        {/* Dot grid pattern */}
-        <div
-          className="absolute top-10 left-10 w-[150px] h-[150px] opacity-[0.04]"
-          style={{
-            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-      </div>
+    <footer
+      id="site-footer"
+      className="relative overflow-hidden bg-gradient-to-br from-[#2f6fd6] via-[#245fc7] to-[#194fae] text-white"
+    >
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-6 md:px-8 pt-14 pb-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-6">
-          {/* Left Column - Logo, Description, Socials */}
-          <div className="md:col-span-4 flex flex-col space-y-5">
-            {/* Logos & Name */}
-            <div className="flex items-center gap-3">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-12 pt-14 md:px-8 md:pb-14 md:pt-16">
+        <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-10 md:gap-y-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)_minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-x-8 xl:grid-cols-[minmax(300px,1.4fr)_minmax(120px,0.6fr)_minmax(220px,0.9fr)_minmax(260px,1.1fr)] xl:gap-x-12 2xl:gap-x-16">
+          <section aria-label="About UVICS" className="min-w-0">
+            <div className="flex w-fit items-center gap-3">
               <Image
                 src="/icon/logo_uvics.webp"
                 alt="UVICS Logo"
                 width={48}
                 height={48}
-                className="rounded-full drop-shadow-lg"
+                className="h-12 w-auto rounded-full drop-shadow-lg"
               />
-              <Image
-                src="/icon/logo_unklab.webp"
-                alt="UNKLAB Logo"
-                width={42}
-                height={42}
-                className="drop-shadow-lg"
-              />
-              <span className={`${quicksand.className} font-bold text-2xl tracking-wide drop-shadow-sm`}>
+              <span className="font-quick text-2xl font-bold tracking-wide drop-shadow-sm">
                 UVICS
               </span>
             </div>
 
-            {/* Tagline */}
-            <p className="text-white/75 text-sm leading-relaxed max-w-[300px]">
-              Empowering Unklab students to grow through technology and business
-              competitions. Build your team, sharpen your skills, achieve
-              greatness together.
+            <p className="mt-5 max-w-[340px] text-sm leading-[1.7] text-blue-50">
+              UVICS is a student-driven organization at Universitas Klabat that
+              connects students with shared ambitions and supports them through
+              competitions, teamwork, mentoring, and collaborative growth.
             </p>
 
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
-              {[
-                {
-                  href: "https://www.instagram.com/uvics_id/",
-                  icon: <Instagram size={18} />,
-                  label: "Instagram",
-                },
-                {
-                  href: "https://www.linkedin.com/company/uvics-unklab-virtue-in-computer-science/",
-                  icon: <LucideLinkedin size={18} />,
-                  label: "LinkedIn",
-                },
-                {
-                  href: "https://github.com/WEBUVICS",
-                  icon: <GithubIcon size={18} />,
-                  label: "GitHub",
-                },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff9e3d] transition-all duration-300"
-                >
-                  {social.icon}
-                </a>
-              ))}
+            <div className="mt-6 flex items-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white transition-colors duration-150 hover:bg-[#ff9e3d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >
+                    <Icon aria-hidden="true" size={18} />
+                  </a>
+                );
+              })}
             </div>
+          </section>
 
-            {/* Back to Top */}
-            <button
-              onClick={scrollToTop}
-              className="group flex items-center gap-2 border border-white/30 rounded-lg px-5 py-2.5 w-fit text-xs font-bold tracking-[0.15em] uppercase hover:bg-white hover:text-[#4d8bff] transition-all duration-300 cursor-pointer"
+          <section className="min-w-0">
+            <h3 className="text-sm font-bold uppercase tracking-wide">Explore</h3>
+            <nav
+              aria-label="Footer Explore"
+              className="mt-8 flex flex-col items-start gap-3"
             >
-              <ChevronUp
-                size={14}
-                className="transition-transform duration-300"
-              />
-              Back to Top
-            </button>
-          </div>
-
-          {/* Site Map */}
-          <div className="md:col-span-2 flex flex-col space-y-5">
-            <h3 className="font-bold text-sm tracking-wide">
-              Site Map
-            </h3>
-            <div className="w-8 h-[2px] bg-[#ff9e3d] rounded-full" />
-            <div className="flex flex-col space-y-3">
-              {[
-                { href: "/", label: "Home" },
-                { href: "/showcase", label: "Showcase" },
-                { href: "/media", label: "Media" },
-                { href: "/about", label: "About" },
-                { href: "/faqs", label: "FAQs" },
-              ].map((link) => (
+              {siteMapLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-white/75 hover:text-[#ff9e3d] transition-colors duration-300 text-sm w-fit"
+                  className="w-fit rounded-sm text-sm text-blue-50 transition-colors duration-150 hover:text-[#ff9e3d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   {link.label}
                 </Link>
               ))}
-            </div>
-          </div>
+            </nav>
+          </section>
 
-          {/* Contact */}
-          <div className="md:col-span-3 flex flex-col space-y-5">
-            <h3 className="font-bold text-sm tracking-wide">
-              Contact
-            </h3>
-            <div className="w-8 h-[2px] bg-[#ff9e3d] rounded-full" />
-            <div className="flex flex-col space-y-3">
+          <section className="min-w-0">
+            <h3 className="text-sm font-bold uppercase tracking-wide">Get In Touch</h3>
+            <div className="mt-8 flex flex-col items-start gap-3">
               <a
-                href="https://wa.me/6285309437394"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-white/75 hover:text-[#ff9e3d] transition-colors duration-300 text-sm group"
+                href="tel:+6285309437394"
+                className="flex w-fit items-center gap-3 rounded-sm text-sm text-blue-50 transition-colors duration-150 hover:text-[#ff9e3d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#ff9e3d]/20 transition-colors duration-300">
-                  <Phone size={14} />
-                </div>
-                +62 853 0943 7394
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                  <Phone aria-hidden="true" size={16} />
+                </span>
+                <span className="whitespace-nowrap">+62 853 0943 7394</span>
               </a>
               <a
                 href="mailto:uvics@unklab.ac.id"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-white/75 hover:text-[#ff9e3d] transition-colors duration-300 text-sm group"
+                className="flex w-fit min-w-0 items-center gap-3 rounded-sm text-sm text-blue-50 transition-colors duration-150 hover:text-[#ff9e3d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-[#ff9e3d]/20 transition-colors duration-300">
-                  <Mail size={14} />
-                </div>
-                uvics@unklab.ac.id
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10">
+                  <Mail aria-hidden="true" size={16} />
+                </span>
+                <span className="min-w-0 break-all">uvics@unklab.ac.id</span>
               </a>
             </div>
-          </div>
+          </section>
 
-          {/* Location - Interactive Map */}
-          <div className="md:col-span-3 flex flex-col space-y-5">
-            <h3 className="font-bold text-sm tracking-wide">
-              Location
-            </h3>
-            <div className="w-8 h-[2px] bg-[#ff9e3d] rounded-full" />
-            <div className="rounded-xl overflow-hidden shadow-lg border border-white/10">
+          <section className="min-w-0">
+            <h3 className="text-sm font-bold uppercase tracking-wide">Location</h3>
+            <div className="mt-8 h-[168px] w-full overflow-hidden rounded-xl border border-white/10 shadow-lg lg:max-w-[290px]">
               <iframe
+                title="Location Universitas Klabat di Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.597345140158!2d124.98139947355307!3d1.4175081613575993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32870a95df6309dd%3A0x21d86e4847556add!2sUniversitas%20Klabat!5e0!3m2!1sen!2sid!4v1756085704976!5m2!1sen!2sid"
                 width="100%"
-                height="180"
+                height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="w-full"
+                className="block h-full w-full"
               />
             </div>
-          </div>
+          </section>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="relative z-10">
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#ff9e3d]/60 to-transparent" />
-        <div className="bg-black/10 backdrop-blur-sm py-4 px-6">
-          <p className="text-center text-xs text-white/50 tracking-wide">
-            Copyright © 2025 UVICS · UNKLAB Virtue in Computer Science. All Rights Reserved.
-          </p>
+      <div id="footer-bottom" className="relative z-10">
+        <div className="h-[1px] bg-white/15" />
+        <div className="bg-black/10 px-6 py-5 backdrop-blur-sm md:px-8 md:py-6">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-center text-xs tracking-wide text-blue-50">
+              © {currentYear} UVICS · UNKLAB Virtue in Computer Science. All
+              rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

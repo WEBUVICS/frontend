@@ -3,281 +3,380 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Quicksand } from "next/font/google";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const quicksand = Quicksand({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
+const navigationItems = [
+  { href: "/", label: "Home" },
+  { href: "/showcase", label: "Showcase" },
+  { href: "/media", label: "Media" },
+  { href: "/about", label: "About" },
+  { href: "/faqs", label: "FAQs" },
+];
+
+const batchItems: Array<{
+  href: string;
+  label: string;
+  disabled?: boolean;
+}> = [
+  { href: "/batch/batch1", label: "Batch-1" },
+  { href: "/batch/batch2", label: "Batch-2" },
+  { href: "/batch/batch3", label: "Batch-2.5" },
+  { href: "#", label: "Batch-3.0", disabled: true },
+];
+
+const desktopLinkClass =
+  "font-quick rounded-lg px-4 py-2 text-base font-bold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+
+const mobileLinkClass =
+  "block min-h-11 px-5 py-3 font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [deptOpen, setDeptOpen] = useState(false);
-  const [mobileDeptOpen, setMobileDeptOpen] = useState(false); // <-- added state
+  const [mobileDeptOpen, setMobileDeptOpen] = useState(false);
   const pathname = usePathname();
-  const deptRef = useRef<HTMLDivElement>(null);
+  const deptRef = useRef<HTMLLIElement>(null);
+  const desktopDeptButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileDeptButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    if (!deptOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
       if (deptRef.current && !deptRef.current.contains(event.target as Node)) {
         setDeptOpen(false);
       }
     };
 
-    if (window.innerWidth >= 768) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [deptOpen]);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+  useEffect(() => {
+    if (!isOpen && !deptOpen && !mobileDeptOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+
+      if (deptOpen) {
+        setDeptOpen(false);
+        desktopDeptButtonRef.current?.focus();
+        return;
+      }
+
+      if (mobileDeptOpen) {
+        setMobileDeptOpen(false);
+        mobileDeptButtonRef.current?.focus();
+        return;
+      }
+
+      setIsOpen(false);
+      mobileMenuButtonRef.current?.focus();
     };
-  }, []);
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [deptOpen, isOpen, mobileDeptOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+    setDeptOpen(false);
+    setMobileDeptOpen(false);
+  }, [pathname]);
 
   const isActiveRoute = (route: string) => {
     if (route === "/") return pathname === "/";
-    return pathname.startsWith(route);
+    return pathname === route || pathname.startsWith(`${route}/`);
   };
 
-  const navigationItems = [
-    { href: "/", label: "Home" },
-    { href: "/showcase", label: "Showcase" },
-    { href: "/media", label: "Media" },
-    { href: "/about", label: "About" },
-    { href: "/faqs", label: "FAQs" },
-  ];
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setMobileDeptOpen(false);
+  };
 
-  const departmentItems = [
-    { href: "/department/batch1", label: "Batch-1" },
-    { href: "/department/batch2", label: "Batch-2" },
-    { href: "/department/batch3", label: "Batch-2.5" },
-    { href: "#", label: "Batch-3.0", disabled: true },
-  ];
+  const toggleMobileMenu = () => {
+    if (isOpen) setMobileDeptOpen(false);
+    setDeptOpen(false);
+    setIsOpen((open) => !open);
+  };
 
   return (
-    <nav className="bg-[#4d8bff] text-white border-b border-white/10 shadow-sm fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-[50px] h-[50px] flex items-center justify-center">
-            <Image
-              src="/icon/logo_uvics.webp"
-              alt="Logo"
-              width={50}
-              height={50}
-              priority
-              quality={100}
-              className="rounded-full"
-            />
-          </div>
-          <span className={`${quicksand.className} font-bold text-3xl`}>
-            UVICS
-          </span>
+    <nav
+      id="top"
+      aria-label="Navigasi utama"
+      className="relative z-50 border-b border-white/15 bg-[#2f6fd6] text-white shadow-sm"
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <Link
+          href="/"
+          aria-label="UVICS - Beranda"
+          className="flex items-center gap-2 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          <Image
+            src="/icon/logo_uvics.webp"
+            alt=""
+            width={50}
+            height={50}
+            priority
+            quality={100}
+            className="rounded-full"
+          />
+          <span className="font-quick text-2xl font-bold sm:text-3xl">UVICS</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:block">
-          <NavigationMenu className="relative">
-            <NavigationMenuList className="flex items-center gap-4">
-              {/* Home */}
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link
-                    href="/"
-                    className={cn(
-                      quicksand.className,
-                      "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
-                      isActiveRoute("/")
-                        ? "!bg-[#ff9e3d] !text-white"
-                        : "hover:!bg-[#ff9e3d] hover:!text-white"
-                    )}
-                  >
-                    Home
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+        <div className="hidden lg:block">
+          <ul className="flex items-center gap-1" aria-label="Menu utama">
+            <li>
+              <Link
+                href="/"
+                aria-current={isActiveRoute("/") ? "page" : undefined}
+                className={cn(
+                  desktopLinkClass,
+                  isActiveRoute("/")
+                    ? "bg-[#ff9e3d] text-white"
+                    : "hover:bg-[#ff9e3d] hover:text-white"
+                )}
+              >
+                Home
+              </Link>
+            </li>
 
-              {/* Department Dropdown (Desktop) */}
-              <div ref={deptRef} className="relative">
-                <button
-                  onClick={() => setDeptOpen((prev) => !prev)}
+            <li
+              ref={deptRef}
+              className="relative"
+              onBlur={(event) => {
+                if (
+                  !event.currentTarget.contains(
+                    event.relatedTarget as Node | null
+                  )
+                ) {
+                  setDeptOpen(false);
+                }
+              }}
+            >
+              <button
+                ref={desktopDeptButtonRef}
+                type="button"
+                aria-expanded={deptOpen}
+                aria-controls="desktop-batch-menu"
+                onClick={() => setDeptOpen((open) => !open)}
+                className={cn(
+                  desktopLinkClass,
+                  "flex cursor-pointer items-center gap-1",
+                  isActiveRoute("/batch")
+                    ? "bg-[#ff9e3d] text-white"
+                    : "hover:bg-[#ff9e3d] hover:text-white"
+                )}
+              >
+                Batch
+                <ChevronDown
+                  aria-hidden="true"
+                  size={16}
                   className={cn(
-                    quicksand.className,
-                    "px-5 py-2 rounded-md font-bold transition-colors duration-300 flex items-center gap-1 cursor-pointer text-sm",
-                    isActiveRoute("/department")
-                      ? "!bg-[#ff9e3d] !text-white"
-                      : "hover:!bg-[#ff9e3d] hover:!text-white"
+                    "transition-transform duration-200",
+                    deptOpen && "rotate-180"
                   )}
-                >
-                  Department
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform duration-300 ${
-                      deptOpen ? "rotate-180" : "rotate-0"
-                    }`}
-                  />
-                </button>
-                <div
-                  className={`absolute left-0 top-full mt-1 bg-[#4d8bff] text-white rounded-md shadow-lg w-40 z-50 border border-white/10 transform transition-all duration-200 ease-out ${
-                    deptOpen
-                      ? "opacity-100 scale-100 translate-y-0"
-                      : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-                  }`}
-                >
-                  {departmentItems.map((item) =>
-                    item.disabled ? (
+                />
+              </button>
+
+              <ul
+                id="desktop-batch-menu"
+                aria-label="Daftar departemen"
+                aria-hidden={!deptOpen}
+                className={cn(
+                  "absolute left-0 top-full z-50 mt-2 w-48 origin-top-left rounded-xl border border-white/15 bg-[#2f6fd6] p-2 shadow-xl transition-all duration-200",
+                  deptOpen
+                    ? "visible translate-y-0 scale-100 opacity-100"
+                    : "invisible -translate-y-2 scale-95 opacity-0"
+                )}
+              >
+                {batchItems.map((item) => (
+                  <li key={item.label}>
+                    {item.disabled ? (
                       <span
-                        key={item.label}
-                        className="block px-4 py-2 rounded-md font-semibold text-sm first:rounded-t-md last:rounded-b-md opacity-50 cursor-not-allowed"
+                        aria-disabled="true"
+                        className="block cursor-not-allowed rounded-lg px-4 py-2.5 text-sm font-semibold text-white/60"
                       >
                         {item.label}
                       </span>
                     ) : (
                       <Link
-                        key={item.href}
                         href={item.href}
+                        aria-current={
+                          isActiveRoute(item.href) ? "page" : undefined
+                        }
                         className={cn(
-                          "block px-4 py-2 rounded-md transition-colors duration-300 font-semibold text-sm first:rounded-t-md last:rounded-b-md",
+                          "block rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white",
                           isActiveRoute(item.href)
-                            ? "!bg-[#ff9e3d] !text-white"
-                            : "hover:!bg-[#ff9e3d] hover:!text-white"
+                            ? "bg-[#ff9e3d] text-white"
+                            : "hover:bg-[#ff9e3d] hover:text-white"
                         )}
                         onClick={() => setDeptOpen(false)}
                       >
                         {item.label}
                       </Link>
-                    )
-                  )}
-                </div>
-              </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </li>
 
-              {/* Other Items */}
-              {navigationItems.slice(1).map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        quicksand.className,
-                        "px-5 py-2 rounded-md font-bold transition-colors duration-300 text-lg",
-                        isActiveRoute(item.href)
-                          ? "!bg-[#ff9e3d] !text-white"
-                          : "hover:!bg-[#ff9e3d] hover:!text-white"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 hover:scale-110 transition-transform duration-300"
-          aria-label="Toggle mobile menu"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "md:hidden bg-[#4d8bff] transition-all duration-500 ease-in-out overflow-hidden border-b border-white/10",
-          isOpen ? "max-h-[500px] opacity-100 py-2" : "max-h-0 opacity-0 py-0"
-        )}
-      >
-        {/* Home */}
-        <Link
-          href="/"
-          className={cn(
-            "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
-            isActiveRoute("/")
-              ? "!bg-[#ff9e3d] !text-white"
-              : "hover:!bg-[#ff9e3d] hover:!text-white"
-          )}
-          onClick={() => setIsOpen(false)}
-        >
-          Home
-        </Link>
-
-        {/* Department Dropdown (Mobile) */}
-        <div className="border-b border-white/20">
-          <button
-            className="flex items-center justify-between w-full px-4 py-3 font-semibold transition-colors duration-300 cursor-pointer"
-            onClick={() => setMobileDeptOpen((prev) => !prev)}
-          >
-            <span>Department</span>
-            <ChevronDown
-              size={18}
-              className={`transition-transform duration-300 ${
-                mobileDeptOpen ? "rotate-180" : "rotate-0"
-              }`}
-            />
-          </button>
-          <div
-            className={`overflow-hidden transition-all duration-300 ${
-              mobileDeptOpen ? "max-h-40" : "max-h-0"
-            }`}
-          >
-            {departmentItems.map((item) =>
-              item.disabled ? (
-                <span
-                  key={item.label}
-                  className="block px-6 py-2 text-left font-medium opacity-50 cursor-not-allowed"
-                >
-                  {item.label}
-                </span>
-              ) : (
+            {navigationItems.slice(1).map((item) => (
+              <li key={item.href}>
                 <Link
-                  key={item.href}
                   href={item.href}
+                  aria-current={
+                    isActiveRoute(item.href) ? "page" : undefined
+                  }
                   className={cn(
-                    "block px-6 py-2 text-left font-medium transition-colors duration-300",
+                    desktopLinkClass,
                     isActiveRoute(item.href)
-                      ? "!bg-[rgb(255,158,61)] !text-white"
-                      : "hover:!bg-[#ff9e3d] hover:!text-white"
+                      ? "bg-[#ff9e3d] text-white"
+                      : "hover:bg-[#ff9e3d] hover:text-white"
                   )}
-                  onClick={() => {
-                    setIsOpen(false);
-                    setMobileDeptOpen(false);
-                  }}
                 >
                   {item.label}
                 </Link>
-              )
-            )}
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Other Items */}
-        {navigationItems.slice(1).map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              "block px-4 py-3 font-semibold border-b border-white/20 transition-colors duration-300",
-              isActiveRoute(item.href)
-                ? "!bg-[#ff9e3d] !text-white"
-                : "hover:!bg-[#ff9e3d] hover:!text-white"
-            )}
-            onClick={() => setIsOpen(false)}
-          >
-            {item.label}
-          </Link>
-        ))}
+        <button
+          ref={mobileMenuButtonRef}
+          type="button"
+          aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation-menu"
+          onClick={toggleMobileMenu}
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
+        >
+          {isOpen ? (
+            <X aria-hidden="true" size={28} />
+          ) : (
+            <Menu aria-hidden="true" size={28} />
+          )}
+        </button>
+      </div>
+
+      <div
+        id="mobile-navigation-menu"
+        aria-hidden={!isOpen}
+        className={cn(
+          "overflow-y-auto bg-[#2f6fd6] transition-all duration-300 ease-in-out lg:hidden",
+          isOpen
+            ? "visible max-h-[calc(100dvh-4rem)] border-t border-white/15 opacity-100"
+            : "invisible max-h-0 opacity-0"
+        )}
+      >
+        <ul className="mx-auto max-w-7xl py-2" aria-label="Menu utama seluler">
+          <li className="border-b border-white/15">
+            <Link
+              href="/"
+              aria-current={isActiveRoute("/") ? "page" : undefined}
+              className={cn(
+                mobileLinkClass,
+                isActiveRoute("/")
+                  ? "bg-[#ff9e3d] text-white"
+                  : "hover:bg-white/10"
+              )}
+              onClick={closeMobileMenu}
+            >
+              Home
+            </Link>
+          </li>
+
+          <li className="border-b border-white/15">
+            <button
+              ref={mobileDeptButtonRef}
+              type="button"
+              aria-expanded={mobileDeptOpen}
+              aria-controls="mobile-batch-menu"
+              onClick={() => setMobileDeptOpen((open) => !open)}
+              className={cn(
+                "flex min-h-11 w-full cursor-pointer items-center justify-between px-5 py-3 font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white",
+                isActiveRoute("/batch")
+                  ? "bg-[#ff9e3d] text-white"
+                  : "hover:bg-white/10"
+              )}
+            >
+              <span>Batch</span>
+              <ChevronDown
+                aria-hidden="true"
+                size={18}
+                className={cn(
+                  "transition-transform duration-200",
+                  mobileDeptOpen && "rotate-180"
+                )}
+              />
+            </button>
+
+            <div
+              id="mobile-batch-menu"
+              aria-hidden={!mobileDeptOpen}
+              className={cn(
+                "overflow-hidden bg-black/10 transition-all duration-300",
+                mobileDeptOpen
+                  ? "visible max-h-48 opacity-100"
+                  : "invisible max-h-0 opacity-0"
+              )}
+            >
+              <ul aria-label="Daftar batch">
+                {batchItems.map((item) => (
+                  <li key={item.label}>
+                    {item.disabled ? (
+                      <span
+                        aria-disabled="true"
+                        className="block min-h-11 cursor-not-allowed px-7 py-3 font-medium text-white/60"
+                      >
+                        {item.label}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        aria-current={
+                          isActiveRoute(item.href) ? "page" : undefined
+                        }
+                        className={cn(
+                          "block min-h-11 px-7 py-3 font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white",
+                          isActiveRoute(item.href)
+                            ? "bg-[#ff9e3d] text-white"
+                            : "hover:bg-white/10"
+                        )}
+                        onClick={closeMobileMenu}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+
+          {navigationItems.slice(1).map((item) => (
+            <li key={item.href} className="border-b border-white/15 last:border-b-0">
+              <Link
+                href={item.href}
+                aria-current={
+                  isActiveRoute(item.href) ? "page" : undefined
+                }
+                className={cn(
+                  mobileLinkClass,
+                  isActiveRoute(item.href)
+                    ? "bg-[#ff9e3d] text-white"
+                    : "hover:bg-white/10"
+                )}
+                onClick={closeMobileMenu}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   );
