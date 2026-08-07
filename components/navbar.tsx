@@ -15,15 +15,11 @@ const navigationItems = [
   { href: "/faqs", label: "FAQs" },
 ];
 
-const batchItems: Array<{
-  href: string;
-  label: string;
-  disabled?: boolean;
-}> = [
-  { href: "/batch/batch1", label: "Batch-1" },
-  { href: "/batch/batch2", label: "Batch-2" },
-  { href: "/batch/batch3", label: "Batch-2.5" },
-  { href: "#", label: "Batch-3.0", disabled: true },
+const batchItems = [
+  { href: "/department/batch1", label: "Batch-1" },
+  { href: "/department/batch2", label: "Batch-2" },
+  { href: "/department/batch3", label: "Batch-2.5" },
+  { href: "/department/batch4", label: "Batch-3.0" },
 ];
 
 const desktopLinkClass =
@@ -34,42 +30,42 @@ const mobileLinkClass =
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [deptOpen, setDeptOpen] = useState(false);
-  const [mobileDeptOpen, setMobileDeptOpen] = useState(false);
+  const [batchOpen, setBatchOpen] = useState(false);
+  const [mobileBatchOpen, setMobileBatchOpen] = useState(false);
   const pathname = usePathname();
-  const deptRef = useRef<HTMLLIElement>(null);
-  const desktopDeptButtonRef = useRef<HTMLButtonElement>(null);
+  const batchRef = useRef<HTMLLIElement>(null);
+  const desktopBatchButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
-  const mobileDeptButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileBatchButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!deptOpen) return;
+    if (!batchOpen) return;
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (deptRef.current && !deptRef.current.contains(event.target as Node)) {
-        setDeptOpen(false);
+      if (batchRef.current && !batchRef.current.contains(event.target as Node)) {
+        setBatchOpen(false);
       }
     };
 
     document.addEventListener("pointerdown", handlePointerDown);
     return () => document.removeEventListener("pointerdown", handlePointerDown);
-  }, [deptOpen]);
+  }, [batchOpen]);
 
   useEffect(() => {
-    if (!isOpen && !deptOpen && !mobileDeptOpen) return;
+    if (!isOpen && !batchOpen && !mobileBatchOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
 
-      if (deptOpen) {
-        setDeptOpen(false);
-        desktopDeptButtonRef.current?.focus();
+      if (batchOpen) {
+        setBatchOpen(false);
+        desktopBatchButtonRef.current?.focus();
         return;
       }
 
-      if (mobileDeptOpen) {
-        setMobileDeptOpen(false);
-        mobileDeptButtonRef.current?.focus();
+      if (mobileBatchOpen) {
+        setMobileBatchOpen(false);
+        mobileBatchButtonRef.current?.focus();
         return;
       }
 
@@ -79,12 +75,12 @@ export default function Navbar() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [deptOpen, isOpen, mobileDeptOpen]);
+  }, [batchOpen, isOpen, mobileBatchOpen]);
 
   useEffect(() => {
     setIsOpen(false);
-    setDeptOpen(false);
-    setMobileDeptOpen(false);
+    setBatchOpen(false);
+    setMobileBatchOpen(false);
   }, [pathname]);
 
   const isActiveRoute = (route: string) => {
@@ -94,12 +90,12 @@ export default function Navbar() {
 
   const closeMobileMenu = () => {
     setIsOpen(false);
-    setMobileDeptOpen(false);
+    setMobileBatchOpen(false);
   };
 
   const toggleMobileMenu = () => {
-    if (isOpen) setMobileDeptOpen(false);
-    setDeptOpen(false);
+    if (isOpen) setMobileBatchOpen(false);
+    setBatchOpen(false);
     setIsOpen((open) => !open);
   };
 
@@ -145,7 +141,7 @@ export default function Navbar() {
             </li>
 
             <li
-              ref={deptRef}
+              ref={batchRef}
               className="relative"
               onBlur={(event) => {
                 if (
@@ -153,20 +149,20 @@ export default function Navbar() {
                     event.relatedTarget as Node | null
                   )
                 ) {
-                  setDeptOpen(false);
+                  setBatchOpen(false);
                 }
               }}
             >
               <button
-                ref={desktopDeptButtonRef}
+                ref={desktopBatchButtonRef}
                 type="button"
-                aria-expanded={deptOpen}
+                aria-expanded={batchOpen}
                 aria-controls="desktop-batch-menu"
-                onClick={() => setDeptOpen((open) => !open)}
+                onClick={() => setBatchOpen((open) => !open)}
                 className={cn(
                   desktopLinkClass,
                   "flex cursor-pointer items-center gap-1",
-                  isActiveRoute("/batch")
+                  isActiveRoute("/department")
                     ? "bg-[#ff9e3d] text-white"
                     : "hover:bg-[#ff9e3d] hover:text-white"
                 )}
@@ -177,48 +173,39 @@ export default function Navbar() {
                   size={16}
                   className={cn(
                     "transition-transform duration-200",
-                    deptOpen && "rotate-180"
+                    batchOpen && "rotate-180"
                   )}
                 />
               </button>
 
               <ul
                 id="desktop-batch-menu"
-                aria-label="Daftar departemen"
-                aria-hidden={!deptOpen}
+                aria-label="Daftar batch"
+                aria-hidden={!batchOpen}
                 className={cn(
-                  "absolute left-0 top-full z-50 mt-2 w-48 origin-top-left rounded-xl border border-white/15 bg-[#2f6fd6] p-2 shadow-xl transition-all duration-200",
-                  deptOpen
+                  "absolute left-0 top-full z-50 mt-2 flex w-48 origin-top-left flex-col gap-1 rounded-xl border border-white/15 bg-[#2f6fd6] p-2 shadow-xl transition-all duration-200",
+                  batchOpen
                     ? "visible translate-y-0 scale-100 opacity-100"
                     : "invisible -translate-y-2 scale-95 opacity-0"
                 )}
               >
                 {batchItems.map((item) => (
-                  <li key={item.label}>
-                    {item.disabled ? (
-                      <span
-                        aria-disabled="true"
-                        className="block cursor-not-allowed rounded-lg px-4 py-2.5 text-sm font-semibold text-white/60"
-                      >
-                        {item.label}
-                      </span>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        aria-current={
-                          isActiveRoute(item.href) ? "page" : undefined
-                        }
-                        className={cn(
-                          "block rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white",
-                          isActiveRoute(item.href)
-                            ? "bg-[#ff9e3d] text-white"
-                            : "hover:bg-[#ff9e3d] hover:text-white"
-                        )}
-                        onClick={() => setDeptOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    )}
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={
+                        isActiveRoute(item.href) ? "page" : undefined
+                      }
+                      className={cn(
+                        "block rounded-md px-4 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-white",
+                        isActiveRoute(item.href)
+                          ? "bg-[#ff9e3d] text-white"
+                          : "hover:bg-[#ff9e3d] hover:text-white"
+                      )}
+                      onClick={() => setBatchOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -291,14 +278,14 @@ export default function Navbar() {
 
           <li className="border-b border-white/15">
             <button
-              ref={mobileDeptButtonRef}
+              ref={mobileBatchButtonRef}
               type="button"
-              aria-expanded={mobileDeptOpen}
+              aria-expanded={mobileBatchOpen}
               aria-controls="mobile-batch-menu"
-              onClick={() => setMobileDeptOpen((open) => !open)}
+              onClick={() => setMobileBatchOpen((open) => !open)}
               className={cn(
                 "flex min-h-11 w-full cursor-pointer items-center justify-between px-5 py-3 font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white",
-                isActiveRoute("/batch")
+                isActiveRoute("/department")
                   ? "bg-[#ff9e3d] text-white"
                   : "hover:bg-white/10"
               )}
@@ -309,48 +296,39 @@ export default function Navbar() {
                 size={18}
                 className={cn(
                   "transition-transform duration-200",
-                  mobileDeptOpen && "rotate-180"
+                  mobileBatchOpen && "rotate-180"
                 )}
               />
             </button>
 
             <div
               id="mobile-batch-menu"
-              aria-hidden={!mobileDeptOpen}
+              aria-hidden={!mobileBatchOpen}
               className={cn(
                 "overflow-hidden bg-black/10 transition-all duration-300",
-                mobileDeptOpen
-                  ? "visible max-h-48 opacity-100"
+                mobileBatchOpen
+                  ? "visible max-h-64 opacity-100"
                   : "invisible max-h-0 opacity-0"
               )}
             >
-              <ul aria-label="Daftar batch">
+              <ul aria-label="Daftar batch" className="flex flex-col gap-1 p-2">
                 {batchItems.map((item) => (
-                  <li key={item.label}>
-                    {item.disabled ? (
-                      <span
-                        aria-disabled="true"
-                        className="block min-h-11 cursor-not-allowed px-7 py-3 font-medium text-white/60"
-                      >
-                        {item.label}
-                      </span>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        aria-current={
-                          isActiveRoute(item.href) ? "page" : undefined
-                        }
-                        className={cn(
-                          "block min-h-11 px-7 py-3 font-medium transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white",
-                          isActiveRoute(item.href)
-                            ? "bg-[#ff9e3d] text-white"
-                            : "hover:bg-white/10"
-                        )}
-                        onClick={closeMobileMenu}
-                      >
-                        {item.label}
-                      </Link>
-                    )}
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={
+                        isActiveRoute(item.href) ? "page" : undefined
+                      }
+                      className={cn(
+                        "block min-h-11 rounded-md px-5 py-3 font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white",
+                        isActiveRoute(item.href)
+                          ? "bg-[#ff9e3d] text-white"
+                          : "hover:bg-white/10"
+                      )}
+                      onClick={closeMobileMenu}
+                    >
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

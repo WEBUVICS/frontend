@@ -107,8 +107,8 @@ export default function About() {
           <h2 className="text-2xl font-bold text-center text-[var(--color-second)] mb-6">
             Job Description
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="w-full rounded-lg bg-[var(--color-muted)] p-6 shadow-md md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <h3 className="font-semibold mb-2">Internal Development</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>
@@ -119,7 +119,7 @@ export default function About() {
                 </li>
               </ul>
             </div>
-            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+            <div className="w-full rounded-lg bg-[var(--color-muted)] p-6 shadow-md md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <h3 className="font-semibold mb-2">Public Relations</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>
@@ -130,7 +130,7 @@ export default function About() {
                 </li>
               </ul>
             </div>
-            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+            <div className="w-full rounded-lg bg-[var(--color-muted)] p-6 shadow-md md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <h3 className="font-semibold mb-2">Editor</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>Produces photo and video documentation for UVICS activities.</li>
@@ -139,7 +139,7 @@ export default function About() {
                 </li>
               </ul>
             </div>
-            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+            <div className="w-full rounded-lg bg-[var(--color-muted)] p-6 shadow-md md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <h3 className="font-semibold mb-2">Competition Handler</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>Identifies and shares relevant competition opportunities with UVICS members.</li>
@@ -148,7 +148,7 @@ export default function About() {
                 </li>
               </ul>
             </div>
-            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
+            <div className="w-full rounded-lg bg-[var(--color-muted)] p-6 shadow-md md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <h3 className="font-semibold mb-2">Web Development</h3>
               <ul className="list-disc pl-4 space-y-2 text-sm">
                 <li>Maintains and improves the official UVICS website.</li>
@@ -157,15 +157,7 @@ export default function About() {
                 </li>
               </ul>
             </div>
-            <div className="bg-[var(--color-muted)] rounded-lg p-6 shadow-md">
-              <h3 className="font-semibold mb-2">CREATE</h3>
-              <ul className="list-disc pl-4 space-y-2 text-sm">
-                <li>Providing opportunities for members to contribute through digital projects, creative production, communication, and organizational initiatives.</li>
-                <li>
-                  Supporting UVICS programs through collaboration across departments and member-led initiatives.
-                </li>
-              </ul>
-            </div>
+
           </div>
         </section>
 

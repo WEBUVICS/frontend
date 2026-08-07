@@ -265,12 +265,17 @@ const AdvisorSection = ({ members }: { members: MemberType[] }) => {
       {/* Card Utama */}
       <div className="w-full bg-[#FFA447] rounded-lg shadow-lg px-4 sm:px-8 md:px-10 py-6 sm:py-12 md:py-14 flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-10">
         <div className="flex-1 text-white pr-0 sm:pr-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Department UVICS</h2>
+          <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-white/80">
+            Department UVICS
+          </p>
+          <h1 className="mb-3 font-quick text-2xl font-bold sm:text-3xl md:text-4xl">
+            Batch 2
+          </h1>
           <p className="text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Batch kedua UVICS hadir dengan semangat pembaruan! Kini terdiri dari lima divisi ialah Web Development, Internal Development, External Affairs, Editor, Public Relation, dan Competition Handler.
+            Batch 2 continued UVICS&apos;s growth with a broader organizational structure and stronger collaboration across departments.
           </p>
           <p className="mt-2 sm:mt-4 text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Batch ini membawa UVICS ke level yang lebih tinggi. Setiap divisi berperan aktif dalam mengembangkan potensi anggota dan memperluas jangkauan organisasi baik di dalam maupun luar kampus.
+            This batch expanded member development through Web Development, Internal Development, External Affairs, Editor, Public Relations, and Competition Handler.
           </p>
         </div>
         <div className="flex-shrink-0">

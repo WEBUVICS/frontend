@@ -32,7 +32,7 @@ export default function DepartmentUvics() {
     { id: 4, name: "Adithia Gunawan", position: "Member Admin Interface", image: "/member/CH/adit.webp" },
     { id: 5, name: "Jordan Sutarto", position: "Member Admin Interface", image: "/member/WEBDEV/jordan.webp" },
     { id: 6, name: "Betrand Saputra", position: "Member Admin Interface", image: "/member/WEBDEV/betrand.webp" },
-    { id: 9, name: "Adriel Walintukan", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
+    { id: 11, name: "Adriel Walintukan", position: "Member Admin Interface", image: "/member/WEBDEV/adriel.webp" },
     { id: 7, name: "Timothy Weley", position: "Member User Interface", image: "/member/WEBDEV/timo.webp" },
     { id: 8, name: "Nazarya Kandou", position: "Member User Interface", image: "/member/WEBDEV/nazar.webp" },
     { id: 9, name: "Clio Mataheru", position: "Member User Interface", image: "/member/WEBDEV/clio.webp" },
@@ -45,7 +45,7 @@ export default function DepartmentUvics() {
     { id: 3, name: "Marcelo Poluakan", position: "Koordinator", image: "/member/CORETEAM/ralf.webp" },
     { id: 4, name: "Alya Manoppo", position: "Member Content Creation", image: "/member/CORETEAM/ralf.webp" },
     { id: 5, name: "Renaldy Mantiri", position: "Member Content Creation", image: "/member/PR/renaldy.webp" },
-    { id: 5, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.webp" },
+    { id: 11, name: "Jeany Adinda", position: "Member Content Creation", image: "/member/PR/jeany.webp" },
     { id: 6, name: "Glenvidi Gerungan", position: "Member Content Creation", image: "/member/PR/cipeng.webp" },
     { id: 7, name: "Valentina Chang", position: "Member Multimedia", image: "/member/PR/chang.webp" },
     { id: 8, name: "Alyan Donuhulu", position: "Member Multimedia", image: "/member/EDITOR/tong.webp" },
@@ -202,12 +202,17 @@ export default function DepartmentUvics() {
       {/* Card Utama */}
       <div className="w-full bg-[#FFA447] rounded-lg shadow-lg px-4 sm:px-8 md:px-10 py-6 sm:py-12 md:py-14 flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-10">
         <div className="flex-1 text-white pr-0 sm:pr-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-4 md:mb-5">Department UVICS</h2>
+          <p className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-white/80">
+            Department UVICS
+          </p>
+          <h1 className="mb-3 font-quick text-2xl font-bold sm:text-3xl md:text-4xl">
+            Batch 1
+          </h1>
           <p className="text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Batch pertama UVICS menjadi langkah awal lahirnya komunitas yang inspiratif. Dengan tiga divisi utama yaitu Web Development, Public and Documentation, serta Event & Education.
+            Batch 1 marked the beginning of UVICS as a student-driven organization built around collaboration, initiative, and shared achievement.
           </p>
           <p className="mt-2 sm:mt-4 text-justify leading-relaxed text-sm sm:text-base md:text-lg">
-            Batch ini membangun dasar yang kuat untuk kerja sama lintas bidang dan memperkenalkan semangat berorganisasi di kalangan mahasiswa Universitas Klabat.
+            This batch established the foundation for cross-disciplinary teamwork through Web Development, Public Documentation, and Event & Education.
           </p>
         </div>
         <div className="flex-shrink-0">
