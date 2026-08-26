@@ -22,7 +22,7 @@ export type RecruitmentConfig = {
 };
 
 export const recruitmentConfig = {
-  isActive: true,
+  isActive: false,
   batchName: "Batch 3.5",
   label: "Open Recruitment",
   title: "Ready to Grow With Us?",
