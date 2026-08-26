@@ -25,8 +25,12 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UVICS WEBSITE",
-  description: "Silahkan kunjungi website uvics.",
+  title: "Admin Preview | UVICS",
+  description: "Status akses preview antarmuka administrasi UVICS.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   icons: {
     icon: "/favicon.png",
   },

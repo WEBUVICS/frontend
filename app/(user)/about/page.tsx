@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tentang UVICS",
+  description: "Visi, misi, dan nilai organisasi UVICS Universitas Klabat.",
+  alternates: { canonical: "/about" },
+};
+
 export default function About() {
   return (
     <div className="font-sans min-h-screen p-8 pb-20 sm:p-20">

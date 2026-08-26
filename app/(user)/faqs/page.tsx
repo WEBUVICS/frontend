@@ -84,7 +84,7 @@ function FAQColumn({
             <div
               id={contentId}
               aria-hidden={!isOpen}
-              className={`overflow-hidden px-4 transition-all duration-300 ${
+              className={`overflow-hidden px-4 transition-[max-height,padding] duration-300 motion-reduce:transition-none ${
                 isOpen ? "max-h-96 pb-4" : "max-h-0"
               }`}
             >
@@ -107,7 +107,7 @@ export default function FAQ() {
   };
 
   return (
-    <main className="flex min-h-screen justify-center px-4 py-10 font-sans sm:px-8 sm:py-16 lg:px-20">
+    <div className="flex min-h-screen justify-center px-4 py-10 font-sans sm:px-8 sm:py-16 lg:px-20">
       <div className="w-full max-w-6xl rounded-lg bg-[var(--color-muted)] p-5 shadow-md sm:p-8 lg:p-10">
         <h1 className="mb-4 text-center text-2xl font-bold text-second sm:text-3xl">
           Frequently Asked Questions
@@ -132,6 +132,6 @@ export default function FAQ() {
           />
         </section>
       </div>
-    </main>
+    </div>
   );
 }

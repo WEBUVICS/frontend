@@ -117,8 +117,7 @@ export default function Navbar() {
             alt=""
             width={50}
             height={50}
-            priority
-            quality={100}
+            loading="eager"
             className="rounded-full"
           />
           <span className="font-quick text-2xl font-bold sm:text-3xl">UVICS</span>
@@ -185,7 +184,7 @@ export default function Navbar() {
                 aria-label="Daftar batch"
                 aria-hidden={!batchOpen}
                 className={cn(
-                  "absolute left-0 top-full z-50 mt-2 flex w-48 origin-top-left flex-col gap-1 rounded-xl border border-white/15 bg-[#2f6fd6] p-2 shadow-xl transition-all duration-200",
+                  "absolute left-0 top-full z-50 mt-2 flex w-48 origin-top-left flex-col gap-1 rounded-xl border border-white/15 bg-[#2f6fd6] p-2 shadow-xl transition-[transform,opacity,visibility] duration-200 motion-reduce:transition-none",
                   batchOpen
                     ? "visible translate-y-0 scale-100 opacity-100"
                     : "invisible -translate-y-2 scale-95 opacity-0"
@@ -256,7 +255,7 @@ export default function Navbar() {
         id="mobile-navigation-menu"
         aria-hidden={!isOpen}
         className={cn(
-          "overflow-y-auto bg-[#2f6fd6] transition-all duration-300 ease-in-out lg:hidden",
+          "overflow-y-auto bg-[#2f6fd6] transition-[max-height,opacity,visibility] duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
           isOpen
             ? "visible max-h-[calc(100dvh-4rem)] border-t border-white/15 opacity-100"
             : "invisible max-h-0 opacity-0"
@@ -308,7 +307,7 @@ export default function Navbar() {
               id="mobile-batch-menu"
               aria-hidden={!mobileBatchOpen}
               className={cn(
-                "overflow-hidden bg-black/10 transition-all duration-300",
+                "overflow-hidden bg-black/10 transition-[max-height,opacity,visibility] duration-300 motion-reduce:transition-none",
                 mobileBatchOpen
                   ? "visible max-h-64 opacity-100"
                   : "invisible max-h-0 opacity-0"

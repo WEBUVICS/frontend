@@ -4,6 +4,13 @@ import EventCard from "@/components/userComponents/eventCard";
 import AnnouncementCard from "@/components/userComponents/announcementCard";
 import { DataAnnouncement } from "./dataAnnounce";
 import { DataEvent, EventType } from "./dataEvent";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Media dan Kegiatan UVICS",
+  description: "Galeri, event, dan pengumuman terbaru dari UVICS.",
+  alternates: { canonical: "/media" },
+};
 
 const images = [
   "/gallery/foto-1.webp",

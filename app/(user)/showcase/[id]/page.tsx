@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { mockData } from "../mockData";
+import type { Metadata } from "next";
 
 
 async function getCardById(id: string) {
@@ -18,7 +19,7 @@ export default async function CardDetailPage({
   if (!card) return notFound();
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-8">
+    <article className="max-w-5xl mx-auto px-4 py-8">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Image */}
@@ -27,6 +28,7 @@ export default async function CardDetailPage({
             src={card.image}
             alt={card.title}
             fill
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
           />
         </div>
@@ -65,6 +67,28 @@ export default async function CardDetailPage({
           ))}
         </ul>
       </div>
-    </main>
+    </article>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const card = await getCardById(id);
+
+  if (!card) return {};
+
+  return {
+    title: `${card.title} | Showcase UVICS`,
+    description: card.description.slice(0, 155),
+    alternates: { canonical: `/showcase/${card.id}` },
+    openGraph: {
+      title: card.title,
+      description: card.description.slice(0, 155),
+      images: [{ url: card.image, alt: card.title }],
+    },
+  };
 }

@@ -6,6 +6,13 @@ import {
   PICSection,
 } from "@/components/userComponents/department-member-sections";
 import { MemberType } from "@/types/data-type";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "UVICS Batch 1",
+  description: "Profil pengurus dan anggota UVICS Batch 1.",
+  alternates: { canonical: "/department/batch1" },
+};
 
 // === Interface Member ===
 
@@ -86,7 +93,14 @@ export default function DepartmentUvics() {
         </div>
         <div className="flex-shrink-0">
           <div className="w-48 sm:w-64 md:w-72 lg:w-80 h-32 sm:h-44 md:h-52 lg:h-56 relative shadow-xl rounded-md overflow-hidden">
-            <Image src="/image-desc-UVICS.svg" alt="UVICS Team" fill className="rounded-md object-cover" />
+            <Image
+              src="/image-desc-UVICS.webp"
+              alt="Tim UVICS"
+              fill
+              preload
+              sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 192px"
+              className="rounded-md object-cover"
+            />
           </div>
         </div>
       </div>

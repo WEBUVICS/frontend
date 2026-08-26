@@ -28,7 +28,12 @@ type AnalyticsData = {
 // Format YYYYMMDD → DD-MM-YYYY
 function formatDate(raw: string) {
   if (!raw || raw.length !== 8) return raw;
-  return `${raw.slice(6, 8)}-${raw.slice(4, 6)}-${raw.slice(0, 4)}`;
+  const date = new Date(
+    Number(raw.slice(0, 4)),
+    Number(raw.slice(4, 6)) - 1,
+    Number(raw.slice(6, 8))
+  );
+  return new Intl.DateTimeFormat("id-ID").format(date);
 }
 
 export default function AnalyticsChart({
@@ -78,9 +83,8 @@ export default function AnalyticsChart({
           .sort((a, b) => Number(a.date) - Number(b.date));
 
         setData(sortedData);
-      } catch (err) {
+      } catch {
         if (!controller.signal.aborted) {
-          console.error("Error fetching analytics:", err);
           setData([]);
           setError(true);
         }
@@ -99,13 +103,13 @@ export default function AnalyticsChart({
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold text-[#ff9e3d]">{title}</h2>
         <Select value={timeRange} onValueChange={setTimeRange}>
-          <SelectTrigger className="w-34 cursor-pointer">
-            <SelectValue placeholder="Select range" />
+          <SelectTrigger aria-label="Rentang waktu analytics" className="w-34 cursor-pointer">
+            <SelectValue placeholder="Pilih rentang…" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="7days">Last 7 Days</SelectItem>
-            <SelectItem value="30days">Last 30 Days</SelectItem>
-            <SelectItem value="all-time">All Time</SelectItem>
+            <SelectItem value="7days">7 Hari Terakhir</SelectItem>
+            <SelectItem value="30days">30 Hari Terakhir</SelectItem>
+            <SelectItem value="all-time">Semua Waktu</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -113,7 +117,10 @@ export default function AnalyticsChart({
       {/* Chart or Loader */}
       {loading ? (
         <div className="flex justify-center items-center h-48 text-[#ff9e3d]">
-          <Loader2 className="h-8 w-8 animate-spin" />
+          <Loader2
+            aria-hidden="true"
+            className="h-8 w-8 animate-spin motion-reduce:animate-none"
+          />
         </div>
       ) : error ? (
         <div role="status" className="flex h-48 items-center justify-center text-sm text-red-600">

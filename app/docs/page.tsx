@@ -142,7 +142,8 @@ npm run dev`}</CodeBlock>
             <p>Sebelum mengirim perubahan, jalankan seluruh pemeriksaan berikut:</p>
             <CodeBlock label="Verifikasi">{`npm run lint
 npm run typecheck
-npm run build`}</CodeBlock>
+npm run build
+npm test`}</CodeBlock>
             <p>
               Workflow branch dan format commit dijelaskan di file{" "}
               <InlineCode>BRANCH.md</InlineCode>.
@@ -160,7 +161,8 @@ npm run build`}</CodeBlock>
             </Notice>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <InlineCode>/login</InlineCode> hanya membuka dashboard preview;
+                <InlineCode>/login</InlineCode> hanya membuka dashboard preview
+                saat development. Preview admin ditutup default di production;
                 autentikasi server-side belum tersedia.
               </li>
               <li>
@@ -212,8 +214,8 @@ npm run build`}</CodeBlock>
           >
             <CodeBlock>app/(user)/department/batch&lt;nomor&gt;/page.tsx</CodeBlock>
             <p>
-              Batch 1, 2, dan 2.5 menyimpan array anggota langsung di halamannya.
-              Batch 3.0 masih berupa placeholder sampai data resmi tersedia.
+              Batch 1, 2, dan 3 menyimpan array anggota langsung di halamannya.
+              Batch 4 masih berupa placeholder sampai data resmi tersedia.
             </p>
             <p>Setiap anggota mengikuti type berikut:</p>
             <CodeBlock label="Type">{`{
@@ -311,12 +313,15 @@ npm run build`}</CodeBlock>
             <CodeBlock label="PowerShell">Copy-Item .env.example .env.local</CodeBlock>
             <CodeBlock label="Bash">cp .env.example .env.local</CodeBlock>
             <p>Isi variable server-side berikut:</p>
-            <CodeBlock label="Environment">{`GA4_PROPERTY_ID=
+            <CodeBlock label="Environment">{`NEXT_PUBLIC_SITE_URL=https://uvics.my.id
+ADMIN_PREVIEW_ENABLED=false
+GA4_PROPERTY_ID=
 GA4_CLIENT_EMAIL=
 GA4_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n"`}</CodeBlock>
             <Notice>
               Jangan commit <InlineCode>.env.local</InlineCode> dan jangan memakai
               prefix <InlineCode>NEXT_PUBLIC_</InlineCode> untuk kredensial GA4.
+              <InlineCode> ADMIN_PREVIEW_ENABLED</InlineCode> bukan pengganti autentikasi.
             </Notice>
           </SectionCard>
 
@@ -332,7 +337,11 @@ GA4_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\
                 Jangan commit secret, <InlineCode>.env.local</InlineCode>,{" "}
                 <InlineCode>.next</InlineCode>, atau <InlineCode>node_modules</InlineCode>.
               </li>
-              <li>Jalankan lint, typecheck, dan production build.</li>
+              <li>Jalankan lint, typecheck, production build, dan smoke test.</li>
+              <li>
+                GitHub Actions menjalankan pemeriksaan yang sama pada push ke
+                branch utama dan pada pull request.
+              </li>
               <li>
                 Ikuti panduan branch dan pull request di <InlineCode>BRANCH.md</InlineCode>.
               </li>

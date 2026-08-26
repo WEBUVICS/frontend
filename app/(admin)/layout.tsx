@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { connection } from "next/server";
 import { Quicksand, Open_Sans, Poppins, Roboto_Mono } from "next/font/google";
 import "../globals.css";
 import Sidebar from "@/components/Sidebar";
+import { isAdminPreviewEnabled } from "@/lib/admin-preview";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -26,18 +29,28 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UVICS WEBSITE",
-  description: "Silahkan kunjungi website uvics.",
+  title: "Admin Preview | UVICS",
+  description: "Antarmuka preview administrasi UVICS.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   icons: {
     icon: "/favicon.png",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  await connection();
+
+  if (!isAdminPreviewEnabled()) {
+    notFound();
+  }
+
   return (
     <html lang="id">
       <body

@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import BackToTopButton from "@/components/back-to-top-button";
 import RecruitmentAnnouncementBar from "@/components/userComponents/RecruitmentAnnouncementBar";
+import { siteUrl } from "@/lib/site";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -27,6 +28,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: "UVICS | Connect. Develop. Compete. Achieve.",
   description:
     "UVICS is a student-driven organization at Universitas Klabat that supports students through competitions, teamwork, mentoring, and collaborative growth.",
@@ -36,14 +38,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://uvics.my.id",
+    url: "/",
     siteName: "UVICS - UNKLAB Virtue in Computer Science",
     title: "UVICS | Connect. Develop. Compete. Achieve.",
     description:
       "UVICS is a student-driven organization at Universitas Klabat that supports students through competitions, teamwork, mentoring, and collaborative growth.",
     images: [
       {
-        url: "https://uvics.my.id/uvics-og-image.jpg",
+        url: "/uvics-og-image.jpg",
         width: 1200,
         height: 630,
         alt: "UVICS - UNKLAB Virtue in Computer Science",

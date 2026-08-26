@@ -12,6 +12,7 @@ export default function Error({ error, reset }: ErrorProps) {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
             <svg
+              aria-hidden="true"
               className="w-8 h-8 text-red-600"
               fill="none"
               stroke="currentColor"
@@ -37,8 +38,9 @@ export default function Error({ error, reset }: ErrorProps) {
 
           <div className="space-y-3">
             <button
+              type="button"
               onClick={reset}
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer font-medium"
+              className="w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
             >
               Try Again
             </button>

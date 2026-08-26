@@ -1,21 +1,39 @@
-"use server";
-
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
+import "server-only";
 
-const analyticsClient = new BetaAnalyticsDataClient({
-  credentials: {
-    client_email: process.env.GA4_CLIENT_EMAIL,
-    private_key: process.env.GA4_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-  },
-});
+export class AnalyticsConfigurationError extends Error {}
+
+let analyticsClient: BetaAnalyticsDataClient | undefined;
+
+function getAnalyticsClient() {
+  const propertyId = process.env.GA4_PROPERTY_ID;
+  const clientEmail = process.env.GA4_CLIENT_EMAIL;
+  const privateKey = process.env.GA4_PRIVATE_KEY?.replace(/\\n/g, "\n");
+
+  if (!propertyId || !clientEmail || !privateKey) {
+    throw new AnalyticsConfigurationError(
+      "GA4 server configuration is incomplete."
+    );
+  }
+
+  analyticsClient ??= new BetaAnalyticsDataClient({
+    credentials: {
+      client_email: clientEmail,
+      private_key: privateKey,
+    },
+  });
+
+  return { analyticsClient, propertyId };
+}
 
 // Fetch historical GA4 data
 export async function getGA4Data(
   metric: string,
   dateRange: { startDate: string; endDate: string }
 ) {
+  const { analyticsClient, propertyId } = getAnalyticsClient();
   const [response] = await analyticsClient.runReport({
-    property: `properties/${process.env.GA4_PROPERTY_ID}`,
+    property: `properties/${propertyId}`,
     dateRanges: [dateRange],
     metrics: [{ name: metric }],
     dimensions: [{ name: "date" }],
@@ -31,15 +49,11 @@ export async function getGA4Data(
 
 // Fetch real-time active users
 export async function getRealtimeUsers() {
-  try {
-    const [response] = await analyticsClient.runRealtimeReport({
-      property: `properties/${process.env.GA4_PROPERTY_ID}`,
-      metrics: [{ name: "activeUsers" }],
-    });
+  const { analyticsClient, propertyId } = getAnalyticsClient();
+  const [response] = await analyticsClient.runRealtimeReport({
+    property: `properties/${propertyId}`,
+    metrics: [{ name: "activeUsers" }],
+  });
 
-    return response?.rows?.[0]?.metricValues?.[0]?.value || "0";
-  } catch (error) {
-    console.error("Error fetching realtime users:", error);
-    return "0";
-  }
+  return response?.rows?.[0]?.metricValues?.[0]?.value || "0";
 }

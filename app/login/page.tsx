@@ -20,7 +20,7 @@ export default function LoginPage() {
           width={80}
           height={80}
           className="w-12 sm:w-14 md:w-20 object-contain"
-          priority
+          loading="eager"
         />
       </span>
 
@@ -46,7 +46,6 @@ export default function LoginPage() {
         width={400}
         height={400}
         className="fixed bottom-[-15%] right-[-15%] opacity-10 -z-10 w-[250px] sm:w-[300px] md:w-[400px] max-w-md"
-        priority
       />
     </div>
   );

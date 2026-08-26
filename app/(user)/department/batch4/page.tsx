@@ -1,4 +1,11 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "UVICS Batch 4",
+  description: "Informasi struktur departemen UVICS Batch 4.",
+  alternates: { canonical: "/department/batch4" },
+};
 
 const departments = [
   "Internal Development",
@@ -10,7 +17,7 @@ const departments = [
 
 export default function BatchThreePage() {
   return (
-    <main className="w-full bg-white px-3 py-6 sm:px-5 sm:py-12">
+    <div className="w-full bg-white px-3 py-6 sm:px-5 sm:py-12">
       <section className="mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col items-center justify-center">
         <div className="w-full rounded-lg bg-[#FFA447] px-4 py-6 shadow-lg sm:px-8 sm:py-12 md:px-10 md:py-14">
           <div className="flex flex-col items-center justify-between gap-6 sm:gap-10 md:flex-row">
@@ -36,9 +43,11 @@ export default function BatchThreePage() {
             <div className="shrink-0">
               <div className="relative h-32 w-48 overflow-hidden rounded-md shadow-xl sm:h-44 sm:w-64 md:h-52 md:w-72 lg:h-56 lg:w-80">
                 <Image
-                  src="/image-desc-UVICS.svg"
-                  alt="UVICS Team"
+                  src="/image-desc-UVICS.webp"
+                  alt="Tim UVICS"
                   fill
+                  preload
+                  sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 192px"
                   className="object-cover"
                 />
               </div>
@@ -74,6 +83,6 @@ export default function BatchThreePage() {
           </div>
         </section>
       </section>
-    </main>
+    </div>
   );
 }

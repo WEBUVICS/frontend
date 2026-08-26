@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
-import { getRealtimeUsers } from "@/lib/analytics";
 
 type AnalyticsData = {
   date: string;
@@ -43,11 +42,21 @@ export default function AnalyticsCard({
         setError(false);
 
         try {
-          const users = await getRealtimeUsers();
-          if (!cancelled) setLiveCount(users);
-        } catch (err) {
+          const response = await fetch(
+            "/api/analytics?metric=realtimeUsers&range=real-time"
+          );
+          if (!response.ok) {
+            throw new Error(`Analytics request failed: ${response.status}`);
+          }
+
+          const json: unknown = await response.json();
+          if (!Array.isArray(json) || typeof json[0]?.value !== "string") {
+            throw new Error("Invalid analytics response");
+          }
+
+          if (!cancelled) setLiveCount(json[0].value);
+        } catch {
           if (!cancelled) {
-            console.error("Error fetching live users:", err);
             setError(true);
           }
         } finally {
@@ -84,9 +93,8 @@ export default function AnalyticsCard({
         if (!Array.isArray(json)) throw new Error("Invalid analytics response");
 
         setData(json as AnalyticsData[]);
-      } catch (err) {
+      } catch {
         if (!controller.signal.aborted) {
-          console.error("Error fetching analytics:", err);
           setData([]);
           setError(true);
         }
@@ -110,7 +118,10 @@ export default function AnalyticsCard({
         <div>
           <div className="text-3xl font-bold text-[#ff9e3d]">
             {loading ? (
-              <Loader2 className="h-6 w-6 animate-spin" />
+              <Loader2
+                aria-hidden="true"
+                className="h-6 w-6 animate-spin motion-reduce:animate-none"
+              />
             ) : error ? (
               "–"
             ) : (
@@ -126,7 +137,10 @@ export default function AnalyticsCard({
         </div>
 
         {icon && (
-          <span className="h-16 w-16 flex items-center justify-center [&>svg]:h-full [&>svg]:w-full text-[#ff9e3d]">
+          <span
+            aria-hidden="true"
+            className="h-16 w-16 flex items-center justify-center [&>svg]:h-full [&>svg]:w-full text-[#ff9e3d]"
+          >
             {icon}
           </span>
         )}

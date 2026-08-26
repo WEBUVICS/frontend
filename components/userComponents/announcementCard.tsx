@@ -100,7 +100,6 @@ const AnnouncementCard = ({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
             className="object-cover rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
-            priority
           />
         </div>
       </div>

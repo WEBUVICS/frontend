@@ -1,5 +1,24 @@
 import { NextResponse } from "next/server";
-import { getGA4Data } from "@/lib/analytics";
+import {
+  AnalyticsConfigurationError,
+  getGA4Data,
+  getRealtimeUsers,
+} from "@/lib/analytics";
+import { isAdminPreviewEnabled } from "@/lib/admin-preview";
+
+const allowedMetrics = new Set([
+  "activeUsers",
+  "totalUsers",
+  "screenPageViews",
+  "realtimeUsers",
+]);
+
+const dateRanges = {
+  today: { startDate: "today", endDate: "today" },
+  "7days": { startDate: "7daysAgo", endDate: "today" },
+  "30days": { startDate: "30daysAgo", endDate: "today" },
+  "all-time": { startDate: "2020-01-01", endDate: "today" },
+} as const;
 
 /**
  * @swagger
@@ -43,36 +62,60 @@ export async function GET(req: Request) {
   const metric = searchParams.get("metric") || "activeUsers";
   const range = searchParams.get("range") || "today";
 
-  let dateRange;
-  const today = new Date().toISOString().split("T")[0];
-
-  switch (range) {
-    case "7days":
-      dateRange = { startDate: "7daysAgo", endDate: "today" };
-      break;
-    case "30days":
-      dateRange = { startDate: "30daysAgo", endDate: "today" };
-      break;
-    case "all-time":
-      dateRange = { startDate: "2020-01-01", endDate: "today" };
-      break;
-    case "today":
-      dateRange = { startDate: today, endDate: today };
-      break;
-    default:
-      dateRange = { startDate: "7daysAgo", endDate: "today" };
+  if (!allowedMetrics.has(metric)) {
+    return NextResponse.json(
+      { error: "Metric analytics tidak didukung." },
+      { status: 400 }
+    );
   }
 
-  console.log("Fetching GA4 Data:", { metric, dateRange });
+  if (metric !== "realtimeUsers" && !(range in dateRanges)) {
+    return NextResponse.json(
+      { error: "Rentang waktu analytics tidak didukung." },
+      { status: 400 }
+    );
+  }
+
+  if (!isAdminPreviewEnabled()) {
+    return NextResponse.json(
+      { error: "Analytics admin tidak tersedia." },
+      { status: 404 }
+    );
+  }
 
   try {
-    const data = await getGA4Data(metric, dateRange);
-    return NextResponse.json(data);
+    if (metric === "realtimeUsers") {
+      const value = await getRealtimeUsers();
+      return NextResponse.json(
+        [{ date: "realtime", value }],
+        { headers: { "Cache-Control": "private, no-store" } }
+      );
+    }
+
+    const data = await getGA4Data(
+      metric,
+      dateRanges[range as keyof typeof dateRanges]
+    );
+    return NextResponse.json(data, {
+      headers: {
+        "Cache-Control": "private, max-age=300, stale-while-revalidate=600",
+      },
+    });
   } catch (error) {
+    if (error instanceof AnalyticsConfigurationError) {
+      return NextResponse.json(
+        {
+          error:
+            "Analytics belum dikonfigurasi. Lengkapi environment variable GA4 di server.",
+        },
+        { status: 503 }
+      );
+    }
+
     console.error("GA4 fetch error:", error);
     return NextResponse.json(
-      { error: "Failed to fetch analytics data" },
-      { status: 500 }
+      { error: "Layanan analytics sedang tidak dapat dijangkau." },
+      { status: 502 }
     );
   }
 }

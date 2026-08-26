@@ -1,7 +1,12 @@
 import ShowCaseCards from "@/components/showcase/showcase-cards";
 import { mockData } from "./mockData";
+import type { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+  title: "Showcase UVICS",
+  description: "Karya, kompetisi, dan pencapaian tim UVICS.",
+  alternates: { canonical: "/showcase" },
+};
 
 export default function Showcase() {
 

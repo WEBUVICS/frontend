@@ -73,10 +73,10 @@ export default function Sidebar() {
                     {/* Icon */}
                     <Image
                       src={item.icon}
-                      alt={item.label}
+                      alt=""
                       width={20}
                       height={20}
-                      className="mr-3"
+                      className="mr-3 h-5 w-5 object-contain"
                     />
                     <span>{item.label}</span>
                   </Link>

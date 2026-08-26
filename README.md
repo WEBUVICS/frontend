@@ -16,11 +16,11 @@ Proyek menggunakan pendekatan **frontend-first**. Backend dapat ditambahkan keti
 |:---|:---|
 | Halaman publik | Berjalan dengan konten statis dari source code. |
 | Rekrutmen | Dikendalikan melalui `lib/recruitment-config.ts`. |
-| Login admin | Masih berupa halaman preview; autentikasi belum tersedia. |
+| Login admin | Preview tersedia saat development dan ditutup default di production; autentikasi belum tersedia. |
 | Pengumuman admin | Tersimpan di `localStorage` browser dan belum tersinkron ke halaman publik. |
 | Media admin | Perubahan hanya bertahan selama halaman aktif dan kembali ke data awal setelah reload. |
 | Profil admin | Menggunakan data mock/static; persistence belum terhubung. |
-| Dashboard analytics | Menggunakan GA4 Data API dan membutuhkan environment variables server-side. |
+| Dashboard analytics | Menggunakan GA4 Data API, allowlist parameter, dan membutuhkan environment variables server-side. |
 
 Jangan menyimpan password, token, atau data sensitif di React state, `localStorage`, maupun `sessionStorage`.
 
@@ -54,7 +54,7 @@ npm run dev
 
 Buka [http://localhost:3000](http://localhost:3000). Panduan pengelolaan konten tersedia di [http://localhost:3000/docs](http://localhost:3000/docs).
 
-Halaman publik tidak membutuhkan environment variables. Untuk dashboard analytics, salin `.env.example` menjadi `.env.local`, kemudian isi kredensial GA4 yang valid.
+Halaman publik memakai `https://uvics.my.id` sebagai URL default. Untuk dashboard analytics, salin `.env.example` menjadi `.env.local`, kemudian isi kredensial GA4 yang valid.
 
 PowerShell:
 
@@ -72,6 +72,8 @@ cp .env.example .env.local
 
 | Nama | Digunakan untuk | Visibilitas |
 |:---|:---|:---|
+| `NEXT_PUBLIC_SITE_URL` | Base URL metadata, sitemap, dan robots | Public |
+| `ADMIN_PREVIEW_ENABLED` | Membuka preview admin tanpa auth di production; biarkan `false` sampai auth tersedia | Server only |
 | `GA4_PROPERTY_ID` | ID properti Google Analytics 4 | Server only |
 | `GA4_CLIENT_EMAIL` | Email service account Google | Server only |
 | `GA4_PRIVATE_KEY` | Private key service account dengan newline `\n` | Server only |
@@ -87,6 +89,7 @@ Gunakan `.env.local` untuk nilai asli. Jangan commit file tersebut dan jangan me
 | `npm run typecheck` | Memeriksa type dengan compiler TypeScript 7 tanpa menghasilkan file. |
 | `npm run build` | Membuat production build. |
 | `npm run start` | Menjalankan production build yang sudah dibuat. |
+| `npm test` | Menjalankan smoke test terhadap production build. |
 
 Sebelum pull request atau deployment, jalankan:
 
@@ -94,6 +97,7 @@ Sebelum pull request atau deployment, jalankan:
 npm run lint
 npm run typecheck
 npm run build
+npm test
 ```
 
 ## Struktur proyek
@@ -106,6 +110,8 @@ frontend/
 │   ├── api/analytics/   # Endpoint server untuk GA4
 │   ├── docs/            # Panduan pengelolaan konten
 │   ├── login/           # Preview akses admin
+│   ├── robots.ts        # Aturan crawler
+│   ├── sitemap.ts       # Daftar URL publik
 │   └── globals.css
 ├── components/
 │   ├── adminComponents/
@@ -116,6 +122,8 @@ frontend/
 ├── lib/                 # Analytics, konfigurasi rekrutmen, dan utility
 ├── public/              # Aset statis
 ├── types/               # Type bersama
+├── scripts/             # Pemeriksaan otomatis lokal
+├── .github/workflows/   # CI lint, typecheck, build, dan smoke test
 ├── AGENTS.md            # Aturan kerja coding agent
 ├── BRANCH.md            # Workflow branch dan pull request
 └── package.json
@@ -135,7 +143,7 @@ Referensi lengkap berada di halaman [`/docs`](http://localhost:3000/docs). Lokas
 | Galeri | Daftar gambar di `app/(user)/media/page.tsx` dan file di `public/gallery/` |
 | FAQ | Array `faqs` di `app/(user)/faqs/page.tsx` |
 
-Gunakan gambar WebP bila memungkinkan, optimalkan ukurannya sebelum commit, dan pastikan huruf besar/kecil pada path sama persis dengan nama file.
+Gunakan gambar WebP bila memungkinkan, batasi sisi terpanjang foto web sekitar 2.000 px, optimalkan ukurannya sebelum commit, dan pastikan huruf besar/kecil pada path sama persis dengan nama file.
 
 ## Kontribusi
 
@@ -148,9 +156,9 @@ Gunakan gambar WebP bila memungkinkan, optimalkan ukurannya sebelum commit, dan 
 
 ## Deployment
 
-Proyek dapat dibangun pada platform yang mendukung Next.js 16 dan Node.js 24 LTS. Jika dashboard analytics digunakan, tambahkan seluruh variable GA4 pada environment server platform hosting.
+Proyek dapat dibangun pada platform yang mendukung Next.js 16 dan Node.js 24 LTS. Set `NEXT_PUBLIC_SITE_URL` ke domain production. Jika dashboard analytics digunakan, tambahkan seluruh variable GA4 pada environment server platform hosting.
 
-Autentikasi dan persistence admin belum production-ready. Jangan membuka dashboard sebagai sistem administrasi publik sebelum kontrol akses server-side tersedia.
+Area admin dan API analytics mengembalikan 404 di production saat `ADMIN_PREVIEW_ENABLED=false`. Flag tersebut bukan pengganti autentikasi. Jangan mengaktifkannya pada situs publik sebelum kontrol akses server-side tersedia.
 
 ## Kontak
 
