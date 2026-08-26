@@ -134,7 +134,7 @@ export default function DocsPage() {
             icon={<Settings className="h-6 w-6" />}
           >
             <p>
-              Gunakan Node.js 20.9.0 atau lebih baru. Instal dependency dan
+              Gunakan Node.js 24 LTS. Instal dependency dan
               jalankan development server:
             </p>
             <CodeBlock label="Terminal">{`npm install

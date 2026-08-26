@@ -126,8 +126,11 @@ export default function AnalyticsChart({
             <XAxis dataKey="date" tickFormatter={formatDate} />
             <YAxis />
             <Tooltip
-              formatter={(value: number) => [value, title]}
-              labelFormatter={(label) => formatDate(label)}
+              formatter={(value) => [
+                typeof value === "number" ? value : String(value ?? ""),
+                title,
+              ]}
+              labelFormatter={(label) => formatDate(String(label ?? ""))}
             />
             <Bar dataKey="value" fill="#ff9e3d" radius={[6, 6, 0, 0]} />
           </BarChart>

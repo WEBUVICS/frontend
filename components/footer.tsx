@@ -3,9 +3,9 @@ import Link from "next/link";
 import {
   Phone,
   Mail,
-  Instagram,
-  LucideLinkedin,
-  GithubIcon,
+  Camera,
+  BriefcaseBusiness,
+  Code2,
 } from "lucide-react";
 
 const siteMapLinks = [
@@ -19,17 +19,17 @@ const siteMapLinks = [
 const socialLinks = [
   {
     href: "https://www.instagram.com/uvics_id/",
-    icon: Instagram,
+    icon: Camera,
     label: "Instagram",
   },
   {
     href: "https://www.linkedin.com/company/uvics-unklab-virtue-in-computer-science/",
-    icon: LucideLinkedin,
+    icon: BriefcaseBusiness,
     label: "LinkedIn",
   },
   {
     href: "https://github.com/WEBUVICS",
-    icon: GithubIcon,
+    icon: Code2,
     label: "GitHub",
   },
 ];

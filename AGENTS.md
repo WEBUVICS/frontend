@@ -42,3 +42,13 @@ When backend code is changed, also run the smallest relevant API, authentication
 - For a non-trivial commit, add a body that states what changed, why it changed, and which verification commands passed.
 - Never force-push or rewrite published history unless the user explicitly requests it.
 - If push fails because of authentication, conflicts, or remote availability, keep the verified local commit and report the exact blocker.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

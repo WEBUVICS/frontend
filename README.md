@@ -27,7 +27,7 @@ Jangan menyimpan password, token, atau data sensitif di React state, `localStora
 ## Teknologi utama
 
 - Next.js 16 dan React 19
-- TypeScript 5
+- TypeScript 7 untuk typecheck, dengan TypeScript 6 sebagai compatibility API untuk ESLint dan build Next.js
 - Tailwind CSS 4
 - Radix UI, Lucide React, Framer Motion
 - Swiper, Embla Carousel, dan Recharts
@@ -39,7 +39,7 @@ Versi lengkap dan source of truth dependency tersedia di [`package.json`](./pack
 
 ### Prasyarat
 
-- Node.js **20.9.0 atau lebih baru**
+- Node.js **24 LTS**
 - npm yang disertakan bersama Node.js
 - Git
 
@@ -84,7 +84,7 @@ Gunakan `.env.local` untuk nilai asli. Jangan commit file tersebut dan jangan me
 |:---|:---|
 | `npm run dev` | Menjalankan development server. |
 | `npm run lint` | Memeriksa kode dengan ESLint. |
-| `npm run typecheck` | Memeriksa type TypeScript tanpa menghasilkan file. |
+| `npm run typecheck` | Memeriksa type dengan compiler TypeScript 7 tanpa menghasilkan file. |
 | `npm run build` | Membuat production build. |
 | `npm run start` | Menjalankan production build yang sudah dibuat. |
 
@@ -148,7 +148,7 @@ Gunakan gambar WebP bila memungkinkan, optimalkan ukurannya sebelum commit, dan 
 
 ## Deployment
 
-Proyek dapat dibangun pada platform yang mendukung Next.js 16 dan Node.js 20.9+. Jika dashboard analytics digunakan, tambahkan seluruh variable GA4 pada environment server platform hosting.
+Proyek dapat dibangun pada platform yang mendukung Next.js 16 dan Node.js 24 LTS. Jika dashboard analytics digunakan, tambahkan seluruh variable GA4 pada environment server platform hosting.
 
 Autentikasi dan persistence admin belum production-ready. Jangan membuka dashboard sebagai sistem administrasi publik sebelum kontrol akses server-side tersedia.
 
