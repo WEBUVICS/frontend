@@ -1,226 +1,355 @@
-// app/docs/page.jsx atau app/docs/DocsPage.jsx
-import React from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowLeft, Users, Briefcase, Megaphone, HelpCircle, Code } from "lucide-react"; 
+import {
+  ArrowLeft,
+  BarChart3,
+  BookOpen,
+  BriefcaseBusiness,
+  CheckCircle2,
+  CircleAlert,
+  HelpCircle,
+  ImageIcon,
+  Megaphone,
+  Settings,
+  Users,
+} from "lucide-react";
 
-// --- Komponen Styling Kustom ---
-// (SectionCard dan CodeBlock tidak perlu diubah, hanya cara mereka dipanggil)
-const SectionCard = ({ title, children, icon }:{title:string, children: React.ReactNode, icon:React.ReactElement}) => (
-    <div className="bg-white border border-gray-100 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 mb-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-5 flex items-center">
-            {icon} 
-            <span className="ml-3 border-b-2 border-orange-500 pb-1">{title}</span>
-        </h2>
-        <div className="space-y-5 text-gray-700">{children}</div>
-    </div>
-);
+function SectionCard({
+  id,
+  title,
+  icon,
+  children,
+}: {
+  id: string;
+  title: string;
+  icon: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      id={id}
+      className="scroll-mt-6 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8"
+    >
+      <h2 className="flex items-center gap-3 text-xl font-bold text-gray-900 sm:text-2xl">
+        <span aria-hidden="true" className="text-orange-500">
+          {icon}
+        </span>
+        {title}
+      </h2>
+      <div className="mt-5 space-y-4 text-sm leading-7 text-gray-700 sm:text-base">
+        {children}
+      </div>
+    </section>
+  );
+}
 
-
-const CodeBlock = ({ children, className }:{children: React.ReactNode, className?: string}) => (
-    <pre className={`bg-gray-50 border border-gray-200 p-3 sm:p-4 rounded-lg text-sm font-mono overflow-x-auto my-3 text-gray-700 ${className || ''}`}>
-        <div className="flex items-center text-orange-600 mb-1">
-            <Code className="w-4 h-4 mr-2" />
-            <span>Path:</span>
-        </div>
+function CodeBlock({
+  children,
+  label = "Path",
+}: {
+  children: ReactNode;
+  label?: string;
+}) {
+  return (
+    <div className="my-3 overflow-hidden rounded-lg border border-gray-200 bg-gray-950">
+      <p className="border-b border-gray-700 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-orange-300">
+        {label}
+      </p>
+      <pre className="overflow-x-auto p-4 text-sm text-gray-100">
         <code>{children}</code>
-    </pre>
-);
-
-const InfoAlert = ({ children }:{children: React.ReactNode}) => (
-    <div className="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-md my-4">
-        <p className="font-medium flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-            </svg>
-            Penting:
-         </p>
-        <div className="ml-7 text-sm">{children}</div>
+      </pre>
     </div>
-);
-// --- End Komponen Styling Kustom ---
+  );
+}
 
+function InlineCode({ children }: { children: ReactNode }) {
+  return (
+    <code className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[0.9em] text-gray-900">
+      {children}
+    </code>
+  );
+}
+
+function Notice({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 text-blue-900">
+      <CircleAlert aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0" />
+      <div>{children}</div>
+    </div>
+  );
+}
+
+const navigation = [
+  ["workflow", "Workflow"],
+  ["status-data", "Status data"],
+  ["recruitment", "Rekrutmen"],
+  ["department", "Anggota"],
+  ["showcase", "Showcase"],
+  ["media", "Media"],
+  ["faq", "FAQ"],
+  ["analytics", "Analytics"],
+  ["checklist", "Checklist"],
+];
 
 export default function DocsPage() {
-    return (
-        <section className="bg-gray-50 min-h-screen p-4 md:p-10">
-            <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-                    📘 Panduan Pengelolaan Data Proyek
-                </h1>
-                <p className="mb-10 text-lg text-gray-500 border-b pb-4">
-                    Dokumen teknis untuk memperbarui *mock* data dan aset visual di seluruh aplikasi.
-                </p>
+  return (
+    <div className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 lg:py-12">
+      <div className="mx-auto max-w-5xl">
+        <header className="rounded-2xl bg-[#2f6fd6] p-6 text-white shadow-lg sm:p-10">
+          <div className="flex items-center gap-3 text-blue-100">
+            <BookOpen aria-hidden="true" className="h-6 w-6" />
+            <span className="text-sm font-bold uppercase tracking-[0.16em]">
+              Dokumentasi Proyek
+            </span>
+          </div>
+          <h1 className="mt-4 text-3xl font-extrabold sm:text-5xl">
+            Panduan Kontributor UVICS
+          </h1>
+          <p className="mt-4 max-w-3xl leading-7 text-blue-50">
+            Referensi untuk menjalankan proyek, memperbarui konten, memahami
+            penyimpanan data saat ini, dan memverifikasi perubahan sebelum
+            pull request atau deployment.
+          </p>
+        </header>
 
-                {/* --- Bagian 1: Departemen & Anggota Tim (Tidak Ada Perubahan) --- */}
-                <SectionCard 
-                    title="1. Data Departemen & Anggota Tim" 
-                    icon={<Users className="w-6 h-6 text-orange-500" />}
+        <nav aria-label="Daftar isi dokumentasi" className="my-6">
+          <ul className="flex flex-wrap gap-2">
+            {navigation.map(([href, label]) => (
+              <li key={href}>
+                <a
+                  href={`#${href}`}
+                  className="inline-flex min-h-10 items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition-colors hover:border-blue-300 hover:text-blue-700"
                 >
-                    <p>Data anggota tim diatur berdasarkan *batch* dan *departemen*.</p>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">Lokasi File Sumber:</h3>
-                    <CodeBlock>app/(user)/department/&lt;batch&gt;/page.tsx</CodeBlock>
-                    
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">Proses Pembaruan Data:</h3>
-                    <ol className="list-decimal list-inside ml-6 space-y-3">
-                        <li>{'Masuk ke file `app/(user)/department/<batch>/page.tsx`.'}</li>
-                        <li>Cari `array` of *objects* yang berisi data departemen.</li>
-                        <li>Ubah data di dalam *array* tersebut sesuai dengan *field* berikut:
-                            <ul className="list-disc list-inside ml-6 mt-2 text-sm">
-                                <li>`id`: *Number* atau *String* unik.</li>
-                                <li>`name`: Nama Anggota.</li>
-                                <li>`position`: Jabatan di Departemen tersebut.</li>
-                                <li>`image`: URL gambar (lihat bagian Penanganan Gambar).</li>
-                            </ul>
-                        </li>
-                    </ol>
+        <div className="space-y-6">
+          <SectionCard
+            id="workflow"
+            title="1. Menjalankan dan memeriksa proyek"
+            icon={<Settings className="h-6 w-6" />}
+          >
+            <p>
+              Gunakan Node.js 20.9.0 atau lebih baru. Instal dependency dan
+              jalankan development server:
+            </p>
+            <CodeBlock label="Terminal">{`npm install
+npm run dev`}</CodeBlock>
+            <p>Sebelum mengirim perubahan, jalankan seluruh pemeriksaan berikut:</p>
+            <CodeBlock label="Verifikasi">{`npm run lint
+npm run typecheck
+npm run build`}</CodeBlock>
+            <p>
+              Workflow branch dan format commit dijelaskan di file{" "}
+              <InlineCode>BRANCH.md</InlineCode>.
+            </p>
+          </SectionCard>
 
-                    <h3 className="text-xl font-semibold mt-6 text-blue-600">Penanganan Gambar Anggota:</h3>
-                    <InfoAlert>
-                        Dan untuk image wajib memiliki format .webp dengan size lebih kecil dari 1MB
-                    </InfoAlert>
-                    <ol className="list-decimal list-inside ml-6 space-y-3">
-                        <li>Simpan file gambar (misalnya, `john.webp`) ke folder:
-                            <CodeBlock>public/member/&lt;department&gt;</CodeBlock>
-                        </li>
-                        <li>Perbarui *field* `image` di *array* dengan URL relatif:
-                            <CodeBlock>{"/member/<department>/<nama-file>.webp"}</CodeBlock>
-                            <span className="text-xs text-gray-500 block mt-1">
-                                {'Contoh: `"image": "/member/dev/jane.webp"`'}
-                            </span>
-                        </li>
-                    </ol>
-                </SectionCard>
+          <SectionCard
+            id="status-data"
+            title="2. Pahami status penyimpanan data"
+            icon={<CircleAlert className="h-6 w-6" />}
+          >
+            <Notice>
+              Halaman admin belum menjadi CMS produksi. Jangan menganggap data
+              preview sebagai data yang aman atau tersinkron.
+            </Notice>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                <InlineCode>/login</InlineCode> hanya membuka dashboard preview;
+                autentikasi server-side belum tersedia.
+              </li>
+              <li>
+                Pengumuman pada <InlineCode>/announcement</InlineCode> disimpan
+                di <InlineCode>localStorage</InlineCode> browser dan tidak
+                mengubah pengumuman publik.
+              </li>
+              <li>
+                Edit media pada <InlineCode>/media-blog</InlineCode> hanya berada
+                di React state dan hilang setelah reload.
+              </li>
+              <li>
+                Konten publik tetap diperbarui melalui file source yang
+                dijelaskan di bawah.
+              </li>
+            </ul>
+          </SectionCard>
 
-                {/* --- Bagian 2: Showcase Proyek (Tidak Ada Perubahan) --- */}
-                <SectionCard 
-                    title="2. Data Showcase Proyek" 
-                    icon={<Briefcase className="w-6 h-6 text-orange-500" />}
-                >
-                    <p>Data proyek untuk halaman *showcase* dikelola dalam satu *mock* data.</p>
-                    
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">Lokasi File Sumber:</h3>
-                    <CodeBlock>app/(user)/showcase/mockDate.ts</CodeBlock>
+          <SectionCard
+            id="recruitment"
+            title="3. Rekrutmen"
+            icon={<Megaphone className="h-6 w-6" />}
+          >
+            <CodeBlock>lib/recruitment-config.ts</CodeBlock>
+            <p>
+              File ini mengendalikan announcement bar, bagian rekrutmen di home,
+              deadline, link formulir, dan daftar benefit.
+            </p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                Set <InlineCode>isActive</InlineCode> ke <InlineCode>false</InlineCode>{" "}
+                untuk menonaktifkan seluruh CTA rekrutmen.
+              </li>
+              <li>
+                Gunakan <InlineCode>showAnnouncementBar</InlineCode> dan{" "}
+                <InlineCode>showHomeSection</InlineCode> untuk mengatur lokasi tampil.
+              </li>
+              <li>
+                Pastikan <InlineCode>applicationUrl</InlineCode> menggunakan URL
+                HTTPS yang valid dan tulis tahun pada deadline agar tidak ambigu.
+              </li>
+            </ul>
+          </SectionCard>
 
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">Field yang Harus Diperbarui:</h3>
-                    <ul className="list-disc list-inside ml-6 space-y-1 text-sm">
-                        <li>`id` (Unik)</li>
-                        <li>`image` (URL gambar proyek)</li>
-                        <li>`title` (Judul Proyek)</li>
-                        <li>`lomba` (Nama Lomba, jika ada)</li>
-                        <li>`members` (Array of Strings: Nama anggota tim proyek)</li>
-                        <li>`description` (Deskripsi Singkat Proyek)</li>
-                        <li>`tags` (Array of Strings: Kategori atau *skill* yang digunakan)</li>
-                    </ul>
+          <SectionCard
+            id="department"
+            title="4. Batch, departemen, dan anggota"
+            icon={<Users className="h-6 w-6" />}
+          >
+            <CodeBlock>app/(user)/department/batch&lt;nomor&gt;/page.tsx</CodeBlock>
+            <p>
+              Batch 1, 2, dan 2.5 menyimpan array anggota langsung di halamannya.
+              Batch 3.0 masih berupa placeholder sampai data resmi tersedia.
+            </p>
+            <p>Setiap anggota mengikuti type berikut:</p>
+            <CodeBlock label="Type">{`{
+  id: number;
+  name: string;
+  position: string;
+  image: string;
+}`}</CodeBlock>
+            <p>
+              Simpan foto di <InlineCode>public/member/&lt;DEPARTMENT&gt;/</InlineCode>{" "}
+              lalu gunakan URL seperti <InlineCode>/member/WEBDEV/nama.webp</InlineCode>.
+              Nilai <InlineCode>id</InlineCode> harus unik di dalam array yang sama.
+            </p>
+            <Notice>
+              Path bersifat case-sensitive saat deployment Linux. Huruf besar dan
+              kecil pada folder, nama file, serta URL harus sama persis.
+            </Notice>
+          </SectionCard>
 
-                    <h3 className="text-xl font-semibold mt-6 text-blue-600">Penanganan Gambar Proyek:</h3>
-                    <InfoAlert>
-                        Dan untuk image wajib memiliki format .webp dengan size lebih kecil dari 1MB
-                    </InfoAlert>
-                    <ol className="list-decimal list-inside ml-6 space-y-3">
-                        <li>Simpan file gambar *showcase* (misalnya, `app_project.webp`) ke folder:
-                            <CodeBlock>public/project</CodeBlock>
-                        </li>
-                        <li>Perbarui *field* `image` di `mockDate.ts` dengan URL relatif:
-                            <CodeBlock>{"/project/<nama-file>.png"}</CodeBlock>
-                            <span className="text-xs text-gray-500 block mt-1">
-                                {'Contoh: `"image": "/project/app_project.png"`'}
-                            </span>
-                        </li>
-                    </ol>
-                </SectionCard>
+          <SectionCard
+            id="showcase"
+            title="5. Showcase proyek"
+            icon={<BriefcaseBusiness className="h-6 w-6" />}
+          >
+            <CodeBlock>app/(user)/showcase/mockData.ts</CodeBlock>
+            <p>
+              Tambahkan atau ubah objek pada array <InlineCode>mockData</InlineCode>{" "}
+              dengan field <InlineCode>id</InlineCode>, <InlineCode>image</InlineCode>,{" "}
+              <InlineCode>title</InlineCode>, <InlineCode>lomba</InlineCode>,{" "}
+              <InlineCode>members</InlineCode>, <InlineCode>description</InlineCode>, dan{" "}
+              <InlineCode>tags</InlineCode>.
+            </p>
+            <p>
+              Simpan gambar di <InlineCode>public/project/</InlineCode> dan gunakan
+              URL seperti <InlineCode>/project/nama-proyek.webp</InlineCode>. ID
+              harus unik karena digunakan oleh route detail showcase.
+            </p>
+          </SectionCard>
 
-                {/* --- Bagian 3: Media (Announcement & Event) (PERBAIKAN HYDRATION ERROR) --- */}
-                <SectionCard 
-                    title="3. Data Media (Announcement & Event)" 
-                    icon={<Megaphone className="w-6 h-6 text-orange-500" />}
-                >
-                    <InfoAlert>
-                        Pembaruan data media dibagi menjadi dua file terpisah: satu untuk pengumuman, satu untuk acara. Dan untuk image wajib memiliki format .webp dengan size lebih kecil dari 1MB
-                    </InfoAlert>
-                    
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">3.1. Announcement (Pengumuman)</h3>
-                    <h4 className="font-semibold mt-2">Lokasi File:</h4>
-                    <CodeBlock>app/(user)/media/dataAnnounce.ts</CodeBlock>
-                    
-                    {/* PERBAIKAN: Pisahkan teks dan CodeBlock */}
-                    <p className="text-sm mt-2">Field kunci: `id`, `mainTitle`, `title`, `description`, `date`, `time`, `location`.</p>
-                    <p className="text-sm">Gambar disimpan di:</p> 
-                    <CodeBlock>public/announcement</CodeBlock>
-                    {/* END PERBAIKAN */}
+          <SectionCard
+            id="media"
+            title="6. Media, event, dan pengumuman"
+            icon={<ImageIcon className="h-6 w-6" />}
+          >
+            <h3 className="font-bold text-gray-900">Galeri</h3>
+            <CodeBlock>app/(user)/media/page.tsx</CodeBlock>
+            <p>
+              Simpan gambar di <InlineCode>public/gallery/</InlineCode>, lalu
+              tambahkan URL-nya ke array <InlineCode>images</InlineCode> pada halaman media.
+            </p>
 
-                    <CodeBlock className="mt-1 text-xs">
-                        {'Contoh URL: `"image": "/announcement/poster_rapat.webp"`'}
-                    </CodeBlock>
+            <h3 className="pt-2 font-bold text-gray-900">Event</h3>
+            <CodeBlock>app/(user)/media/dataEvent.ts</CodeBlock>
+            <p>
+              Gunakan field <InlineCode>id</InlineCode>, <InlineCode>image</InlineCode>,{" "}
+              <InlineCode>title</InlineCode>, <InlineCode>description</InlineCode>, dan{" "}
+              <InlineCode>hashtag</InlineCode>. Array saat ini kosong; contoh lama
+              masih tersedia sebagai komentar.
+            </p>
 
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">3.2. Event (Acara)</h3>
-                    <h4 className="font-semibold mt-2">Lokasi File:</h4>
-                    <CodeBlock>app/(user)/media/dataEvent.ts</CodeBlock>
-                    
-                    {/* PERBAIKAN: Pisahkan teks dan CodeBlock */}
-                    <p className="text-sm mt-2">Field kunci: `id`, `title`, `description`, `hastag`.</p>
-                    <p className="text-sm">Gambar disimpan di:</p>
-                    <CodeBlock>public/event</CodeBlock>
-                    {/* END PERBAIKAN */}
+            <h3 className="pt-2 font-bold text-gray-900">Pengumuman publik</h3>
+            <CodeBlock>app/(user)/media/dataAnnounce.ts</CodeBlock>
+            <p>
+              Gunakan field <InlineCode>id</InlineCode>, <InlineCode>mainTitle</InlineCode>,{" "}
+              <InlineCode>title</InlineCode>, <InlineCode>description</InlineCode>,{" "}
+              <InlineCode>date</InlineCode>, <InlineCode>time</InlineCode>,{" "}
+              <InlineCode>location</InlineCode>, dan <InlineCode>image</InlineCode>.
+              Poster event dan pengumuman disimpan di <InlineCode>public/event/</InlineCode>.
+            </p>
+          </SectionCard>
 
-                    <CodeBlock className="mt-1 text-xs">
-                        {'Contoh URL: `"image": "/event/webinar_poster.webp"`'}
-                    </CodeBlock>
-                </SectionCard>
-                
-                {/* --- Bagian 4: Frequently Asked Questions (FAQ) (Tidak Ada Perubahan) --- */}
-                <SectionCard 
-                    title="4. Data Frequently Asked Questions (FAQ)" 
-                    icon={<HelpCircle className="w-6 h-6 text-orange-500" />}
-                >
-                    <p>Konten FAQ dikelola dalam *array* yang terletak langsung di halaman FAQ.</p>
+          <SectionCard
+            id="faq"
+            title="7. FAQ"
+            icon={<HelpCircle className="h-6 w-6" />}
+          >
+            <CodeBlock>app/(user)/faqs/page.tsx</CodeBlock>
+            <p>
+              Ubah array <InlineCode>faqs</InlineCode>. Setiap item memiliki field{" "}
+              <InlineCode>q</InlineCode> untuk pertanyaan dan <InlineCode>a</InlineCode>{" "}
+              untuk jawaban. Gunakan kalimat singkat, konsisten, dan perbarui
+              informasi kontak atau benefit bila kebijakan organisasi berubah.
+            </p>
+          </SectionCard>
 
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">Lokasi File Sumber:</h3>
-                    <CodeBlock>app/(user)/faqs/page.tsx</CodeBlock>
-                    
-                    <h3 className="text-xl font-semibold mt-6 text-gray-700">Field yang Harus Diperbarui:</h3>
-                    <p>Cari variabel *array* `faqs` dan ubah objek di dalamnya sesuai *field* berikut:</p>
-                    <ul className="list-disc list-inside ml-6 space-y-1 text-sm">
-                        <li>`q`: (Question) Pertanyaan yang akan ditampilkan di *accordion header*.</li>
-                        <li>`a`: (Answer) Jawaban, bisa berupa *string* panjang atau elemen JSX.</li>
-                    </ul>
-                    
-                    <h3 className="text-xl font-semibold mt-6 text-blue-600">Contoh Struktur Data:</h3>
-                    <CodeBlock>{`const faqs = [
-  {
-    q: "Apa itu UVICS?",
-    a: "UVICS adalah komunitas...",
-  },
-  {
-    q: "Kapan pendaftaran dibuka?",
-    a: "Lihat di bagian announcement.",
-  },
-];`}</CodeBlock>
-                </SectionCard>
-                
-               <div className="mt-10 pt-6 border-t border-gray-200 text-center">
-    
-                    <div className="bg-red-50 border-l-4 border-red-500 text-red-800 p-4 mb-4 mx-auto max-w-lg rounded-md">
-                        <p className="font-bold flex items-center justify-center mb-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M8.257 3.099c.765-1.427 2.65-1.427 3.414 0l4.757 8.845A1.75 1.75 0 0115.143 14H4.857a1.75 1.75 0 01-1.28-2.056l4.757-8.845zM10 13a1 1 0 100-2 1 1 0 000 2zm0-5a1 1 0 000 2h1a1 1 0 100-2h-1z" clipRule="evenodd" />
-                            </svg>
-                            ⚠️ Peringatan Penting Sebelum Push!
-                        </p>
-                        <p className="text-sm">
-                            Sebelum melakukan *push* ke **main branch**, **WAJIB** menjalankan 
-                            <code className="bg-red-100 text-red-900 font-mono text-xs p-1 rounded mx-1">npm run build</code>. 
-                            Jika *build* gagal (ada *error*), selesaikan *error* tersebut terlebih dahulu.
-                        </p>
-                    </div>
+          <SectionCard
+            id="analytics"
+            title="8. Dashboard analytics"
+            icon={<BarChart3 className="h-6 w-6" />}
+          >
+            <p>
+              Endpoint <InlineCode>/api/analytics</InlineCode> memakai Google
+              Analytics Data API. Salin file contoh environment terlebih dahulu:
+            </p>
+            <CodeBlock label="PowerShell">Copy-Item .env.example .env.local</CodeBlock>
+            <CodeBlock label="Bash">cp .env.example .env.local</CodeBlock>
+            <p>Isi variable server-side berikut:</p>
+            <CodeBlock label="Environment">{`GA4_PROPERTY_ID=
+GA4_CLIENT_EMAIL=
+GA4_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n"`}</CodeBlock>
+            <Notice>
+              Jangan commit <InlineCode>.env.local</InlineCode> dan jangan memakai
+              prefix <InlineCode>NEXT_PUBLIC_</InlineCode> untuk kredensial GA4.
+            </Notice>
+          </SectionCard>
 
-                    {/* <p className="text-sm text-gray-500 mb-3">Pastikan untuk menjalankan `npm run dev` atau *build* ulang setelah perubahan data untuk melihat hasilnya.</p> */}
-                    <Link href="/" className="inline-flex items-center text-lg font-semibold text-orange-500 hover:text-orange-700 transition-colors duration-200">
-                        <ArrowLeft className="w-5 h-5 mr-2" />
-                        Kembali ke Beranda Proyek
-                    </Link>
-                </div>
-            </div>
-        </section>
-    );
+          <SectionCard
+            id="checklist"
+            title="9. Checklist sebelum push"
+            icon={<CheckCircle2 className="h-6 w-6" />}
+          >
+            <ul className="list-disc space-y-2 pl-6">
+              <li>Pastikan seluruh path aset benar dan file tersedia.</li>
+              <li>Periksa tampilan mobile dan desktop untuk perubahan UI.</li>
+              <li>
+                Jangan commit secret, <InlineCode>.env.local</InlineCode>,{" "}
+                <InlineCode>.next</InlineCode>, atau <InlineCode>node_modules</InlineCode>.
+              </li>
+              <li>Jalankan lint, typecheck, dan production build.</li>
+              <li>
+                Ikuti panduan branch dan pull request di <InlineCode>BRANCH.md</InlineCode>.
+              </li>
+            </ul>
+          </SectionCard>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-orange-500 px-5 py-3 font-semibold text-white transition-colors hover:bg-orange-600"
+          >
+            <ArrowLeft aria-hidden="true" className="h-5 w-5" />
+            Kembali ke beranda
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }

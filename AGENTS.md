@@ -27,8 +27,18 @@ Run these before declaring a frontend change complete:
 
 ```bash
 npm run lint
-npx tsc --noEmit --incremental false
+npm run typecheck
 npm run build
 ```
 
 When backend code is changed, also run the smallest relevant API, authentication, or database checks available for that change.
+
+## Required commit and push
+
+- After every completed task that changes project files, run the required checks, commit the task, and push it to the current upstream branch before reporting completion.
+- Stage only files that belong to the task. Never include unrelated user changes, secrets, local artifacts, or known junk files.
+- Use Conventional Commit format: `<type>(<optional-scope>): <clear summary>`.
+- Use `feat`, `fix`, `docs`, `refactor`, `test`, or `chore` as the commit type.
+- For a non-trivial commit, add a body that states what changed, why it changed, and which verification commands passed.
+- Never force-push or rewrite published history unless the user explicitly requests it.
+- If push fails because of authentication, conflicts, or remote availability, keep the verified local commit and report the exact blocker.
