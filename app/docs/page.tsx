@@ -85,7 +85,9 @@ export default function DocsPage() {
                         </li>
                         <li>Perbarui *field* `image` di *array* dengan URL relatif:
                             <CodeBlock>{"/member/<department>/<nama-file>.webp"}</CodeBlock>
-                            <span className="text-xs text-gray-500 block mt-1">Contoh: `"image": "/member/dev/jane.webp"`</span>
+                            <span className="text-xs text-gray-500 block mt-1">
+                                {'Contoh: `"image": "/member/dev/jane.webp"`'}
+                            </span>
                         </li>
                     </ol>
                 </SectionCard>
@@ -121,7 +123,9 @@ export default function DocsPage() {
                         </li>
                         <li>Perbarui *field* `image` di `mockDate.ts` dengan URL relatif:
                             <CodeBlock>{"/project/<nama-file>.png"}</CodeBlock>
-                            <span className="text-xs text-gray-500 block mt-1">Contoh: `"image": "/project/app_project.png"`</span>
+                            <span className="text-xs text-gray-500 block mt-1">
+                                {'Contoh: `"image": "/project/app_project.png"`'}
+                            </span>
                         </li>
                     </ol>
                 </SectionCard>
@@ -145,7 +149,9 @@ export default function DocsPage() {
                     <CodeBlock>public/announcement</CodeBlock>
                     {/* END PERBAIKAN */}
 
-                    <CodeBlock className="mt-1 text-xs">Contoh URL: `"image": "/announcement/poster_rapat.webp"`</CodeBlock>
+                    <CodeBlock className="mt-1 text-xs">
+                        {'Contoh URL: `"image": "/announcement/poster_rapat.webp"`'}
+                    </CodeBlock>
 
                     <h3 className="text-xl font-semibold mt-6 text-gray-700">3.2. Event (Acara)</h3>
                     <h4 className="font-semibold mt-2">Lokasi File:</h4>
@@ -157,7 +163,9 @@ export default function DocsPage() {
                     <CodeBlock>public/event</CodeBlock>
                     {/* END PERBAIKAN */}
 
-                    <CodeBlock className="mt-1 text-xs">Contoh URL: `"image": "/event/webinar_poster.webp"`</CodeBlock>
+                    <CodeBlock className="mt-1 text-xs">
+                        {'Contoh URL: `"image": "/event/webinar_poster.webp"`'}
+                    </CodeBlock>
                 </SectionCard>
                 
                 {/* --- Bagian 4: Frequently Asked Questions (FAQ) (Tidak Ada Perubahan) --- */}
@@ -178,18 +186,16 @@ export default function DocsPage() {
                     </ul>
                     
                     <h3 className="text-xl font-semibold mt-6 text-blue-600">Contoh Struktur Data:</h3>
-                    <CodeBlock>
-                        const faqs = [
-                        {'  '}{'{'}
-                        {'    '}q: "Apa itu UVICS?",
-                        {'    '}a: "UVICS adalah komunitas...",
-                        {'  '}{'},'}
-                        {'  '}{'{'}
-                        {'    '}q: "Kapan pendaftaran dibuka?",
-                        {'    '}a: "Lihat di bagian announcement.",
-                        {'  '}{'},'}
-                        {'};'}
-                    </CodeBlock>
+                    <CodeBlock>{`const faqs = [
+  {
+    q: "Apa itu UVICS?",
+    a: "UVICS adalah komunitas...",
+  },
+  {
+    q: "Kapan pendaftaran dibuka?",
+    a: "Lihat di bagian announcement.",
+  },
+];`}</CodeBlock>
                 </SectionCard>
                 
                <div className="mt-10 pt-6 border-t border-gray-200 text-center">

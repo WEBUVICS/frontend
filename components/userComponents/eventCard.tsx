@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 
 interface EventCardProps {
   title: string;
@@ -13,21 +13,21 @@ interface EventCardProps {
 
 const EventCard = ({ title, image, description, hashtag }: EventCardProps) => {
   const ref = useRef(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  useEffect(() => {
-    if (isInView && !hasAnimated) setHasAnimated(true);
-  }, [isInView, hasAnimated]);
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.div
       ref={ref}
-      className="bg-[#e6f0ff] rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 p-4 sm:p-6 font-sans"
-      initial={{ opacity: 0, y: 50 }}
-      animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      whileHover={{ y: -5 }}
+      className="bg-[#e6f0ff] rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-[transform,box-shadow] duration-300 p-4 sm:p-6 font-sans"
+      initial={reduceMotion ? false : { opacity: 0, y: 50 }}
+      animate={
+        reduceMotion || isInView
+          ? { opacity: 1, y: 0 }
+          : { opacity: 0, y: 50 }
+      }
+      transition={reduceMotion ? { duration: 0 } : { duration: 0.8, ease: "easeOut" }}
+      whileHover={reduceMotion ? undefined : { y: -5 }}
     >
       {/* Title */}
       <div className="text-center mb-4 sm:mb-6">

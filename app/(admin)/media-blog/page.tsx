@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import EventCard, { Event } from "@/components/adminComponents/eventCard";
 import GalleryCard, {
   GalleryItem,
@@ -63,24 +63,35 @@ const galleries: GalleryItem[] = Array.from({ length: 14 }, (_, index) => ({
 }));
 
 export default function MediaBlog() {
-  const handleEditEvent = useCallback((event: Event) => {
-    // TODO: Implement edit 
+  const [eventItems, setEventItems] = useState(events);
+  const [galleryItems, setGalleryItems] = useState(galleries);
+
+  const handleEditEvent = useCallback((updatedEvent: Event) => {
+    setEventItems((current) =>
+      current.map((event) =>
+        event.id === updatedEvent.id ? updatedEvent : event
+      )
+    );
   }, []);
 
   const handleDeleteEvent = useCallback((id: number) => {
-    // TODO: Implement delete
+    setEventItems((current) => current.filter((event) => event.id !== id));
   }, []);
 
-  const handleEditGallery = useCallback((item: GalleryItem) => {
-    // TODO: Implement edit
+  const handleEditGallery = useCallback((updatedItem: GalleryItem) => {
+    setGalleryItems((current) =>
+      current.map((item) =>
+        item.id === updatedItem.id ? updatedItem : item
+      )
+    );
   }, []);
 
   const handleDeleteGallery = useCallback((id: number) => {
-    // TODO: Implement delete
+    setGalleryItems((current) => current.filter((item) => item.id !== id));
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-10 space-y-16">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-10 space-y-16">
       {/* Events Section */}
       <section className="w-full">
         <h2
@@ -90,7 +101,7 @@ export default function MediaBlog() {
           EVENTS
         </h2>
         <EventCard
-          events={events}
+          events={eventItems}
           onEdit={handleEditEvent}
           onDelete={handleDeleteEvent}
         />
@@ -99,11 +110,11 @@ export default function MediaBlog() {
       {/* Gallery Section */}
       <section className="w-full">
         <GalleryCard
-          items={galleries}
+          items={galleryItems}
           onEdit={handleEditGallery}
           onDelete={handleDeleteGallery}
         />
       </section>
-    </main>
+    </div>
   );
 }

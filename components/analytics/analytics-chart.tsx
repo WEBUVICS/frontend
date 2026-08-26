@@ -41,28 +41,56 @@ export default function AnalyticsChart({
   const [timeRange, setTimeRange] = useState("7days");
   const [data, setData] = useState<AnalyticsData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   // Fetch and process analytics data
   useEffect(() => {
-    setLoading(true);
-    fetch(`/api/analytics?metric=${metric}&range=${timeRange}`)
-      .then((res) => res.json())
-      .then((json) => {
+    const controller = new AbortController();
+
+    const fetchData = async () => {
+      await Promise.resolve();
+      if (controller.signal.aborted) return;
+      setLoading(true);
+      setError(false);
+
+      try {
+        const response = await fetch(
+          `/api/analytics?metric=${metric}&range=${timeRange}`,
+          { signal: controller.signal }
+        );
+        if (!response.ok) throw new Error(`Analytics request failed: ${response.status}`);
+
+        const json: unknown = await response.json();
+        if (!Array.isArray(json)) throw new Error("Invalid analytics response");
+
         const sortedData = json
-          .map((item: { date: string; value: string }) => ({
+          .filter(
+            (item): item is { date: string; value: string | number } =>
+              typeof item === "object" &&
+              item !== null &&
+              typeof item.date === "string" &&
+              (typeof item.value === "string" || typeof item.value === "number")
+          )
+          .map((item) => ({
             date: item.date,
             value: Number(item.value),
           }))
-          .sort(
-            (
-              a: { date: string; value: number },
-              b: { date: string; value: number }
-            ) => Number(a.date) - Number(b.date)
-          ); // Sort chronologically
+          .sort((a, b) => Number(a.date) - Number(b.date));
+
         setData(sortedData);
-      })
-      .catch((err) => console.error("Error fetching analytics:", err))
-      .finally(() => setLoading(false));
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          console.error("Error fetching analytics:", err);
+          setData([]);
+          setError(true);
+        }
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    fetchData();
+    return () => controller.abort();
   }, [metric, timeRange]);
 
   return (
@@ -86,6 +114,10 @@ export default function AnalyticsChart({
       {loading ? (
         <div className="flex justify-center items-center h-48 text-[#ff9e3d]">
           <Loader2 className="h-8 w-8 animate-spin" />
+        </div>
+      ) : error ? (
+        <div role="status" className="flex h-48 items-center justify-center text-sm text-red-600">
+          Analytics data is currently unavailable.
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={300}>

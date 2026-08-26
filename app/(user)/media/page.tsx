@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { CalendarX, MegaphoneOff } from "lucide-react";
 import EventCard from "@/components/userComponents/eventCard";
 import AnnouncementCard from "@/components/userComponents/announcementCard";
@@ -27,12 +24,6 @@ const images = [
   "/gallery/foto-17.webp",
 ];
 
-// Bagi foto menjadi beberapa baris
-const rows = 4;
-const rowImages = Array.from({ length: rows }, (_, rowIndex) =>
-  images.filter((_, i) => i % rows === rowIndex)
-);
-
 export default function UserMedia() {
   return (
     <>
@@ -44,55 +35,17 @@ export default function UserMedia() {
           </span>
         </div>
 
-        <div className="flex flex-col gap-10 w-full">
-          {rowImages.map((row, rowIndex) => {
-            const toLeft = rowIndex % 2 === 0;
-
-            return (
-              <div key={rowIndex} className="relative w-full overflow-hidden">
-                <motion.div
-                  className="flex gap-28 px-14 py-1"
-                  animate={{ x: toLeft ? ["0%", "-100%"] : ["-100%", "0%"] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 40,
-                    ease: "linear",
-                  }}
-                >
-                  {row.map((src, i) => (
-                    <div
-                      key={i}
-                      className="relative rounded-[50px] shadow-md flex-shrink-0"
-                    >
-                      <Image
-                        src={src}
-                        alt={`Gallery ${rowIndex + 1}-${i + 1}`}
-                        width={287}
-                        height={171}
-                        className="object-cover w-[287px] h-[171px] rounded-[50px]"
-                      />
-                    </div>
-                  ))}
-
-                  {/* duplikasi baris */}
-                  {row.map((src, i) => (
-                    <div
-                      key={`dup-${i}`}
-                      className="relative rounded-[50px] shadow-md flex-shrink-0"
-                    >
-                      <Image
-                        src={src}
-                        alt={`Gallery ${rowIndex + 1}-dup-${i + 1}`}
-                        width={287}
-                        height={171}
-                        className="object-cover w-[287px] h-[171px] rounded-[50px]"
-                      />
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-            );
-          })}
+        <div className="grid w-full max-w-7xl grid-cols-1 gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
+          {images.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt={`Dokumentasi kegiatan UVICS ${index + 1}`}
+              width={287}
+              height={171}
+              className="h-44 w-full rounded-3xl object-cover shadow-md"
+            />
+          ))}
         </div>
       </section>
 

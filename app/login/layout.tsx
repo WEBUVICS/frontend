@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "UVICS WEBSITE",
   description: "Silahkan kunjungi website uvics.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 
@@ -42,6 +42,12 @@ export default function RootLayout({
       <body
         className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only z-[100] rounded-md bg-white px-4 py-2 text-blue-600 shadow focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

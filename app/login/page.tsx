@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import CardDemo from "@/components/CardDemo";
 import { Quicksand } from "next/font/google";
@@ -28,21 +27,21 @@ export default function LoginPage() {
       {/* Header */}
       <div className="text-center md:text-left md:pr-6 lg:pr-12 xl:pr-16 mb-8 md:mb-0 w-full md:w-1/2 max-w-lg">
         <h1 className="text-4xl sm:text-4xl md:text-4xl font-extrabold text-blue-600 leading-snug mb-4">
-          Welcome to Admin <br /> Portal UVICS
+          Admin Interface <br /> Preview
         </h1>
         <p className={`text-lg sm:text-lg md:text-lg text-black ${quicksand.className}`}>
-          Please login to access the admin features
+          Explore the current frontend while secure authentication is added.
         </p>
       </div>
       
       {/* Login Box */}
-      <main className="flex items-center justify-center w-full md:w-1/2 max-w-md xl:p-1/2">
+      <main id="main-content" tabIndex={-1} className="flex items-center justify-center w-full md:w-1/2 max-w-md xl:p-1/2">
         <CardDemo />
       </main>
 
       {/* Background Logo */}
       <Image
-        src="/favicon.jpg"
+        src="/favicon.png"
         alt="UVICS Logo"
         width={400}
         height={400}

@@ -57,8 +57,8 @@ const eventEducation: Member[] = [
 const batches = ["Batch 1", "Batch 2", "Batch 2.5"];
 
 export default function AdvisorCarousel() {
-  const [selectedBatch, setSelectedBatch] = React.useState("Batch 1");
-  const [_, setApi] = React.useState<CarouselApi | null>(null);
+  const selectedBatch = "Batch 1";
+  const [, setApi] = React.useState<CarouselApi | null>(null);
   const [showModal, setShowModal] = React.useState(false);
 
   const filteredAdvisors = advisors.filter((a) => a.batch === selectedBatch);
@@ -137,12 +137,14 @@ export default function AdvisorCarousel() {
               {batches.map((batch) => (
                 <DropdownMenuItem
                   key={batch}
-                  onClick={() => setSelectedBatch(batch)}
+                  asChild
                   className={`cursor-pointer px-2 py-1 text-xs sm:text-sm ${
                     selectedBatch === batch ? "bg-orange-100 text-orange-600" : ""
                   }`}
                 >
-                  {batch}
+                  <Link href={`/admin/profile/${batch.toLowerCase().replace(" ", "")}`}>
+                    {batch}
+                  </Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -162,10 +164,10 @@ export default function AdvisorCarousel() {
 
       {/* Semua Section */}
       {renderSection("Advisor", filteredAdvisors)}
-      {renderSection("Core Team", filteredCoreTeam, "/admin/profile/core-team")}
-      {renderSection("Web Development", filteredWebDev, "/admin/profile/web-development")}
-      {renderSection("Public and Documentation", filteredPublicDocs, "/admin/profile/public-documentation")}
-      {renderSection("Event and Education", filteredEventEdu, "/admin/profile/event-education")}
+      {renderSection("Core Team", filteredCoreTeam, "/admin/profile/batch1/core-team")}
+      {renderSection("Web Development", filteredWebDev, "/admin/profile/batch1/web-development")}
+      {renderSection("Public and Documentation", filteredPublicDocs, "/admin/profile/batch1/public-documentation")}
+      {renderSection("Event and Education", filteredEventEdu, "/admin/profile/batch1/event-education")}
 
       {/* === Overlay Modal === */}
       {showModal && (

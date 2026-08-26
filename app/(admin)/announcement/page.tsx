@@ -5,14 +5,34 @@
 
 import { useState, useEffect } from "react";
 
+type Announcement = {
+  title: string;
+  date: string;
+  description: string;
+};
+
+const STORAGE_KEY = "announcements:v1";
+const LEGACY_STORAGE_KEY = "announcements";
+
+function isAnnouncement(value: unknown): value is Announcement {
+  if (typeof value !== "object" || value === null) return false;
+
+  const item = value as Record<string, unknown>;
+  return (
+    typeof item.title === "string" &&
+    typeof item.date === "string" &&
+    typeof item.description === "string"
+  );
+}
+
 export default function AnnouncementPage() {
   const [showForm, setShowForm] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
-
-  const [announcements, setAnnouncements] = useState<
-    { title: string; date: string; description: string }[]
-  >([]);
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [storageReady, setStorageReady] = useState(false);
+  const [storageError, setStorageError] = useState("");
+  const [formError, setFormError] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -21,18 +41,46 @@ export default function AnnouncementPage() {
 
   // Load announcements from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem("announcements");
-    if (stored) {
-      setAnnouncements(JSON.parse(stored));
-    }
+    let cancelled = false;
+
+    queueMicrotask(() => {
+      if (cancelled) return;
+
+      try {
+        const stored =
+          localStorage.getItem(STORAGE_KEY) ??
+          localStorage.getItem(LEGACY_STORAGE_KEY);
+
+        if (stored) {
+          const parsed: unknown = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            setAnnouncements(parsed.filter(isAnnouncement));
+          }
+        }
+      } catch {
+        setStorageError("Data tersimpan tidak dapat dibaca. Mulai dengan daftar kosong.");
+      } finally {
+        setStorageReady(true);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // Save announcements to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("announcements", JSON.stringify(announcements));
-  }, [announcements]);
+  const persistAnnouncements = (nextAnnouncements: Announcement[]) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(nextAnnouncements));
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+      setStorageError("");
+    } catch {
+      setStorageError("Perubahan tidak dapat disimpan di browser ini.");
+    }
+  };
 
   const handleOpenForm = (edit = false, index: number | null = null) => {
+    setFormError("");
     setIsEditing(edit);
     setEditIndex(index);
     if (edit && index !== null) {
@@ -46,46 +94,52 @@ export default function AnnouncementPage() {
     setShowForm(true);
   };
 
-  const handleSave = () => {
+  const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (!formData.title.trim() || !formData.description.trim()) {
-      alert("Harap isi semua field!");
+      setFormError("Nama dan deskripsi pengumuman wajib diisi.");
       return;
     }
 
-    if (isEditing && editIndex !== null) {
-      const updated = [...announcements];
-      updated[editIndex] = {
-        ...updated[editIndex],
-        title: formData.title,
-        description: formData.description,
-      };
-      setAnnouncements(updated);
-    } else {
-      setAnnouncements([
-        ...announcements,
-        {
-          title: formData.title,
-          date: new Date().toLocaleString("id-ID", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-          description: formData.description,
-        },
-      ]);
-    }
+    const nextAnnouncements =
+      isEditing && editIndex !== null
+        ? announcements.map((announcement, index) =>
+          index === editIndex
+            ? {
+                ...announcement,
+                title: formData.title.trim(),
+                description: formData.description.trim(),
+              }
+            : announcement
+        )
+        : [
+            ...announcements,
+            {
+              title: formData.title.trim(),
+              date: new Intl.DateTimeFormat("id-ID", {
+                dateStyle: "long",
+                timeStyle: "short",
+              }).format(new Date()),
+              description: formData.description.trim(),
+            },
+          ];
+
+    setAnnouncements(nextAnnouncements);
+    persistAnnouncements(nextAnnouncements);
 
     setFormData({ title: "", description: "" });
     setIsEditing(false);
     setEditIndex(null);
+    setFormError("");
     setShowForm(false);
   };
 
   const handleDelete = (index: number) => {
     if (confirm("Yakin ingin menghapus pengumuman ini?")) {
-      setAnnouncements(announcements.filter((_, i) => i !== index));
+      const nextAnnouncements = announcements.filter((_, i) => i !== index);
+      setAnnouncements(nextAnnouncements);
+      persistAnnouncements(nextAnnouncements);
     }
   };
 
@@ -96,20 +150,29 @@ export default function AnnouncementPage() {
     ANNOUNCEMENT
   </h1>
 
+      {storageError && (
+        <p role="status" className="mb-4 rounded-md bg-amber-50 p-3 text-sm text-amber-800">
+          {storageError}
+        </p>
+      )}
+
   {/* Add Button */}
     <div className="flex justify-end mb-6">
       <button
+        type="button"
         onClick={() => handleOpenForm(false)}
         className="flex items-center gap-2 bg-[var(--color-primary)] text-white px-4 py-2 rounded-md hover:opacity-90 transition"
       >
-          <span className="text-yellow-300">➕</span> Tambah
+          <span aria-hidden="true" className="text-yellow-300">➕</span> Tambah
         </button>
       </div>
 
 
       {/* Announcement Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {announcements.length > 0 ? (
+        {!storageReady ? (
+          <p role="status" className="text-gray-500">Memuat…</p>
+        ) : announcements.length > 0 ? (
           announcements.map((a, i) => (
             <div
               key={i}
@@ -122,12 +185,14 @@ export default function AnnouncementPage() {
               {/* Edit/Delete buttons */}
               <div className="flex gap-2 mt-4">
                 <button
+                  type="button"
                   onClick={() => handleOpenForm(true, i)}
                   className="px-3 py-1 bg-[var(--color-primary)] text-white rounded hover:opacity-90"
                 >
                   ✏️ Edit
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleDelete(i)}
                   className="px-3 py-1 bg-[var(--color-second)] text-white rounded hover:opacity-90"
                 >
@@ -143,53 +208,76 @@ export default function AnnouncementPage() {
 
       {/* Popup Form */}
       {showForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 animate-fadeIn">
-          <div className="bg-white rounded-lg p-6 w-[400px] shadow-lg animate-slideUp">
-            <h2 className="text-lg font-semibold mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="announcement-form-title"
+            className="max-h-[90vh] w-full max-w-md overscroll-contain overflow-y-auto rounded-lg bg-white p-6 shadow-lg"
+          >
+            <h2 id="announcement-form-title" className="text-lg font-semibold mb-4">
               {isEditing ? "Edit Pengumuman" : "Tambah Pengumuman"}
             </h2>
 
-            <div className="mb-4">
-              <label className="block font-medium mb-1">Nama Pengumuman</label>
+            <form onSubmit={handleSave}>
+              <div className="mb-4">
+              <label htmlFor="announcement-title" className="block font-medium mb-1">Nama Pengumuman</label>
               <input
+                id="announcement-title"
+                name="title"
                 type="text"
+                autoComplete="off"
                 value={formData.title}
                 onChange={(e) =>
                   setFormData({ ...formData, title: e.target.value })
                 }
                 className="w-full border rounded-md px-3 py-2 outline-none focus:ring focus:ring-[var(--color-primary)]"
-                placeholder="Masukkan Program..."
+                placeholder="Contoh: Pendaftaran Batch 4…"
               />
             </div>
 
             <div className="mb-4">
-              <label className="block font-medium mb-1">
+              <label htmlFor="announcement-description" className="block font-medium mb-1">
                 Deskripsi Pengumuman
               </label>
               <textarea
+                id="announcement-description"
+                name="description"
+                autoComplete="off"
                 value={formData.description}
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
                 className="w-full border rounded-md px-3 py-2 outline-none focus:ring focus:ring-[var(--color-primary)]"
-                placeholder="Masukkan Deskripsi Program..."
+                placeholder="Tulis detail pengumuman…"
               />
             </div>
 
+            {formError && (
+              <p role="alert" className="mb-4 text-sm text-red-600">
+                {formError}
+              </p>
+            )}
+
             <div className="flex justify-end gap-3">
               <button
-                onClick={() => setShowForm(false)}
+                type="button"
+                onClick={() => {
+                  setShowForm(false);
+                  setFormError("");
+                }}
                 className="px-4 py-2 rounded-md border"
               >
                 Batal
               </button>
               <button
-                onClick={handleSave}
+                type="submit"
                 className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-md hover:opacity-90"
               >
                 {isEditing ? "Simpan" : "Tambah"}
               </button>
             </div>
+            </form>
           </div>
         </div>
       )}

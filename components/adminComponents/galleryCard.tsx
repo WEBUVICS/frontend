@@ -37,12 +37,12 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
       </h2>
 
       {/* Tombol navigasi */}
-      <button className="gallery-button-prev absolute -left-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform shadow-lg">
-        <ChevronLeft size={24} />
+      <button type="button" aria-label="Foto sebelumnya" className="gallery-button-prev absolute -left-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform shadow-lg">
+        <ChevronLeft aria-hidden="true" size={24} />
       </button>
 
-      <button className="gallery-button-next absolute -right-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform shadow-lg">
-        <ChevronRight size={24} />
+      <button type="button" aria-label="Foto berikutnya" className="gallery-button-next absolute -right-10 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform shadow-lg">
+        <ChevronRight aria-hidden="true" size={24} />
       </button>
 
       {/* Swiper dengan breakpoints */}
@@ -84,6 +84,7 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
                   alt="Gallery Item"
                   width={400}
                   height={300}
+                  unoptimized={item.image.startsWith("blob:")}
                   className="w-full h-40 sm:h-48 object-cover"
                 />
               </div>
@@ -91,16 +92,20 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
               {/* Tombol Edit & Delete */}
               <div className="flex justify-end space-x-4 p-3 bg-white">
                 <button
+                  type="button"
+                  aria-label={`Edit foto ${item.id}`}
                   className="p-2 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform"
                   onClick={() => setEditItem(item)}
                 >
-                  <Edit size={18} />
+                  <Edit aria-hidden="true" size={18} />
                 </button>
                 <button
+                  type="button"
+                  aria-label={`Hapus foto ${item.id}`}
                   className="p-2 rounded-full bg-[var(--color-second)] text-white hover:scale-110 transition-transform"
                   onClick={() => setDeleteId(item.id)}
                 >
-                  <Trash2 size={18} />
+                  <Trash2 aria-hidden="true" size={18} />
                 </button>
               </div>
             </div>
@@ -111,15 +116,17 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
       {/* Popup Edit */}
       {editItem && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md relative">
+          <div role="dialog" aria-modal="true" aria-labelledby="gallery-edit-title" className="bg-white rounded-xl p-6 w-full max-w-md relative max-h-[90vh] overscroll-contain overflow-y-auto">
             <button
+              type="button"
+              aria-label="Tutup form edit foto"
               onClick={() => setEditItem(null)}
               className="absolute top-3 right-3 text-gray-600 hover:text-black"
             >
               ✕
             </button>
 
-            <h3 className="text-lg font-bold mb-4">Edit Foto</h3>
+            <h3 id="gallery-edit-title" className="text-lg font-bold mb-4">Edit Foto</h3>
 
             {/* Preview Foto */}
             <div className="mb-4">
@@ -128,11 +135,17 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
                 alt="Preview"
                 width={400}
                 height={300}
+                unoptimized={editItem.image.startsWith("blob:")}
                 className="w-full h-48 object-cover rounded-lg"
               />
             </div>
 
+            <label htmlFor="gallery-image" className="mb-1 block text-sm font-medium">
+              Ganti Foto
+            </label>
             <input
+              id="gallery-image"
+              name="image"
               type="file"
               accept="image/*"
               onChange={(e) => {
@@ -151,11 +164,13 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
                 alt="Preview Baru"
                 width={400}
                 height={300}
+                unoptimized={newImage.startsWith("blob:")}
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
             )}
 
             <button
+              type="button"
               className="w-full bg-[var(--color-second)] text-white py-2 rounded-lg hover:opacity-90"
               onClick={() => {
                 onEdit?.({ ...editItem, image: newImage || editItem.image });
@@ -172,19 +187,21 @@ export default function GalleryCard({ items, onEdit, onDelete }: GalleryProps) {
       {/* Popup Hapus */}
       {deleteId && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl p-6 w-full max-w-sm text-center">
-            <h3 className="text-lg font-bold mb-4">Hapus Foto?</h3>
+          <div role="alertdialog" aria-modal="true" aria-labelledby="gallery-delete-title" className="bg-white rounded-xl p-6 w-full max-w-sm text-center">
+            <h3 id="gallery-delete-title" className="text-lg font-bold mb-4">Hapus Foto?</h3>
             <p className="mb-6 text-gray-600">
               Apakah kamu yakin ingin menghapus foto ini?
             </p>
             <div className="flex justify-center gap-4">
               <button
+                type="button"
                 className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
                 onClick={() => setDeleteId(null)}
               >
                 Batal
               </button>
               <button
+                type="button"
                 className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                 onClick={() => {
                   onDelete?.(deleteId);

@@ -11,11 +11,13 @@ export default function RecruitmentAnnouncementBar() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    try {
-      setIsVisible(sessionStorage.getItem(dismissalKey) !== "dismissed");
-    } catch {
-      setIsVisible(true);
-    }
+    queueMicrotask(() => {
+      try {
+        setIsVisible(sessionStorage.getItem(dismissalKey) !== "dismissed");
+      } catch {
+        setIsVisible(true);
+      }
+    });
   }, []);
 
   if (

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "Dokumentasi UVICS",
   description: "Silahkan kunjungi dokumentasi uvics",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 
@@ -38,11 +38,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased`}
       >
-        {children}
+        <a
+          href="#main-content"
+          className="sr-only z-[100] rounded-md bg-white px-4 py-2 text-orange-600 shadow focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Lewati ke konten utama
+        </a>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
       </body>
     </html>
   );

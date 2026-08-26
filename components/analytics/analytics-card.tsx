@@ -27,36 +27,76 @@ export default function AnalyticsCard({
 }: AnalyticsCardProps) {
   const [data, setData] = useState<AnalyticsData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [liveCount, setLiveCount] = useState<string>("0");
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let cancelled = false;
+    let interval: ReturnType<typeof setInterval>;
 
     // For real-time metric
     if (metric === "realtimeUsers" || timeRange === "real-time") {
       const fetchLive = async () => {
+        await Promise.resolve();
+        if (cancelled) return;
+        setLoading(true);
+        setError(false);
+
         try {
           const users = await getRealtimeUsers();
-          setLiveCount(users);
+          if (!cancelled) setLiveCount(users);
         } catch (err) {
-          console.error("Error fetching live users:", err);
+          if (!cancelled) {
+            console.error("Error fetching live users:", err);
+            setError(true);
+          }
         } finally {
-          setLoading(false);
+          if (!cancelled) setLoading(false);
         }
       };
 
       fetchLive();
       interval = setInterval(fetchLive, 10000);
 
-      return () => clearInterval(interval);
+      return () => {
+        cancelled = true;
+        clearInterval(interval);
+      };
     }
 
     // For historical data
-    fetch(`/api/analytics?metric=${metric}&range=${timeRange}`)
-      .then((res) => res.json())
-      .then((json: AnalyticsData[]) => setData(json))
-      .catch((err) => console.error("Error fetching analytics:", err))
-      .finally(() => setLoading(false));
+    const controller = new AbortController();
+
+    const fetchData = async () => {
+      await Promise.resolve();
+      if (controller.signal.aborted) return;
+      setLoading(true);
+      setError(false);
+
+      try {
+        const response = await fetch(
+          `/api/analytics?metric=${metric}&range=${timeRange}`,
+          { signal: controller.signal }
+        );
+        if (!response.ok) throw new Error(`Analytics request failed: ${response.status}`);
+
+        const json: unknown = await response.json();
+        if (!Array.isArray(json)) throw new Error("Invalid analytics response");
+
+        setData(json as AnalyticsData[]);
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          console.error("Error fetching analytics:", err);
+          setData([]);
+          setError(true);
+        }
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
+
+    fetchData();
+    return () => controller.abort();
   }, [metric, timeRange]);
 
   const total =
@@ -71,11 +111,18 @@ export default function AnalyticsCard({
           <div className="text-3xl font-bold text-[#ff9e3d]">
             {loading ? (
               <Loader2 className="h-6 w-6 animate-spin" />
+            ) : error ? (
+              "–"
             ) : (
-              total || "-"
+              total
             )}
           </div>
           <div className="text-sm text-[#ff9e3d]">{label}</div>
+          {error && (
+            <p role="status" className="mt-1 text-xs text-red-600">
+              Analytics unavailable
+            </p>
+          )}
         </div>
 
         {icon && (

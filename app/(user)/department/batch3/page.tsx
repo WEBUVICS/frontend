@@ -1,11 +1,10 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper/modules";
+import {
+  AdvisorSection,
+  MemberSection,
+  PICSection,
+} from "@/components/userComponents/department-member-sections";
 import { MemberType } from "@/types/data-type";
 
 export default function DepartmentUvics() {
@@ -82,141 +81,6 @@ const comhandmembers:MemberType[] = [
   { id: 6, name: "Samuel Anasim", position: "Member Comhand", image: "/member/CH/samuel.webp" },
   { id: 7, name: "Jofan Kalengkongan", position: "Member Comhand", image: "/member/CH/jofan.webp" },
 ];
-
-  // === Card Member ===
-  const MemberCard = ({ member }: { member: MemberType }) => (
-    <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-28 sm:w-32 md:w-40 lg:w-44 xl:w-48 h-44 sm:h-52 md:h-60 lg:h-64 overflow-hidden hover:scale-105 transition-transform duration-300">
-      <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 bg-white flex items-center justify-center">
-        <Image
-          src={member.image && member.image.trim() !== "" ? member.image : "/dummy-profile.svg"}
-          alt={member.name}
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
-      <div className="px-2 sm:px-3 py-2 text-center">
-        <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-800 leading-tight line-clamp-2">
-          {member.name}
-        </h3>
-        <p className="text-[10px] sm:text-xs md:text-sm lg:text-base text-gray-600 font-medium">
-          {member.position}
-        </p>
-      </div>
-    </div>
-  );
-
-  // === Card PIC ===
-  const PICCard = ({ member }: { member: MemberType }) => (
-    <div className="flex flex-col items-center bg-white rounded-xl shadow-lg w-[120px] sm:w-[150px] md:w-[180px] h-[180px] sm:h-[210px] md:h-[240px] overflow-hidden hover:scale-105 transition-transform duration-300">
-      <div className="relative w-full h-28 sm:h-32 md:h-36 bg-white flex items-center justify-center">
-        <Image
-          src={member.image && member.image.trim() !== "" ? member.image : "/dummy-profile.svg"}
-          alt={member.name}
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
-      <div className="px-2 sm:px-3 py-2 sm:py-3 text-center">
-        <h3 className="text-[11px] sm:text-sm md:text-base font-semibold text-gray-800 leading-tight line-clamp-2">
-          {member.name}
-        </h3>
-        <p className="text-[9px] sm:text-xs md:text-sm text-gray-600 font-medium">{member.position}</p>
-      </div>
-    </div>
-  );
-
-  // === PIC Section ===
-  const PICSection = ({ members }: { members: MemberType[] }) => {
-    const pics = members.filter(
-      (m) => m.position.toLowerCase().includes("pic") || m.position.toLowerCase().includes("koordi")
-    );
-    if (pics.length === 0) return null;
-
-    return (
-      <div className="mt-4 w-full max-w-5xl bg-[#4574C3] rounded-2xl shadow-lg px-3 sm:px-6 py-4 sm:py-6 flex flex-wrap justify-center gap-3 sm:gap-4">
-  {pics.map((pic) => (
-    <PICCard key={pic.id} member={pic} />
-  ))}
-</div>
-    );
-  };
-
-  // === Members Section ===
-  const MemberSection = ({ members }: { members: MemberType[] }) => {
-    const normalMembers = members.filter(
-      (m) => !m.position.toLowerCase().includes("pic") && !m.position.toLowerCase().includes("koordi")
-    );
-    if (normalMembers.length === 0) return null;
-
-    return (
-      <div className="mt-6 w-full max-w-6xl bg-[#FFA447] rounded-2xl shadow-lg px-5 sm:px-6 md:px-9 py-6 sm:py-10 relative">
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          spaceBetween={16}
-          navigation={{
-            nextEl: ".custom-next",
-            prevEl: ".custom-prev",
-          }}
-          autoplay={{ delay: 4000, disableOnInteraction: true }}
-          loop
-          breakpoints={{
-            320: { slidesPerView: 2 },
-            375: { slidesPerView: 2 },
-            425: { slidesPerView: 3 },
-            640: { slidesPerView: 4 },
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 5 },
-            1440: { slidesPerView: 5 },
-          }}
-        >
-          {normalMembers.map((member) => (
-            <SwiperSlide key={member.id} className="flex justify-center">
-              <MemberCard member={member} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        {/* Tombol Navigasi Kiri */}
-        <button className="custom-prev absolute top-1/2 -left-3 sm:-left-8 z-10 bg-white w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="black" className="w-3 sm:w-4 md:w-5 h-3 sm:h-4 md:h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        {/* Tombol Navigasi Kanan */}
-        <button className="custom-next absolute top-1/2 -right-3 sm:-right-8 z-10 bg-white w-6 sm:w-8 md:w-10 h-6 sm:h-8 md:h-10 rounded-full shadow-md flex items-center justify-center hover:bg-gray-100 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="black" className="w-3 sm:w-4 md:w-5 h-3 sm:h-4 md:h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-    );
-  };
-
-  // === Advisor Section ===
-const AdvisorSection = ({ members }: { members: MemberType[] }) => {
-  if (members.length === 0) return null;
-
-  return (
-    <div className="mt-6 w-full flex justify-center">
-      <div className="flex flex-wrap justify-center gap-4">
-        {members.map((advisor) => (
-          <MemberCard key={advisor.id} member={advisor} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-{/* === Tim Inti === */}
-<div className="mt-10 sm:mt-20 w-full flex flex-col items-center text-center">
-  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#FFA447] mb-2">Tim Inti</h2>
-  <PICSection members={coreTeamMembers} />
-  <MemberSection members={coreTeamMembers} />
-</div>
-
 
   // === Render Halaman ===
   return (

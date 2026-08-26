@@ -49,6 +49,14 @@ Website ini dibangun sebagai **platform digital utama** UVICS untuk:
 
 ---
 
+## 🚧 Fase Pengembangan Saat Ini
+
+Proyek menggunakan pendekatan **frontend-first**, tetapi pengembangan backend diperbolehkan ketika fitur membutuhkan API, autentikasi, database, analytics, atau persistence produksi. Backend dapat dikembangkan dan diuji secara lokal sebelum hosting dipilih; konfigurasi deployment disesuaikan setelah target hosting ditentukan.
+
+Data yang masih memakai React state, `sessionStorage`, atau `localStorage` hanya bersifat **preview lokal**—bukan data aman, bersama, atau production-ready. Aturan lengkap untuk contributor dan coding agent tersedia di [`AGENTS.md`](./AGENTS.md).
+
+---
+
 ## 🛠️ Tech Stack
 
 | Kategori | Teknologi | Versi |

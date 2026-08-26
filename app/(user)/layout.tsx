@@ -59,15 +59,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body
         className={`${openSans.variable} ${robotoMono.variable} ${quicksandFont.variable} ${poppinsFont.variable} antialiased flex flex-col min-h-screen`}
       >
+        <a
+          href="#main-content"
+          className="sr-only z-[100] rounded-md bg-white px-4 py-2 text-[#2f6fd6] shadow focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Lewati ke konten utama
+        </a>
         <header className="sticky top-0 z-50">
           <RecruitmentAnnouncementBar />
           <Navbar />
         </header>
-        <main className="flex-grow">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-grow">
+          {children}
+        </main>
         <Footer />
         <BackToTopButton />
       </body>

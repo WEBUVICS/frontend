@@ -77,12 +77,6 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [batchOpen, isOpen, mobileBatchOpen]);
 
-  useEffect(() => {
-    setIsOpen(false);
-    setBatchOpen(false);
-    setMobileBatchOpen(false);
-  }, [pathname]);
-
   const isActiveRoute = (route: string) => {
     if (route === "/") return pathname === "/";
     return pathname === route || pathname.startsWith(`${route}/`);
@@ -90,6 +84,12 @@ export default function Navbar() {
 
   const closeMobileMenu = () => {
     setIsOpen(false);
+    setMobileBatchOpen(false);
+  };
+
+  const closeAllMenus = () => {
+    setIsOpen(false);
+    setBatchOpen(false);
     setMobileBatchOpen(false);
   };
 
@@ -109,6 +109,7 @@ export default function Navbar() {
         <Link
           href="/"
           aria-label="UVICS - Beranda"
+          onClick={closeAllMenus}
           className="flex items-center gap-2 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <Image
@@ -128,6 +129,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/"
+                onClick={closeAllMenus}
                 aria-current={isActiveRoute("/") ? "page" : undefined}
                 className={cn(
                   desktopLinkClass,
@@ -215,6 +217,7 @@ export default function Navbar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  onClick={closeAllMenus}
                   aria-current={
                     isActiveRoute(item.href) ? "page" : undefined
                   }

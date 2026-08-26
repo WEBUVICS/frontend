@@ -60,7 +60,7 @@ const PR: Member[] = [
 const batches = ["Batch 1", "Batch 2", "Batch 2.5"];
 
 export default function AdvisorCarousel() {
-  const [selectedBatch, setSelectedBatch] = React.useState("Batch 2.5");
+  const selectedBatch = "Batch 2.5";
   const [showModal, setShowModal] = React.useState(false);
 
   const filteredAdvisors = advisors.filter((a) => a.batch === selectedBatch);
@@ -140,12 +140,14 @@ export default function AdvisorCarousel() {
               {batches.map((batch) => (
                 <DropdownMenuItem
                   key={batch}
-                  onClick={() => setSelectedBatch(batch)}
+                  asChild
                   className={`cursor-pointer px-2 py-1 text-sm ${
                     selectedBatch === batch ? "bg-orange-100 text-orange-600" : ""
                   }`}
                 >
-                  {batch}
+                  <Link href={`/admin/profile/${batch.toLowerCase().replace(" ", "")}`}>
+                    {batch}
+                  </Link>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -165,11 +167,11 @@ export default function AdvisorCarousel() {
 
       {/* Semua Section */}
       {renderSection("Advisor", filteredAdvisors)}
-      {renderSection("Core Team", filteredCoreTeam, "/admin/profile/core-team")}
-      {renderSection("Web Development", filteredWebDev, "/admin/profile/web-development")}
-      {renderSection("Indev", filteredIndev, "/admin/profile/indev")}
-      {renderSection("Editor", filteredEditor, "/admin/profile/editor")}
-      {renderSection("PR", filteredPR, "/admin/profile/pr")}
+      {renderSection("Core Team", filteredCoreTeam, "/admin/profile/batch2.5/core-team")}
+      {renderSection("Web Development", filteredWebDev, "/admin/profile/batch2.5/web-development")}
+      {renderSection("Indev", filteredIndev, "/admin/profile/batch2.5/indev")}
+      {renderSection("Editor", filteredEditor, "/admin/profile/batch2.5/Editor")}
+      {renderSection("PR", filteredPR, "/admin/profile/batch2.5/PR")}
 
       {/* === Overlay Modal === */}
       {showModal && (
