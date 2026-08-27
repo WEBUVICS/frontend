@@ -295,9 +295,11 @@ npm test`}</CodeBlock>
             <CodeBlock>app/(user)/faqs/page.tsx</CodeBlock>
             <p>
               Ubah array <InlineCode>faqs</InlineCode>. Setiap item memiliki field{" "}
-              <InlineCode>q</InlineCode> untuk pertanyaan dan <InlineCode>a</InlineCode>{" "}
-              untuk jawaban. Gunakan kalimat singkat, konsisten, dan perbarui
-              informasi kontak atau benefit bila kebijakan organisasi berubah.
+              <InlineCode>id</InlineCode>, <InlineCode>category</InlineCode>,{" "}
+              <InlineCode>question</InlineCode>, dan <InlineCode>answer</InlineCode>.
+              Nama kategori harus tersedia di array <InlineCode>categories</InlineCode>.
+              Pertahankan lima pertanyaan per kategori agar tampilan tetap ringkas,
+              dan perbarui benefit atau kebijakan bila aturan organisasi berubah.
             </p>
           </SectionCard>
 

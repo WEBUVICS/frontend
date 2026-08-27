@@ -141,7 +141,7 @@ Referensi lengkap berada di halaman [`/docs`](http://localhost:3000/docs). Lokas
 | Event | `app/(user)/media/dataEvent.ts` |
 | Pengumuman publik | `app/(user)/media/dataAnnounce.ts` |
 | Galeri | Daftar gambar di `app/(user)/media/page.tsx` dan file di `public/gallery/` |
-| FAQ | Array `faqs` di `app/(user)/faqs/page.tsx` |
+| FAQ | Array `faqs` dan `categories` di `app/(user)/faqs/page.tsx`; setiap kategori berisi lima pertanyaan |
 
 Gunakan gambar WebP bila memungkinkan, batasi sisi terpanjang foto web sekitar 2.000 px, optimalkan ukurannya sebelum commit, dan pastikan huruf besar/kecil pada path sama persis dengan nama file.
 

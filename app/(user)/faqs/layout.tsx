@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "FAQ UVICS",
-  description: "Jawaban atas pertanyaan umum tentang keanggotaan dan kegiatan UVICS.",
+  description:
+    "Jawaban tentang organisasi, keanggotaan, departemen, program, dan kompetisi UVICS.",
   alternates: { canonical: "/faqs" },
 };
 

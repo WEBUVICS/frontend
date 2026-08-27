@@ -73,6 +73,15 @@ await withServer(basePort, false, async (origin) => {
   await expectStatus(origin, "/department/batch2", 200);
   await expectStatus(origin, "/showcase/1", 200);
 
+  const faq = await expectStatus(origin, "/faqs", 200);
+  const faqHtml = await faq.text();
+  assert.match(faqHtml, /Tentang UVICS/);
+  assert.equal(
+    (faqHtml.match(/id="faq-button-/g) || []).length,
+    5,
+    "Kategori FAQ awal harus menampilkan lima pertanyaan"
+  );
+
   const login = await expectStatus(origin, "/login", 200);
   assert.match(await login.text(), /Admin preview dinonaktifkan/i);
 
